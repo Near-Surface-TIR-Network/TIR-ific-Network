@@ -58,42 +58,35 @@
   </footer>
 
   <!-- Leaflet Map Logic -->
-  <script>
-    const map = L.map('map').setView([20, 0], 2); // Global center
+<script>
+  const map = L.map('map').setView([20, 0], 2); // Global center
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
 
-    // Example site data — replace or expand as needed
-    const sites = [
-      {
-        name: "Harvard Forest",
-        lat: 42.5,
-        lon: -72.2,
-        summary: "A long-term ecological research site in Massachusetts.",
-        link: "site-hf.html"
-      },
-      {
-        name: "Niwot Ridge",
-        lat: 40.1,
-        lon: -105.5,
-        summary: "High elevation alpine TIR site.",
-        link: "site-niwo.html"
-      }
-    ];
+  async function loadSites() {
+    const indexResponse = await fetch('sites/index.json');
+    const siteFiles = await indexResponse.json();
 
-    sites.forEach(site => {
-      const marker = L.marker([site.lat, site.lon]).addTo(map);
+    for (const file of siteFiles) {
+      const response = await fetch(`sites/${file}`);
+      const site = await response.json();
+
+      const marker = L.marker([site.lat, site.long]).addTo(map);
       marker.bindPopup(`
         <div class="text-sm">
-          <strong>${site.name}</strong><br>
-          ${site.summary}<br>
-          <a href="${site.link}" class="text-blue-600 underline mt-2 inline-block">More Info</a>
+          <strong>${site.siteName}</strong><br>
+          ${site.siteID}<br>
+          <a href="site.html?site=${file}" class="text-blue-600 underline mt-2 inline-block">View Full Site Info</a>
         </div>
       `);
-    });
-  </script>
+    }
+  }
+
+  loadSites();
+</script>
+
 
 </body>
 </html>
