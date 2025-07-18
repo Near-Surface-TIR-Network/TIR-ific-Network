@@ -15,7 +15,11 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <style>
-    #map { height: 600px; }
+    #map {
+      height: 600px;
+      margin-top: -4rem; /* Pulls the map up under the nav */
+      z-index: 0;         /* Ensures nav stays above */
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans">
@@ -44,7 +48,7 @@
   </main>
   
   <!-- MAP CONTAINER -->
-  <section class="my-12 max-w-7xl mx-auto">
+  <section class="max-w-7xl mx-auto relative z-0">
     <div id="map" class="rounded-3xl shadow-lg" style="height: 600px;"></div>
   </section>
 
