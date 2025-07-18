@@ -8,21 +8,31 @@
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans">
 
-  <!-- GRADIENT NAVIGATION BAR -->
-  <nav class="bg-gradient-to-br from-red-600 to-orange-500 text-white sticky top-0 z-50 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16 items-center">
-        <div class="text-white font-extrabold text-xl">TIR-ific Network</div>
-        <div class="flex space-x-6">
-          <a href="index.html" class="hover:underline">Home</a>
-          <a href="map.html" class="hover:underline">Map</a>
-          <a href="sites.html" class="hover:underline">Sites</a>
-          <a href="about.html" class="hover:underline">About</a>
-          <a href="contact.html" class="hover:underline">Contact</a>
+<!-- NAVIGATION BAR -->
+<nav class="bg-gradient-to-br from-red-600 to-orange-500 text-white sticky top-0 z-50 shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      <div class="text-white font-extrabold text-xl">TIR-ific Network</div>
+      <div class="flex space-x-6 items-center">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="map.html" class="hover:underline">Map</a>
+
+        <!-- DROPDOWN for Sites -->
+        <div class="relative group">
+          <button class="hover:underline focus:outline-none">Sites ▾</button>
+          <div class="absolute hidden group-hover:block bg-white text-gray-800 rounded-md shadow-lg mt-2 z-50 min-w-max">
+            <a href="sites.html" class="block px-4 py-2 hover:bg-gray-100">All Sites</a>
+            <a href="add-site.html" class="block px-4 py-2 hover:bg-gray-100">Add Site</a>
+          </div>
         </div>
+
+        <a href="about.html" class="hover:underline">About</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
+
 
   <!-- WELCOME SECTION-->
   <main class="flex justify-center items-center my-12 px-4">
