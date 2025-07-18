@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Site Details</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans p-8">
+
+  <!-- SITE INFO CONTAINER -->
+  <div id="site-details" class="max-w-3xl mx-auto bg-white p-8 rounded-3xl shadow-lg">
+    <p>Loading site information...</p>
+  </div>
+
+  <script>
+    async function loadSiteDetails() {
+      const params = new URLSearchParams(window.location.search);
+      const file = params.get('site');  // e.g., harv_test.json
+      if (!file) return;
+
+      const res = await fetch(`sites/${file}`);
+      const data = await res.json();
+
+      const container = document.getElementById('site-details');
+      container.innerHTML = `
+        <h1 class="text-4xl font-bold mb-4">${data.siteName}</h1>
+        <p class="text-gray-600 mb-6">${data.siteID}</p>
+        <ul class="text-sm leading-relaxed space-y-2">
+          <li><strong>Start Date:</strong> ${data.startDate}</li>
+          <li><strong>End Date:</strong> ${data.endDate || 'Ongoing'}</li>
+          <li><strong>Latitude / Longitude:</strong> ${data.lat}, ${data.long}</li>
+          <li><strong>Elevation:</strong> ${data.elev} m</li>
+          <li><strong>Mean Annual Temp:</strong> ${data.MAT_site} °C</li>
+          <li><strong>Mean Annual Precip:</strong> ${data.MAP_site} cm</li>
+          <li><strong>Instrument:</strong> ${data.instrument_descrip}</li>
+          <li><strong>Species:</strong> ${data.dominant_species}</li>
+          <li><strong>IGBP:</strong> ${data.landcover_igbp}</li>
+          <li><strong>CLM PFT:</strong> ${data.CLM_PFT}</li>
+        </ul>
+      `;
+    }
+
+    loadSiteDetails();
+  </script>
+
+</body>
+</html>
