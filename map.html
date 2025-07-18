@@ -4,40 +4,87 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TIR-ific Network | Map</title>
+
+  <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
   <style>
-    .gradient-header {
-      background-image: linear-gradient(to right, #DC2626, #F97316);
-    }
+    #map { height: 600px; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans">
 
   <!-- Header -->
-  <header class="gradient-header text-white p-4 shadow sticky top-0 z-50">
+  <header class="bg-gradient-to-r from-red-600 to-orange-500 text-white p-4 shadow fixed w-full top-0 z-50">
     <nav class="flex justify-between items-center max-w-6xl mx-auto">
-      <h1 class="text-2xl font-bold">TIR-ific Network</h1>
-      <div class="space-x-6">
-        <a href="index.html" class="hover:underline">Home</a>
-        <a href="map.html" class="underline font-semibold">Map</a>
-        <a href="sites.html" class="hover:underline">Sites</a>
-        <a href="about.html" class="hover:underline">About</a>
-      </div>
+      <h1 class="text-xl font-bold">TIR-ific Network</h1>
+      <ul class="flex space-x-6 text-sm font-medium">
+        <li><a href="index.html" class="hover:underline">Home</a></li>
+        <li><a href="map.html" class="hover:underline">Map</a></li>
+        <li><a href="sites.html" class="hover:underline">Sites</a></li>
+        <li><a href="about.html" class="hover:underline">About</a></li>
+      </ul>
     </nav>
   </header>
 
   <!-- Main Content -->
-  <section class="w-full bg-gradient-to-r from-red-600 to-orange-500 text-white text-center py-16 px-4 rounded-3xl mt-12">
-    <h2 class="text-4xl font-extrabold mb-4">Global Network Map</h2>
-    <p class="text-xl mb-8">Discover near-surface thermal data sites around the world.</p>
-  </section>
-  
+  <main class="flex justify-center items-center py-16 px-4">
+    <div class="text-center bg-gradient-to-br from-red-600 to-orange-500 text-white p-10 rounded-3xl shadow-lg max-w-4xl w-full">
+      <h2 class="text-5xl font-extrabold mb-4 whitespace-nowrap">Global Network Map</h2>
+      <p class="text-xl opacity-90">Discover near-surface thermal data sites around the world. Click on a site to view detailed information, or use your mouse to zoom and pan.</p>
+    </div>
+  </main>
+
 
   <!-- Footer -->
   <footer class="bg-gray-200 text-sm text-center p-4 mt-12">
     © 2025 TIR-ific Network. All rights reserved.<br>
     Connecting the world through thermal insights.
   </footer>
+
+  <!-- Leaflet Map Logic -->
+  <script>
+    const map = L.map('map').setView([20, 0], 2); // Global center
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Example site data — replace or expand as needed
+    const sites = [
+      {
+        name: "Harvard Forest",
+        lat: 42.5,
+        lon: -72.2,
+        summary: "A long-term ecological research site in Massachusetts.",
+        link: "site-hf.html"
+      },
+      {
+        name: "Niwot Ridge",
+        lat: 40.1,
+        lon: -105.5,
+        summary: "High elevation alpine TIR site.",
+        link: "site-niwo.html"
+      }
+    ];
+
+    sites.forEach(site => {
+      const marker = L.marker([site.lat, site.lon]).addTo(map);
+      marker.bindPopup(`
+        <div class="text-sm">
+          <strong>${site.name}</strong><br>
+          ${site.summary}<br>
+          <a href="${site.link}" class="text-blue-600 underline mt-2 inline-block">More Info</a>
+        </div>
+      `);
+    });
+  </script>
 
 </body>
 </html>
