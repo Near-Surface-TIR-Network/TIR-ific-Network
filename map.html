@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TIR-ific Network | Map</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .gradient-header {
+      background-image: linear-gradient(to right, #DC2626, #F97316);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+
+  <!-- Header -->
+  <header class="gradient-header text-white p-4 shadow sticky top-0 z-50">
+    <nav class="flex justify-between items-center max-w-6xl mx-auto">
+      <h1 class="text-2xl font-bold">TIR-ific Network</h1>
+      <div class="space-x-6">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="map.html" class="underline font-semibold">Map</a>
+        <a href="sites.html" class="hover:underline">Sites</a>
+        <a href="about.html" class="hover:underline">About</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="p-8 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-6">Explore the TIR-ific Map</h2>
+    <p class="text-center mb-8 text-gray-700">Discover active and inactive near-surface thermal camera sites around the world.</p>
+
+    <!-- Map placeholder -->
+    <div id="map" class="w-full h-[600px] bg-gray-300 rounded-lg shadow-md">
+      <!-- Interactive map will be embedded here -->
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-200 text-sm text-center p-4 mt-12">
+    © 2025 TIR-ific Network. All rights reserved.<br>
+    Connecting the world through thermal insights.
+  </footer>
+
+</body>
+</html>
