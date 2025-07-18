@@ -21,7 +21,7 @@
 <body class="bg-gray-50 text-gray-900 font-sans">
 
   <!-- Header -->
-  <header class="bg-gradient-to-r from-red-600 to-orange-500 text-white p-4 shadow fixed w-full top-0 z-50">
+  <header class="bg-gradient-to-br from-red-600 to-orange-500 text-white p-4 shadow fixed w-full top-0 z-50">
     <nav class="flex justify-between items-center max-w-6xl mx-auto">
       <h1 class="text-xl font-bold">TIR-ific Network</h1>
       <ul class="flex space-x-6 text-sm font-medium">
@@ -33,14 +33,16 @@
     </nav>
   </header>
 
-  <!-- Main Content -->
-  <main class="flex justify-center items-center py-16 px-4">
-    <div class="text-center bg-gradient-to-br from-red-600 to-orange-500 text-white p-10 rounded-3xl shadow-lg max-w-4xl w-full">
+  <!-- Top Section -->
+  <main class="pt-28 max-w-6xl mx-auto px-4">
+    <div class="text-center bg-gradient-to-br from-red-600 to-orange-500 text-white p-10 rounded-3xl shadow-lg mb-12">
       <h2 class="text-5xl font-extrabold mb-4 whitespace-nowrap">Global Network Map</h2>
       <p class="text-xl opacity-90">Discover near-surface thermal data sites around the world. Click on a site to view detailed information, or use your mouse to zoom and pan.</p>
     </div>
-  </main>
 
+    <!-- 📍 This is the map container -->
+    <div id="map" class="rounded-lg shadow-lg"></div>
+  </main>
 
   <!-- Footer -->
   <footer class="bg-gray-200 text-sm text-center p-4 mt-12">
