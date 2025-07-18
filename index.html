@@ -1,0 +1,731 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #6d6d6d; -webkit-text-stroke: #6d6d6d}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #6b0001; -webkit-text-stroke: #6b0001}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #fb0007; -webkit-text-stroke: #fb0007}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #0000ff; -webkit-text-stroke: #0000ff}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; -webkit-text-stroke: #000000}
+    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #4d5055; -webkit-text-stroke: #4d5055}
+    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; -webkit-text-stroke: #000000; min-height: 16.0px}
+    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #093c94; -webkit-text-stroke: #093c94}
+    span.s1 {font-kerning: none; background-color: #ecf1f7}
+    span.s2 {font-kerning: none; color: #fb0007; background-color: #ecf1f7; -webkit-text-stroke: 0px #fb0007}
+    span.s3 {font-kerning: none; color: #2a2a2a; background-color: #ecf1f7; -webkit-text-stroke: 0px #2a2a2a}
+    span.s4 {font-kerning: none; color: #000000; background-color: #ecf1f7; -webkit-text-stroke: 0px #000000}
+    span.s5 {font-kerning: none; color: #0000ff; background-color: #ecf1f7; -webkit-text-stroke: 0px #0000ff}
+    span.s6 {font-kerning: none; color: #6b0001; background-color: #ecf1f7; -webkit-text-stroke: 0px #6b0001}
+    span.s7 {font-kerning: none}
+    span.s8 {font-kerning: none; color: #18702b; background-color: #ecf1f7; -webkit-text-stroke: 0px #18702b}
+    span.s9 {font-kerning: none; color: #093c94; background-color: #ecf1f7; -webkit-text-stroke: 0px #093c94}
+    span.s10 {font-kerning: none; color: #137646; background-color: #ecf1f7; -webkit-text-stroke: 0px #137646}
+    span.s11 {font-kerning: none; color: #6f0ec3; background-color: #ecf1f7; -webkit-text-stroke: 0px #6f0ec3}
+    span.s12 {font-kerning: none; color: #4d5055; background-color: #ecf1f7; -webkit-text-stroke: 0px #4d5055}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE</span><span class="s2"> html</span><span class="s1">&gt;</span></p>
+<p class="p2"><span class="s3">&lt;</span><span class="s1">html</span><span class="s4"> </span><span class="s2">lang</span><span class="s3">=</span><span class="s5">"en"</span><span class="s3">&gt;</span></p>
+<p class="p2"><span class="s3">&lt;</span><span class="s1">head</span><span class="s3">&gt;</span></p>
+<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">meta</span><span class="s4"> </span><span class="s1">charset</span><span class="s3">=</span><span class="s5">"UTF-8"</span><span class="s3">&gt;</span></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">meta</span><span class="s4"> </span><span class="s2">name</span><span class="s3">=</span><span class="s1">"viewport"</span><span class="s4"> </span><span class="s2">content</span><span class="s3">=</span><span class="s1">"width=device-width, initial-scale=1.0"</span><span class="s3">&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">title</span><span class="s3">&gt;</span><span class="s1">TIR-ific Network</span><span class="s3">&lt;/</span><span class="s6">title</span><span class="s3">&gt;</span></p>
+<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- Tailwind CSS CDN --&gt;</span></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://cdn.tailwindcss.com"</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
+<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- Google Fonts - Inter --&gt;</span></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">link</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&amp;display=swap"</span><span class="s4"> </span><span class="s2">rel</span><span class="s3">=</span><span class="s1">"stylesheet"</span><span class="s3">&gt;</span></p>
+<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- Leaflet CSS --&gt;</span></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">link</span><span class="s4"> </span><span class="s2">rel</span><span class="s3">=</span><span class="s1">"stylesheet"</span><span class="s4"> </span><span class="s2">href</span><span class="s3">=</span><span class="s1">"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"</span><span class="s4"> </span><span class="s2">integrity</span><span class="s3">=</span><span class="s1">"sha256-p4NxAoJBhIINfQPDQyUSYNFSSj+NgfH7z9faTgSLAyF8="</span><span class="s4"> </span><span class="s2">crossorigin</span><span class="s3">=</span><span class="s1">""</span><span class="s3">/&gt;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s1">style</span><span class="s3">&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s6">body</span><span class="s1"> {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">font-family:</span><span class="s1"> </span><span class="s8">'Inter'</span><span class="s1">, </span><span class="s9">sans-serif</span><span class="s1">;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">margin:</span><span class="s1"> </span><span class="s10">0</span><span class="s1">;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">padding:</span><span class="s1"> </span><span class="s10">0</span><span class="s1">;</span></p>
+<p class="p6"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s2">overflow-x:</span><span class="s4"> </span><span class="s9">hidden</span><span class="s4">; </span><span class="s1">/* Prevent horizontal scroll */</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p6"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">/* Tailwind CSS animations */</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s11">@keyframes</span><span class="s1"> </span><span class="s9">fadeInDown</span><span class="s1"> {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span></span><span class="s9">from</span><span class="s1"> { </span><span class="s2">opacity:</span><span class="s1"> </span><span class="s10">0</span><span class="s1">; </span><span class="s2">transform:</span><span class="s1"> </span><span class="s9">translateY(</span><span class="s10">-20px</span><span class="s9">)</span><span class="s1">; }</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span></span><span class="s9">to</span><span class="s1"> { </span><span class="s2">opacity:</span><span class="s1"> </span><span class="s10">1</span><span class="s1">; </span><span class="s2">transform:</span><span class="s1"> </span><span class="s9">translateY(</span><span class="s10">0</span><span class="s9">)</span><span class="s1">; }</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.animate-fade-in-down</span><span class="s4"> {</span></p>
+<p class="p8"><span class="s4"><span class="Apple-converted-space">          </span></span><span class="s2">animation:</span><span class="s4"> </span><span class="s1">fadeInDown</span><span class="s4"> </span><span class="s10">1s</span><span class="s4"> </span><span class="s1">ease-out</span><span class="s4"> </span><span class="s1">forwards</span><span class="s4">;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s11">@keyframes</span><span class="s1"> </span><span class="s9">fadeInUp</span><span class="s1"> {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span></span><span class="s9">from</span><span class="s1"> { </span><span class="s2">opacity:</span><span class="s1"> </span><span class="s10">0</span><span class="s1">; </span><span class="s2">transform:</span><span class="s1"> </span><span class="s9">translateY(</span><span class="s10">20px</span><span class="s9">)</span><span class="s1">; }</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span></span><span class="s9">to</span><span class="s1"> { </span><span class="s2">opacity:</span><span class="s1"> </span><span class="s10">1</span><span class="s1">; </span><span class="s2">transform:</span><span class="s1"> </span><span class="s9">translateY(</span><span class="s10">0</span><span class="s9">)</span><span class="s1">; }</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.animate-fade-in-up</span><span class="s4"> {</span></p>
+<p class="p8"><span class="s4"><span class="Apple-converted-space">          </span></span><span class="s2">animation:</span><span class="s4"> </span><span class="s1">fadeInUp</span><span class="s4"> </span><span class="s10">1s</span><span class="s4"> </span><span class="s1">ease-out</span><span class="s4"> </span><span class="s1">forwards</span><span class="s4">;</span></p>
+<p class="p6"><span class="s4"><span class="Apple-converted-space">          </span></span><span class="s2">animation-delay:</span><span class="s4"> </span><span class="s10">0.2s</span><span class="s4">; </span><span class="s1">/* Delay for a staggered effect */</span></p>
+<p class="p3"><span class="s4"><span class="Apple-converted-space">          </span></span><span class="s1">animation-fill-mode:</span><span class="s4"> </span><span class="s9">backwards</span><span class="s4">;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s11">@keyframes</span><span class="s1"> </span><span class="s9">slideInLeft</span><span class="s1"> {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span></span><span class="s9">from</span><span class="s1"> { </span><span class="s2">opacity:</span><span class="s1"> </span><span class="s10">0</span><span class="s1">; </span><span class="s2">transform:</span><span class="s1"> </span><span class="s9">translateX(</span><span class="s10">-50px</span><span class="s9">)</span><span class="s1">; }</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span></span><span class="s9">to</span><span class="s1"> { </span><span class="s2">opacity:</span><span class="s1"> </span><span class="s10">1</span><span class="s1">; </span><span class="s2">transform:</span><span class="s1"> </span><span class="s9">translateX(</span><span class="s10">0</span><span class="s9">)</span><span class="s1">; }</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.animate-slide-in-left</span><span class="s4"> {</span></p>
+<p class="p8"><span class="s4"><span class="Apple-converted-space">          </span></span><span class="s2">animation:</span><span class="s4"> </span><span class="s1">slideInLeft</span><span class="s4"> </span><span class="s10">0.8s</span><span class="s4"> </span><span class="s1">ease-out</span><span class="s4"> </span><span class="s1">forwards</span><span class="s4">;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p8"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s11">@keyframes</span><span class="s4"> </span><span class="s1">slideInRight</span><span class="s4"> {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span></span><span class="s9">from</span><span class="s1"> { </span><span class="s2">opacity:</span><span class="s1"> </span><span class="s10">0</span><span class="s1">; </span><span class="s2">transform:</span><span class="s1"> </span><span class="s9">translateX(</span><span class="s10">50px</span><span class="s9">)</span><span class="s1">; }</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span></span><span class="s9">to</span><span class="s1"> { </span><span class="s2">opacity:</span><span class="s1"> </span><span class="s10">1</span><span class="s1">; </span><span class="s2">transform:</span><span class="s1"> </span><span class="s9">translateX(</span><span class="s10">0</span><span class="s9">)</span><span class="s1">; }</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span></span><span class="s11">@keyframes</span><span class="s1"> </span><span class="s9">fadeIn</span><span class="s1"> {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span></span><span class="s9">from</span><span class="s1"> { </span><span class="s2">opacity:</span><span class="s1"> </span><span class="s10">0</span><span class="s1">; }</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span></span><span class="s9">to</span><span class="s1"> { </span><span class="s2">opacity:</span><span class="s1"> </span><span class="s10">1</span><span class="s1">; }</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.animate-fade-in</span><span class="s4"> {</span></p>
+<p class="p8"><span class="s4"><span class="Apple-converted-space">          </span></span><span class="s2">animation:</span><span class="s4"> </span><span class="s1">fadeIn</span><span class="s4"> </span><span class="s10">1s</span><span class="s4"> </span><span class="s1">ease-out</span><span class="s4"> </span><span class="s1">forwards</span><span class="s4">;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.map-container</span><span class="s4"> {</span></p>
+<p class="p6"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s2">height:</span><span class="s4"> </span><span class="s10">600px</span><span class="s4">; </span><span class="s1">/* Or a responsive height like h-96 or h-full with parent constraints */</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">width:</span><span class="s1"> </span><span class="s10">100%</span><span class="s1">;</span></p>
+<p class="p6"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s2">border-radius:</span><span class="s4"> </span><span class="s10">0.75rem</span><span class="s4">; </span><span class="s1">/* rounded-xl */</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span></span><span class="s2">box-shadow:</span><span class="s1"> </span><span class="s10">0</span><span class="s1"> </span><span class="s10">10px</span><span class="s1"> </span><span class="s10">15px</span><span class="s1"> </span><span class="s9">rgba(</span><span class="s10">0</span><span class="s1">, </span><span class="s10">0</span><span class="s1">, </span><span class="s10">0</span><span class="s1">, </span><span class="s10">0.1</span><span class="s9">)</span><span class="s1">; </span><span class="s12">/* shadow-lg */</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p6"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">/* Ensure Leaflet markers are visible */</span></p>
+<p class="p2"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">.leaflet-marker-icon</span><span class="s4"> {</span></p>
+<p class="p6"><span class="s4"><span class="Apple-converted-space">            </span></span><span class="s2">background-color:</span><span class="s4"> </span><span class="s9">transparent</span><span class="s4">; </span><span class="s1">/* Prevent background from interfering */</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">style</span><span class="s3">&gt;</span></p>
+<p class="p2"><span class="s3">&lt;/</span><span class="s1">head</span><span class="s3">&gt;</span></p>
+<p class="p2"><span class="s3">&lt;</span><span class="s1">body</span><span class="s3">&gt;</span></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"root"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- React, ReactDOM, and Babel for JSX transformation --&gt;</span></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://unpkg.com/react@18/umd/react.development.js"</span><span class="s4"> </span><span class="s2">crossorigin</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://unpkg.com/react-dom@18/umd/react-dom.development.js"</span><span class="s4"> </span><span class="s2">crossorigin</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://unpkg.com/@babel/standalone/babel.min.js"</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
+<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- Leaflet JavaScript --&gt;</span></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"</span><span class="s4"> </span><span class="s2">integrity</span><span class="s3">=</span><span class="s1">"sha256-20nQCchB9co0qIjJZRGuk2/4K9+sINI"</span><span class="s4"> </span><span class="s2">crossorigin</span><span class="s3">=</span><span class="s1">""</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">type</span><span class="s3">=</span><span class="s1">"text/babel"</span><span class="s3">&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// --- Dummy Data for Demonstration ---</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const dummySites = [</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>{</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>id: 'site-001',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>name: 'Desert Research Station',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>coordinates: [34.0447, -118.2505], // Los Angeles area</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>simpleDetail: 'Arid climate monitoring, soil temperature focus.',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>metadata: {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Site ID': 'DRS-LA-001',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Location': 'Mojave Desert, CA',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Elevation (m)': '750',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Installation Date': '2023-01-15',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Sensor Type': 'Thermistor Array',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Data Frequency': 'Hourly',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Contact Person': 'Dr. Jane Doe',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Affiliation': 'Desert Institute',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>images: [</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'https://placehold.co/600x400/A8DADC/2C3E50?text=Site+View+1',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'https://placehold.co/600x400/457B9D/F1FAEE?text=Sensor+Setup',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'https://placehold.co/600x400/1D3557/F1FAEE?text=Landscape+Overview',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>],</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>},</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>{</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>id: 'site-002',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>name: 'Mountain Forest Outpost',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>coordinates: [40.7128, -74.0060], // New York City area</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>simpleDetail: 'Forest canopy temperature, snowmelt impact.',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>metadata: {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Site ID': 'MFO-NY-002',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Location': 'Catskill Mountains, NY',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Elevation (m)': '1200',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Installation Date': '2022-06-01',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Sensor Type': 'Infrared Radiometer',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Data Frequency': '30 minutes',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Contact Person': 'Dr. John Smith',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Affiliation': 'Forest Ecology Lab',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>images: [</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'https://placehold.co/600x400/A8DADC/2C3E50?text=Forest+Site+1',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'https://placehold.co/600x400/457B9D/F1FAEE?text=Canopy+Sensors',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>],</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>},</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>{</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>id: 'site-003',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>name: 'Coastal Wetland Monitor',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>coordinates: [29.7604, -95.3698], // Houston area</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>simpleDetail: 'Wetland surface temperature, tidal influence.',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>metadata: {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Site ID': 'CWM-TX-003',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Location': 'Galveston Bay, TX',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Elevation (m)': '2',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Installation Date': '2023-03-20',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Sensor Type': 'Submersible Thermistor',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Data Frequency': '10 minutes',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Contact Person': 'Dr. Emily White',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'Affiliation': 'Coastal Research Center',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>},</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>images: [</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'https://placehold.co/600x400/A8DADC/2C3E50?text=Wetland+View+1',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'https://placehold.co/600x400/457B9D/F1FAEE?text=Water+Sensors',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'https://placehold.co/600x400/1D3557/F1FAEE?text=Aerial+Wetland',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>'https://placehold.co/600x400/F1FAEE/1D3557?text=Marsh+Flora',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>],</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>},</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>];</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// --- SiteDetailModal Component ---</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>function SiteDetailModal({ isOpen, closeModal, site }) {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>const [activeTab, setActiveTab] = React.useState('metadata');</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>if (!site) return null;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>return (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;Transition appear show={isOpen} as={React.Fragment}&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;Dialog as="div" className="relative z-10" onClose={closeModal}&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;Transition.Child</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>as={React.Fragment}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>enter="ease-out duration-300"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>enterFrom="opacity-0"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>enterTo="opacity-100"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>leave="ease-in duration-200"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>leaveFrom="opacity-100"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>leaveTo="opacity-0"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;div className="fixed inset-0 bg-black bg-opacity-75 transition-opacity" /&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/Transition.Child&gt;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="fixed inset-0 overflow-y-auto"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;div className="flex min-h-full items-center justify-center p-4 text-center"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;Transition.Child</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>as={React.Fragment}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>enter="ease-out duration-300"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>enterFrom="opacity-0 scale-95"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>enterTo="opacity-100 scale-100"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>leave="ease-in duration-200"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>leaveFrom="opacity-100 scale-100"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>leaveTo="opacity-0 scale-95"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;Dialog.Panel className="w-full max-w-3xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;Dialog.Title</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                          </span>as="h3"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                          </span>className="text-2xl font-bold leading-6 text-gray-900 mb-4"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                          </span>{site.name} Details</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/Dialog.Title&gt;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{/* Tabs for Metadata and Images */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="mb-4 border-b border-gray-200"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                          </span>&lt;nav className="-mb-px flex space-x-8" aria-label="Tabs"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;button</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                              </span>onClick={() =&gt; setActiveTab('metadata')}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                              </span>className={`${</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>activeTab === 'metadata'</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                  </span>? 'border-red-500 text-red-600' // Changed to TIR color</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                  </span>: 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                              </span>} whitespace-nowrap py-3 px-1 border-b-2 font-medium text-lg rounded-t-md transition-colors duration-200`}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                              </span>Metadata</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;button</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                              </span>onClick={() =&gt; setActiveTab('images')}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                              </span>className={`${</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>activeTab === 'images'</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                  </span>? 'border-red-500 text-red-600' // Changed to TIR color</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                  </span>: 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                              </span>} whitespace-nowrap py-3 px-1 border-b-2 font-medium text-lg rounded-t-md transition-colors duration-200`}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                              </span>Images</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                          </span>&lt;/nav&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{/* Tab Content */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="mt-2 h-96 overflow-y-auto pr-2"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                          </span>{activeTab === 'metadata' &amp;&amp; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="grid grid-cols-1 md:grid-cols-2 gap-4"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                              </span>{Object.entries(site.metadata).map(([key, value]) =&gt; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div key={key} className="flex flex-col"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                  </span>&lt;span className="text-sm font-semibold text-gray-600"&gt;{key}:&lt;/span&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                  </span>&lt;span className="text-base text-gray-800"&gt;{value}&lt;/span&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                              </span>))}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                          </span>)}</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                          </span>{activeTab === 'images' &amp;&amp; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                              </span>{site.images.length &gt; 0 ? (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>site.images.map((image, index) =&gt; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                  </span>&lt;div key={index} className="rounded-lg overflow-hidden shadow-md"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;img</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                      </span>src={image}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                      </span>alt={`Site image ${index + 1}`}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                      </span>className="w-full h-48 object-cover"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                      </span>onError={(e) =&gt; { e.target.onerror = null; e.target.src = `https://placehold.co/600x400/FF6347/FFFFFF?text=Image+Load+Error`; }}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                  </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>))</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                              </span>) : (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;p className="text-gray-600 col-span-full text-center py-8"&gt;No images available for this site.&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                              </span>)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                          </span>)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="mt-6 flex justify-end"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                          </span>&lt;button</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>type="button"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2" // Changed to TIR color</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>onClick={closeModal}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                          </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>Close</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                          </span>&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;/Dialog.Panel&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/Transition.Child&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/Dialog&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/Transition.Child&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// --- Navbar Component ---</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>function Navbar({ navigate }) {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>return (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;nav className="bg-gradient-to-r from-red-700 to-orange-600 text-white p-4 shadow-lg fixed w-full z-20 top-0 rounded-b-lg"&gt; {/* Updated colors */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="container mx-auto flex justify-between items-center"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h1 className="text-2xl font-bold"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;button onClick={() =&gt; navigate('home')} className="hover:text-yellow-200 transition-colors duration-200 flex items-center"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>{/* Placeholder Logo Image */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;img</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>src="https://placehold.co/40x40/B91C1C/FFFFFF?text=TIR"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>alt="TIR-ific Network Logo"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>className="w-10 h-10 mr-2 object-contain rounded-full"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>onError={(e) =&gt; { e.target.onerror = null; e.target.src = 'https://placehold.co/40x40/FF0000/FFFFFF?text=Logo'; }}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>TIR-ific Network</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/h1&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;ul className="flex space-x-6"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;li&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button onClick={() =&gt; navigate('home')} className="hover:text-yellow-200 transition-colors duration-200 text-lg font-medium"&gt;Home&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/li&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;li&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button onClick={() =&gt; navigate('map')} className="hover:text-yellow-200 transition-colors duration-200 text-lg font-medium"&gt;Map&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/li&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;li&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button onClick={() =&gt; navigate('sites')} className="hover:text-yellow-200 transition-colors duration-200 text-lg font-medium"&gt;Sites&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/li&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;li&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button onClick={() =&gt; navigate('about')} className="hover:text-yellow-200 transition-colors duration-200 text-lg font-medium"&gt;About&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/li&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;li&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button onClick={() =&gt; navigate('contact')} className="hover:text-yellow-200 transition-colors duration-200 text-lg font-medium"&gt;Contact&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/li&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/nav&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// --- Footer Component ---</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>function Footer() {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>return (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;footer className="bg-gray-800 text-white p-6 text-center mt-8 rounded-t-lg"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="container mx-auto"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p&gt;&amp;copy; {new Date().getFullYear()} TIR-ific Network. All rights reserved.&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p className="text-sm mt-2"&gt;Connecting the world through thermal insights.&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/footer&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// --- HomePage Component ---</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>function HomePage({ navigate }) {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>return (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="min-h-screen bg-gray-50 flex flex-col items-center pt-20 pb-8 font-sans"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;header className="text-center py-16 px-4 bg-gradient-to-br from-red-600 to-orange-500 text-white w-full shadow-xl rounded-b-3xl"&gt; {/* Updated colors */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 className="text-5xl font-extrabold mb-4 animate-fade-in-down"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>Welcome to the TIR-ific Network</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/h2&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p className="text-xl max-w-2xl mx-auto opacity-90 animate-fade-in-up"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>Your global hub for Thermal Infrared (TIR) data and insights.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>Explore a network of environmental monitoring stations.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{/* Removed "Explore Our Network Map" button */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/header&gt;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;main className="container mx-auto px-4 py-12"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{/* About Section */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;section className="mb-16 bg-white p-8 rounded-2xl shadow-lg border-t-4 border-red-500 animate-slide-in-left"&gt; {/* Updated border color */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;h3 className="text-4xl font-bold text-gray-800 mb-6 text-center"&gt;About the Network&lt;/h3&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;div className="flex flex-col md:flex-row items-center md:space-x-8"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="md:w-1/2 mb-6 md:mb-0"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;img</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>src="https://placehold.co/600x400/FF6347/FFFFFF?text=Thermal+Imaging"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>alt="Thermal Imaging"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>className="rounded-xl shadow-md w-full h-auto object-cover"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="md:w-1/2 text-gray-700 text-lg leading-relaxed"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;p className="mb-4"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>The TIR-ific Network is dedicated to advancing environmental science through comprehensive Thermal Infrared (TIR) data collection. Our distributed network of sensors provides critical insights into surface temperatures, energy balance, and ecological processes across diverse landscapes.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>We empower researchers, policymakers, and environmental enthusiasts with accessible, high-quality thermal data to address global challenges like climate change, water resource management, and biodiversity conservation.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;button</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>onClick={() =&gt; navigate('about')}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>className="mt-6 px-6 py-2 bg-red-600 text-white font-semibold rounded-full shadow-md hover:bg-red-700 transition-colors duration-300" // Updated button color</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>Learn More</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{/* Removed "Key Features" Section */}</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{/* Call to Action: View Map */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;section className="text-center bg-gradient-to-r from-orange-400 to-red-500 text-white p-10 rounded-2xl shadow-xl animate-fade-in"&gt; {/* Updated colors */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;h3 className="text-4xl font-bold mb-4"&gt;Ready to See the Heat?&lt;/h3&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;p className="text-xl mb-8 max-w-xl mx-auto"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>Dive into our interactive map and discover thermal data from around the globe.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;button</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>onClick={() =&gt; navigate('map')}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>className="px-10 py-4 bg-white text-red-700 font-bold rounded-full shadow-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 ease-in-out text-xl" // Updated button color</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>View Live Map</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/main&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// --- MapPage Component ---</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>function MapPage() {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>const [selectedSite, setSelectedSite] = React.useState(null);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>const [isModalOpen, setIsModalOpen] = React.useState(false);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>const mapContainerRef = React.useRef(null); // Ref for the map div</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>const mapInstanceRef = React.useRef(null); // Ref to store the map instance</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>React.useEffect(() =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>// Check if Leaflet is available globally before initializing</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>// It's crucial that L is available on window object after script loads</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>if (typeof window.L === 'undefined' || !mapContainerRef.current) {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>console.warn("Leaflet not loaded or map container not ready.");</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>return;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>// Initialize the map only once</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>if (!mapInstanceRef.current) {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>const map = window.L.map(mapContainerRef.current).setView([20, 0], 2); // Centered, zoomed out to show world</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>mapInstanceRef.current = map; // Store map instance</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>// Add OpenStreetMap tile layer</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>attribution: '&amp;copy; &lt;a href="https://www.openstreetmap.org/copyright"&gt;OpenStreetMap&lt;/a&gt; contributors'</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>}).addTo(map);</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>// Add markers for dummy sites</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>dummySites.forEach(site =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>window.L.marker(site.coordinates)</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>.addTo(map)</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>.bindPopup(`&lt;b&gt;${site.name}&lt;/b&gt;&lt;br&gt;${site.simpleDetail}`)</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>.on('click', () =&gt; handleSiteClick(site)); // Open modal on marker click</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>});</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>// Clean up map instance on component unmount</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>return () =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>if (mapInstanceRef.current) {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>mapInstanceRef.current.remove();</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>mapInstanceRef.current = null;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>}, []); // Empty dependency array means this runs once on mount</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>const handleSiteClick = (site) =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>setSelectedSite(site);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>setIsModalOpen(true);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>};</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>const closeModal = () =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>setIsModalOpen(false);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>setSelectedSite(null);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>};</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>return (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="min-h-screen bg-gray-50 flex flex-col items-center pt-20 pb-8 font-sans"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;header className="text-center py-16 px-4 bg-gradient-to-br from-red-600 to-orange-500 text-white w-full shadow-xl rounded-b-3xl"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 className="text-5xl font-extrabold mb-4"&gt;Global Network Map&lt;/h2&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p className="text-xl max-w-2xl mx-auto opacity-90"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>Explore our distributed network of thermal infrared monitoring stations worldwide.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>Click on a site to view detailed information, or use your mouse to zoom and pan.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/header&gt;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;main className="container mx-auto px-4 py-12 w-full flex-grow"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;section</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>id="mapid" // Assign an ID for Leaflet to target</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>ref={mapContainerRef}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>className="w-full bg-gray-200 rounded-xl shadow-lg map-container" // Added map-container class for styling</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>{/* Leaflet map will be rendered here */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/main&gt;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;SiteDetailModal isOpen={isModalOpen} closeModal={closeModal} site={selectedSite} /&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// --- AboutPage Component ---</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>function AboutPage() {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>return (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="min-h-screen bg-gray-50 flex flex-col items-center pt-20 pb-8 font-sans"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;header className="text-center py-16 px-4 bg-gradient-to-br from-red-600 to-orange-500 text-white w-full shadow-xl rounded-b-3xl"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 className="text-5xl font-extrabold mb-4"&gt;About TIR-ific Network&lt;/h2&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p className="text-xl max-w-2xl mx-auto opacity-90"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>Our mission, vision, and the science behind our thermal infrared data.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/header&gt;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;main className="container mx-auto px-4 py-12"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;section className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-red-500 mb-8"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;h3 className="text-3xl font-bold text-gray-800 mb-6"&gt;Our Mission&lt;/h3&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;p className="text-lg text-gray-700 leading-relaxed"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>To establish and maintain a robust, globally distributed network of thermal infrared sensors, providing high-resolution, continuous data to support environmental research, climate modeling, and sustainable resource management. We aim to make TIR data accessible and actionable for a wide range of scientific and practical applications.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;section className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-orange-500 mb-8"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;h3 className="text-3xl font-bold text-gray-800 mb-6"&gt;The Science of TIR&lt;/h3&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;div className="flex flex-col md:flex-row items-start md:space-x-8"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="md:w-1/2 mb-6 md:mb-0"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;img</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>src="https://placehold.co/600x400/1D3557/F1FAEE?text=TIR+Science"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>alt="TIR Science"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>className="rounded-xl shadow-md w-full h-auto object-cover"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="md:w-1/2 text-lg text-gray-700 leading-relaxed"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;p className="mb-4"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>Thermal Infrared (TIR) radiation is emitted by all objects with a temperature above absolute zero. By measuring this radiation, we can determine the surface temperature of objects without physical contact. This non-invasive technique is crucial for studying various environmental phenomena.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;p className="mb-4"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>Our sensors detect radiation in the 8-14 micrometer range, which is particularly useful for Earth observation as it minimizes atmospheric interference. This allows us to accurately measure land surface temperature (LST), a key parameter for understanding:</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;ul className="list-disc list-inside ml-4"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Urban Heat Island effect&lt;/li&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Evapotranspiration in agriculture&lt;/li&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Forest fire detection and monitoring&lt;/li&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Water body temperature and aquatic ecosystem health&lt;/li&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;li&gt;Volcanic activity and geothermal processes&lt;/li&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;/ul&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;p className="mt-4"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>The data collected by the TIR-ific Network contributes to a deeper understanding of Earth's energy balance and provides valuable inputs for climate models and environmental decision-making.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;section className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-red-500"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;h3 className="text-3xl font-bold text-gray-800 mb-6"&gt;Our Team&lt;/h3&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;p className="text-lg text-gray-700 leading-relaxed"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>The TIR-ific Network is powered by a dedicated team of environmental scientists, engineers, and data specialists. Our diverse expertise ensures the rigorous collection, processing, and dissemination of high-quality thermal infrared data. We are committed to open science and fostering collaborations worldwide.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/main&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// --- SitesPage Component ---</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>function SitesPage({ navigate }) {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>return (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="min-h-screen bg-gray-50 flex flex-col items-center pt-20 pb-8 font-sans"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;header className="text-center py-16 px-4 bg-gradient-to-br from-red-600 to-orange-500 text-white w-full shadow-xl rounded-b-3xl"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 className="text-5xl font-extrabold mb-4"&gt;All Sites&lt;/h2&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p className="text-xl max-w-2xl mx-auto opacity-90"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>A comprehensive list of all thermal infrared monitoring sites in our network.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/header&gt;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;main className="container mx-auto px-4 py-12 w-full"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;section className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-red-500"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;h3 className="text-3xl font-bold text-gray-800 mb-6 text-center"&gt;Site Directory&lt;/h3&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;p className="text-lg text-gray-700 mb-8 text-center"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>This page will feature a searchable and filterable directory of all our monitoring sites.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>You'll be able to view key details, data availability, and access individual site pages here.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>{dummySites.map(site =&gt; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;div key={site.id} className="bg-red-50 p-6 rounded-xl shadow-md border border-red-200 flex flex-col items-center text-center"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h4 className="text-xl font-semibold text-red-700 mb-2"&gt;{site.name}&lt;/h4&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p className="text-gray-600 text-sm mb-4"&gt;{site.simpleDetail}&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;button</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                          </span>onClick={() =&gt; { /* In a real app, this would navigate to a specific site detail page */ }}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                          </span>className="px-4 py-2 bg-red-600 text-white text-sm font-semibold rounded-full hover:bg-red-700 transition-colors duration-200"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                          </span>View Site</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>))}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;p className="mt-10 text-center text-gray-600"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>More detailed site information and filtering options coming soon!</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/main&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// --- ContactPage Component ---</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>function ContactPage() {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>const [formData, setFormData] = React.useState({</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>name: '',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>email: '',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>subject: '',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>message: '',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>});</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>const [status, setStatus] = React.useState('');</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>const handleChange = (e) =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const { name, value } = e.target;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>setFormData(prevData =&gt; ({ ...prevData, [name]: value }));</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>};</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>const handleSubmit = async (e) =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>e.preventDefault();</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>setStatus('Sending...');</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>// Simulate API call</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>try {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>await new Promise(resolve =&gt; setTimeout(resolve, 1500)); // Simulate network delay</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>console.log('Form data submitted:', formData);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>setStatus('Message sent successfully!');</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>setFormData({ name: '', email: '', subject: '', message: '' }); // Clear form</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>} catch (error) {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>console.error('Submission error:', error);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>setStatus('Failed to send message. Please try again.');</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>};</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>return (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="min-h-screen bg-gray-50 flex flex-col items-center pt-20 pb-8 font-sans"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;header className="text-center py-16 px-4 bg-gradient-to-br from-red-600 to-orange-500 text-white w-full shadow-xl rounded-b-3xl"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 className="text-5xl font-extrabold mb-4"&gt;Contact Us&lt;/h2&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p className="text-xl max-w-2xl mx-auto opacity-90"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>We'd love to hear from you! Reach out with any questions or collaboration inquiries.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/header&gt;</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;main className="container mx-auto px-4 py-12 w-full max-w-3xl"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;section className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-red-500"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;h3 className="text-3xl font-bold text-gray-800 mb-6 text-center"&gt;Get in Touch&lt;/h3&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;form onSubmit={handleSubmit} className="space-y-6"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;label htmlFor="name" className="block text-lg font-medium text-gray-700 mb-2"&gt;Name&lt;/label&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;input</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>type="text"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>id="name"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>name="name"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>value={formData.name}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>onChange={handleChange}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>required</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 text-lg"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;label htmlFor="email" className="block text-lg font-medium text-gray-700 mb-2"&gt;Email&lt;/label&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;input</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>type="email"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>id="email"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>name="email"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>value={formData.email}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>onChange={handleChange}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>required</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 text-lg"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;label htmlFor="subject" className="block text-lg font-medium text-gray-700 mb-2"&gt;Subject&lt;/label&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;input</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>type="text"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>id="subject"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>name="subject"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>value={formData.subject}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>onChange={handleChange}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>required</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 text-lg"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;label htmlFor="message" className="block text-lg font-medium text-gray-700 mb-2"&gt;Message&lt;/label&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;textarea</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>id="message"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>name="message"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>rows="5"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>value={formData.message}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>onChange={handleChange}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>required</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500 text-lg"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&gt;&lt;/textarea&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;button</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>type="submit"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>className="w-full px-6 py-3 bg-red-600 text-white font-bold rounded-md shadow-lg hover:bg-red-700 transform hover:scale-105 transition-all duration-300 ease-in-out text-lg"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>Send Message</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>{status &amp;&amp; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;p className={`mt-4 text-center text-lg ${status.includes('successfully') ? 'text-green-600' : 'text-red-600'}`}&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{status}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/form&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/main&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// --- Main App Component ---</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>function App() {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>const [currentPage, setCurrentPage] = React.useState('home');</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>const navigate = (page) =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>setCurrentPage(page);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>window.scrollTo(0, 0); // Scroll to top on page change</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>};</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>return (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="min-h-screen flex flex-col"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;Navbar navigate={navigate} /&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="flex-grow"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{currentPage === 'home' &amp;&amp; &lt;HomePage navigate={navigate} /&gt;}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{currentPage === 'map' &amp;&amp; &lt;MapPage /&gt;}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{currentPage === 'about' &amp;&amp; &lt;AboutPage /&gt;}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{currentPage === 'contact' &amp;&amp; &lt;ContactPage /&gt;}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{/* Placeholder for 'Sites' page, which is now a full component */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{currentPage === 'sites' &amp;&amp; &lt;SitesPage navigate={navigate} /&gt;}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">              </span>&lt;Footer /&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">          </span>);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p7"><span class="s7"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));</span></p>
+<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">script</span><span class="s3">&gt;</span></p>
+<p class="p2"><span class="s3">&lt;/</span><span class="s1">body</span><span class="s3">&gt;</span></p>
+<p class="p2"><span class="s3">&lt;/</span><span class="s1">html</span><span class="s3">&gt;</span></p>
+</body>
+</html>
