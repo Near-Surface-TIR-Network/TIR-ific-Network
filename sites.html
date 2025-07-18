@@ -30,12 +30,48 @@
       <p class="text-xl opacity-90">A comprehensive list of all TIR monitoring sites in our network.</p>
     </div>
   </main>
-
+  
+  <!-- SITE CARDS -->
+  <section class="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-16" id="site-cards">
+    <!-- Site cards will be dynamically inserted here -->
+  </section>
+  
     <!-- FOOTER -->
   <footer class="bg-gray-200 text-sm text-center p-4 mt-12">
     © 2025 TIR-ific Network. All rights reserved.<br />
     Connecting the world through thermal insights.
   </footer>
 
+  <!-- LOAD SITE JSONS AND CREATE GALLERY -->
+  <script>
+    const indexPath = 'sites/index.json';
+
+    async function loadSites() {
+      const indexRes = await fetch(indexPath);
+      const files = await indexRes.json();
+
+      const container = document.getElementById('site-cards');
+
+      for (const file of files) {
+        const res = await fetch(`sites/${file}`);
+        const data = await res.json();
+
+        const card = document.createElement('a');
+        card.href = `site.html?site=${file}`;
+        card.className = "block bg-white border border-gray-200 rounded-2xl shadow hover:shadow-lg transition p-6";
+
+        card.innerHTML = `
+          <h3 class="text-2xl font-semibold mb-2 text-red-600">${data.siteName}</h3>
+          <p class="text-sm text-gray-600 mb-1"><strong>Site ID:</strong> ${data.siteID}</p>
+          <p class="text-sm text-gray-600"><strong>Location:</strong> ${data.lat}, ${data.long}</p>
+        `;
+
+        container.appendChild(card);
+      }
+    }
+
+    loadSites();
+  </script>
 </body>
 </html>
+
