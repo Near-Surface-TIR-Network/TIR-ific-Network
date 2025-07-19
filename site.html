@@ -111,6 +111,11 @@
 
     const container = document.getElementById('site-details');
     container.innerHTML = `
+      <div class="flex flex-col md:flex-row gap-4 mb-6">
+        <img src="${data.rgbImage}" alt="${data.siteName} RGB image" class="w-full md:w-1/2 rounded-xl shadow-md object-cover" />
+        <img src="${data.tirImage}" alt="${data.siteName} TIR image" class="w-full md:w-1/2 rounded-xl shadow-md object-cover" />
+      </div>
+    
       <h1 class="text-4xl font-bold mb-4">${data.siteName}</h1>
       <p class="text-gray-600 mb-6">${data.siteID}</p>
       <ul class="text-sm leading-relaxed space-y-2">
@@ -126,6 +131,7 @@
         <li><strong>CLM PFT:</strong> ${data.CLM_PFT}</li>
       </ul>
     `;
+
   }
 
   loadSiteDetails();
