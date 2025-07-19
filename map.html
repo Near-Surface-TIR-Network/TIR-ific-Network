@@ -129,12 +129,12 @@
   }).addTo(map);
 
   async function loadSites() {
-    const indexResponse = await fetch(`sites/index.json?nocache=${Date.now()}`);
-    const siteFiles = await indexResponse.json();
-
-    for (const file of siteFiles) {
-      const response = await fetch(`sites/${file}`);
-      const site = await response.json();
+  const indexResponse = await fetch(`sites/index.json?cache_bust=${Date.now()}`);
+  const siteFiles = await indexResponse.json();
+  
+  for (const file of siteFiles) {
+    const response = await fetch(`sites/${file}?cache_bust=${Date.now()}`);
+    const site = await response.json();
 
       const marker = L.marker([site.lat, site.long]).addTo(map);
       marker.bindPopup(`
