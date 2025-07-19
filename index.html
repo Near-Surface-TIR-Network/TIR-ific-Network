@@ -24,14 +24,20 @@
             Sites
           </button>
 
-          <!-- Dropdown menu -->
-          <div class="absolute left-0 mt-2 bg-white text-gray-900 rounded-md shadow-lg w-40 opacity-0 group-hover:opacity-100 group-hover:visible invisible transition-opacity duration-200 z-50"
-               onmouseover="this.classList.add('visible','opacity-100')"
-               onmouseout="this.classList.remove('visible','opacity-100')">
-            <a href="sites.html" class="block px-4 py-2 hover:bg-gray-100">All Sites</a>
-            <a href="add-site.html" class="block px-4 py-2 hover:bg-gray-100">Add a Site</a>
+          <!-- Sites Dropdown -->
+          <div class="relative group">
+            <div class="hover:underline focus:outline-none cursor-pointer">
+              Sites
+            </div>
+          
+            <div class="absolute left-0 mt-2 bg-white text-gray-900 rounded-md shadow-lg w-40 invisible group-hover:visible group-hover:opacity-100 opacity-0 transition-opacity duration-200 z-50"
+                 onmouseenter="this.classList.add('visible','opacity-100')"
+                 onmouseleave="this.classList.remove('visible','opacity-100')">
+              <a href="sites.html" class="block px-4 py-2 hover:bg-gray-100">All Sites</a>
+              <a href="add-site.html" class="block px-4 py-2 hover:bg-gray-100">Add a Site</a>
+            </div>
           </div>
-        </div>
+
 
         <a href="about.html" class="hover:underline">About</a>
         <a href="contact.html" class="hover:underline">Contact</a>
