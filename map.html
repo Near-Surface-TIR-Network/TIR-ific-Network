@@ -129,7 +129,7 @@
   }).addTo(map);
 
   async function loadSites() {
-    const indexResponse = await fetch('sites/index.json');
+    const indexResponse = await fetch(`sites/index.json?nocache=${Date.now()}`);
     const siteFiles = await indexResponse.json();
 
     for (const file of siteFiles) {
