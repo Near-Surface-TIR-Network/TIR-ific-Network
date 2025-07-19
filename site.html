@@ -7,6 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans">
+
 <!-- GRADIENT NAVIGATION BAR -->
 <nav class="bg-gradient-to-br from-red-600 to-orange-500 text-white sticky top-0 z-50 shadow-lg">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,10 +20,12 @@
 
         <!-- Sites Dropdown with JS -->
         <div class="relative">
-          <button onclick="toggleDropdown()" class="hover:underline focus:outline-none cursor-pointer">
-            Sites
+          <button onclick="toggleDropdown()" class="hover:underline focus:outline-none cursor-pointer flex items-center space-x-1">
+            <span>Sites</span>
+            <svg class="w-4 h-4 fill-current text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M5.25 7.25L10 12.25L14.75 7.25H5.25Z" />
+            </svg>
           </button>
-
           <div id="dropdownMenu" class="absolute left-0 mt-2 bg-white text-gray-900 rounded-md shadow-lg w-40 hidden z-50">
             <a href="sites.html" class="block px-4 py-2 hover:bg-gray-100">All Sites</a>
             <a href="add-site.html" class="block px-4 py-2 hover:bg-gray-100">Add a Site</a>
@@ -35,6 +38,7 @@
     </div>
   </div>
 </nav>
+
 
 <!-- JS to toggle dropdown -->
 <script>
