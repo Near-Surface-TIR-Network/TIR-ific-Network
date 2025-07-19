@@ -86,15 +86,25 @@
   });
 </script>
 
-  <!-- WELCOME SECTION-->
-  <main class="flex justify-center items-center my-12 px-4">
-    <div class="text-center bg-gradient-to-br from-red-600 to-orange-500 text-white p-10 rounded-3xl shadow-lg max-w-4xl w-full">
-      <h2 class="text-5xl font-extrabold mb-4 whitespace">Post-Processing</h2>
-      <p class="text-xl opacity-90"></p>
-    </div>
-  </main>
+<!-- WELCOME SECTION -->
+<main class="flex justify-center items-center my-12 px-4">
+  <div class="text-center bg-gradient-to-br from-red-600 to-orange-500 text-white p-10 rounded-3xl shadow-lg max-w-4xl w-full">
+    <h2 class="text-5xl font-extrabold mb-4 whitespace-nowrap">Post-Processing</h2>
+    <p class="text-xl opacity-90">
+      Learn how to correct and standardize near-surface thermal data to improve accuracy and comparability.
+    </p>
+  </div>
+</main>
 
-<!-- New SECTION -->
+<!-- SECTION: POST-PROCESSING OVERVIEW -->
+<section class="max-w-5xl mx-auto px-6 my-12">
+  <h3 class="text-3xl font-bold mb-4 text-gray-800">Why Post-Processing Matters</h3>
+  <p class="text-gray-700 text-lg leading-relaxed">
+    Near-surface thermal infrared data often require correction for emissivity, reflected radiation, and atmospheric effects. While some workflows rely on default camera settings or empirical adjustments, a mechanistic correction approach ensures your data better reflect true surface temperatures and remain consistent across sites.
+  </p>
+</section>
+
+<!-- SECTION: CORRECTIR TOOL -->
 <section class="flex flex-col md:flex-row items-center justify-center max-w-6xl mx-auto my-12 p-6 border-4 rounded-3xl bg-white border-transparent bg-clip-padding bg-origin-border" style="border-image: linear-gradient(to right, #dc2626, #fb923c) 1;">
   
   <!-- IMAGE -->
@@ -104,14 +114,19 @@
 
   <!-- TEXT CONTENT -->
   <div class="w-full md:w-1/2 text-center md:text-left">
-    <h3 class="text-3xl font-bold text-gray-800 mb-4">correcTIR</h3>
+    <h3 class="text-3xl font-bold text-gray-800 mb-4">Process with <span class="text-red-600">correcTIR</span></h3>
     <p class="text-gray-700 text-lg mb-6">
-      correcTIR: A Python Package and Graphical User Interface for Processing Near-Surface Thermal Infrared Data
+      <strong>correcTIR</strong> is an open-source Python package and graphical interface that applies mechanistic corrections to near-surface thermal data. It's designed to be transparent, consistent, and easy to use—no matter your site or sensor.
     </p>
-    <a href="about.html" class="inline-block px-6 py-3 bg-gradient-to-br from-red-600 to-orange-500 text-white font-semibold rounded-full shadow hover:shadow-lg transition">
-      Learn More
+    <a href="https://github.com/jdiehll/correcTIR.git" target="_blank" class="inline-block px-6 py-3 bg-gradient-to-br from-red-600 to-orange-500 text-white font-semibold rounded-full shadow hover:shadow-lg transition">
+      View on GitHub
     </a>
   </div>
+</section>
+
+<!-- SECTION: APP ICON -->
+<section class="flex justify-center mb-12">
+  <img src="images/correcTIR_logo.png" alt="correcTIR App Icon" class="w-24 h-24 rounded-xl shadow-md" />
 </section>
 
     <!-- FOOTER -->
