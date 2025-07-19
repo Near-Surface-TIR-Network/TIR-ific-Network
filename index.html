@@ -18,16 +18,13 @@
         <a href="index.html" class="hover:underline">Home</a>
         <a href="map.html" class="hover:underline">Map</a>
 
-        <!-- Sites Dropdown (Fix: nest hover target properly) -->
-        <div class="relative group">
-          <button class="hover:underline focus:outline-none cursor-pointer">
+        <!-- Sites Dropdown with JS -->
+        <div class="relative">
+          <button onclick="toggleDropdown()" class="hover:underline focus:outline-none cursor-pointer">
             Sites
           </button>
 
-          <!-- Dropdown Menu (will stay open when hovering inside) -->
-          <div class="absolute left-0 mt-2 bg-white text-gray-900 rounded-md shadow-lg w-40 opacity-0 group-hover:opacity-100 group-hover:visible invisible transition-opacity duration-200 z-50"
-               onmouseover="this.classList.add('visible','opacity-100')"
-               onmouseout="this.classList.remove('visible','opacity-100')">
+          <div id="dropdownMenu" class="absolute left-0 mt-2 bg-white text-gray-900 rounded-md shadow-lg w-40 hidden z-50">
             <a href="sites.html" class="block px-4 py-2 hover:bg-gray-100">All Sites</a>
             <a href="add-site.html" class="block px-4 py-2 hover:bg-gray-100">Add a Site</a>
           </div>
@@ -39,6 +36,25 @@
     </div>
   </div>
 </nav>
+
+<!-- JS to toggle dropdown -->
+<script>
+  function toggleDropdown() {
+    const menu = document.getElementById('dropdownMenu');
+    menu.classList.toggle('hidden');
+  }
+
+  // Optional: Close dropdown when clicking outside
+  document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('dropdownMenu');
+    const button = event.target.closest('button');
+    const isDropdownClick = dropdown.contains(event.target);
+
+    if (!button && !isDropdownClick) {
+      dropdown.classList.add('hidden');
+    }
+  });
+</script>
 
   <!-- WELCOME SECTION-->
   <main class="flex justify-center items-center my-12 px-4">
