@@ -13,7 +13,8 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16 items-center">
       <div class="text-white font-extrabold text-xl">TIR-ific Network</div>
-      <div class="flex space-x-6 items-center relative group">
+
+      <div class="flex items-center space-x-6">
         <a href="index.html" class="hover:underline">Home</a>
         <a href="map.html" class="hover:underline">Map</a>
 
@@ -22,7 +23,11 @@
           <button class="hover:underline focus:outline-none">
             Sites
           </button>
-          <div class="absolute hidden group-hover:block bg-white text-gray-900 shadow-md mt-2 rounded-md min-w-[160px] z-50">
+
+          <!-- Dropdown menu -->
+          <div class="absolute left-0 mt-2 bg-white text-gray-900 rounded-md shadow-lg w-40 opacity-0 group-hover:opacity-100 group-hover:visible invisible transition-opacity duration-200 z-50"
+               onmouseover="this.classList.add('visible','opacity-100')"
+               onmouseout="this.classList.remove('visible','opacity-100')">
             <a href="sites.html" class="block px-4 py-2 hover:bg-gray-100">All Sites</a>
             <a href="add-site.html" class="block px-4 py-2 hover:bg-gray-100">Add a Site</a>
           </div>
@@ -34,8 +39,6 @@
     </div>
   </div>
 </nav>
-
-
 
   <!-- WELCOME SECTION-->
   <main class="flex justify-center items-center my-12 px-4">
