@@ -104,36 +104,41 @@
     Connecting the world through thermal insights.
   </footer>
 
-  <!-- LOAD SITE JSONS AND CREATE GALLERY -->
-  <script>
-    const indexPath = 'sites/index.json';
+<!-- LOAD SITE JSONS AND CREATE GALLERY -->
+<script>
+  const indexPath = 'sites/index.json';
 
-    async function loadSites() {
-      const indexRes = await fetch(indexPath);
-      const files = await indexRes.json();
+  async function loadSites() {
+    const cacheBuster = `?cache_bust=${Date.now()}`; // Cache buster query string
 
-      const container = document.getElementById('site-cards');
+    // Fetch index.json with cache buster
+    const indexRes = await fetch(indexPath + cacheBuster);
+    const files = await indexRes.json();
 
-      for (const file of files) {
-        const res = await fetch(`sites/${file}`);
-        const data = await res.json();
+    const container = document.getElementById('site-cards');
 
-        const card = document.createElement('a');
-        card.href = `site.html?site=${file}`;
-        card.className = "block bg-white border border-gray-200 rounded-2xl shadow hover:shadow-lg transition p-6";
+    for (const file of files) {
+      // Fetch each site JSON with cache buster
+      const res = await fetch(`sites/${file}${cacheBuster}`);
+      const data = await res.json();
 
-        card.innerHTML = `
-          <h3 class="text-2xl font-semibold mb-2 text-red-600">${data.siteName}</h3>
-          <p class="text-sm text-gray-600 mb-1"><strong>Site ID:</strong> ${data.siteID}</p>
-          <p class="text-sm text-gray-600"><strong>Location:</strong> ${data.lat}, ${data.long}</p>
-        `;
+      const card = document.createElement('a');
+      card.href = `site.html?site=${file}`;
+      card.className = "block bg-white border border-gray-200 rounded-2xl shadow hover:shadow-lg transition p-6";
 
-        container.appendChild(card);
-      }
+      card.innerHTML = `
+        <h3 class="text-2xl font-semibold mb-2 text-red-600">${data.siteName}</h3>
+        <p class="text-sm text-gray-600 mb-1"><strong>Site ID:</strong> ${data.siteID}</p>
+        <p class="text-sm text-gray-600"><strong>Location:</strong> ${data.lat}, ${data.long}</p>
+      `;
+
+      container.appendChild(card);
     }
+  }
 
-    loadSites();
-  </script>
+  loadSites();
+</script>
+
 </body>
 </html>
 
