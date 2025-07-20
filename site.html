@@ -112,8 +112,8 @@
     const container = document.getElementById('site-details');
     container.innerHTML = `
       <div class="flex flex-col md:flex-row gap-4 mb-6">
-        <img src="${data.rgbImage}" alt="${data.siteName} RGB image" class="w-full md:w-1/2 rounded-xl shadow-md object-cover" />
         <img src="${data.tirImage}" alt="${data.siteName} TIR image" class="w-full md:w-1/2 rounded-xl shadow-md object-cover" />
+        <img src="${data.rgbImage}" alt="${data.siteName} RGB image" class="w-full md:w-1/2 rounded-xl shadow-md object-cover" />
       </div>
     
       <h1 class="text-4xl font-bold mb-4">${data.siteName}</h1>
@@ -138,6 +138,11 @@
 </script>
 
 
+    <!-- FOOTER -->
+  <footer class="bg-gray-200 text-sm text-center p-4 mt-12">
+    © 2025 TIR-ific Network. All rights reserved.<br />
+    Connecting the world through thermal insights.
+  </footer>
 
 </body>
 </html>
