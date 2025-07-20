@@ -31,5 +31,7 @@
     "software_emissivity":null,
     "software_trans":null,
     "software_dist":null,
-    "site_notes":null
-  }
+    "site_notes":null,
+    "tirImage": "images/sites/Harv_TIR.png",
+    "rgbImage": "images/sites/Harv_RGB.jpg"
+}
