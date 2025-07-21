@@ -216,14 +216,32 @@
       </div>
     </div>
     
- <!-- Dominant Species -->
-    <label class="block text-sm font-medium text-gray-700 flex items-center">
-      Dominant Species
-      <button type="button" onclick="toggleHelp(this, 'help-dominant-species')" class="text-blue-500 text-xs ml-2">[?]</button>
+<!-- Label with Help Button -->
+<div class="flex items-center mb-1">
+  <label class="block text-sm font-medium text-gray-700 mr-2">Dominant Species</label>
+  <button type="button" onclick="toggleHelp(this, 'help-dominant-species')" class="text-blue-500 text-xs">[?]</button>
+</div>
+
+<!-- Help Text -->
+<p id="help-dominant-species" class="text-xs text-gray-600 mb-2 hidden">
+  List the main species in view. Include both common and scientific names. You can add multiple.
+</p>
+
+<!-- Dynamic Species Fields -->
+<div id="species-container" class="space-y-2">
+  <div class="species-entry flex flex-col md:flex-row md:items-center gap-4">
+    <label class="flex-1">Common Name:
+      <input type="text" name="species_common[]" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
     </label>
-    <p id="help-dominant-species" class="text-xs text-gray-600 mt-1 hidden">
-      Enter the most common plant species in the camera’s field of view. Include both common and scientific names. Add more if needed.
-    </p>
+    <label class="flex-1">Scientific Name:
+      <input type="text" name="species_scientific[]" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+    </label>
+  </div>
+</div>
+
+<!-- Add Another Species Button -->
+<button type="button" onclick="addSpecies()" class="mt-2 text-blue-600 text-sm">+ Add Another Species</button>
+
 
 
     <!-- Submit -->
@@ -267,6 +285,17 @@
       document.querySelectorAll('p[id^="help-"]').forEach(p => p.classList.add('hidden'));
     }
   });
+
+  function addSpecies() {
+    const container = document.getElementById('species-container');
+    const newEntry = document.createElement('div');
+    newEntry.className = 'species-entry';
+    newEntry.innerHTML = `
+      <label>Common Name: <input type="text" name="species_common[]"></label>
+      <label>Scientific Name: <input type="text" name="species_scientific[]"></label>
+    `;
+    container.appendChild(newEntry);
+  }
 </script>
 
     <!-- FOOTER -->
