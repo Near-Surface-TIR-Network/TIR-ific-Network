@@ -274,38 +274,48 @@
   </div>
 </div>
 
+<div class="mb-6">
+  <div class="flex items-center mb-1">
+    <label for="timezone" class="block text-base font-medium text-gray-700 mr-2">
+      UTC Offset <span class="text-red-500">*</span>
+    </label>
+    <button type="button" onclick="toggleHelp(this, 'help-timezone')" class="text-blue-500 text-xs">[?]</button>
+  </div>
+  <p id="help-timezone" class="text-sm text-gray-600 hidden">
+    Select the local UTC offset in standard time (not daylight savings). For example, US Mountain Standard Time is UTC−7.
+  </p>
+  <select name="timezone" id="timezone" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+    <option value="">Select an offset</option>
+    <option value="-12">UTC−12</option>
+    <option value="-11">UTC−11</option>
+    <option value="-10">UTC−10</option>
+    <option value="-9">UTC−9</option>
+    <option value="-8">UTC−8</option>
+    <option value="-7">UTC−7</option>
+    <option value="-6">UTC−6</option>
+    <option value="-5">UTC−5</option>
+    <option value="-4">UTC−4</option>
+    <option value="-3">UTC−3</option>
+    <option value="-2">UTC−2</option>
+    <option value="-1">UTC−1</option>
+    <option value="0">UTC±0</option>
+    <option value="1">UTC+1</option>
+    <option value="2">UTC+2</option>
+    <option value="3">UTC+3</option>
+    <option value="4">UTC+4</option>
+    <option value="5">UTC+5</option>
+    <option value="6">UTC+6</option>
+    <option value="7">UTC+7</option>
+    <option value="8">UTC+8</option>
+    <option value="9">UTC+9</option>
+    <option value="10">UTC+10</option>
+    <option value="11">UTC+11</option>
+    <option value="12">UTC+12</option>
+    <option value="13">UTC+13</option>
+    <option value="14">UTC+14</option>
+  </select>
+</div>
 
-    <!-- UTC Offset -->
-    <div class="mb-6">
-      <label class="block text-sm font-medium text-gray-700">UTC Offset</label>
-      <select name="timezone" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-        <option value="-12">UTC-12</option>
-        <option value="-11">UTC-11</option>
-        <option value="-10">UTC-10</option>
-        <option value="-9">UTC-9</option>
-        <option value="-8">UTC-8</option>
-        <option value="-7">UTC-7</option>
-        <option value="-6">UTC-6</option>
-        <option value="-5">UTC-5</option>
-        <option value="-4">UTC-4</option>
-        <option value="-3">UTC-3</option>
-        <option value="-2">UTC-2</option>
-        <option value="-1">UTC-1</option>
-        <option value="0">UTC</option>
-        <option value="1">UTC+1</option>
-        <option value="2">UTC+2</option>
-        <option value="3">UTC+3</option>
-        <option value="4">UTC+4</option>
-        <option value="5">UTC+5</option>
-        <option value="6">UTC+6</option>
-        <option value="7">UTC+7</option>
-        <option value="8">UTC+8</option>
-        <option value="9">UTC+9</option>
-        <option value="10">UTC+10</option>
-        <option value="11">UTC+11</option>
-        <option value="12">UTC+12</option>
-      </select>
-    </div>
 
     <!-- Climate -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
