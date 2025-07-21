@@ -100,7 +100,7 @@
   <form id="addSiteForm">
     <!-- Site ID and Name -->
     <div class="mb-6">
-      <label class="block text-sm font-medium text-gray-700">Site ID (e.g., HARV_BARN)</label>
+      <label class="block text-sm font-medium text-gray-700">Site ID (A unique, concise identifier for the site, typically used in filenames and data structures. Avoid spaces or special characters e.g., HARV_BARN)</label>
       <input type="text" name="siteID" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
     </div>
     <div class="mb-6">
@@ -215,6 +215,16 @@
         <input type="number" step="any" name="MAP_site" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
       </div>
     </div>
+    
+ <!-- Dominant Species -->
+    <label class="block text-sm font-medium text-gray-700 flex items-center">
+      Dominant Species
+      <button type="button" onclick="toggleHelp(this, 'help-dominant-species')" class="text-blue-500 text-xs ml-2">[?]</button>
+    </label>
+    <p id="help-dominant-species" class="text-xs text-gray-600 mt-1 hidden">
+      Enter the most common plant species in the camera’s field of view. Include both common and scientific names. Add more if needed.
+    </p>
+
 
     <!-- Submit -->
     <div class="text-center">
@@ -236,6 +246,27 @@
     `;
     contactList.appendChild(contactDiv);
   }
+
+    function toggleHelp(button, id) {
+    // Close any other open help text
+    document.querySelectorAll('p[id^="help-"]').forEach(p => {
+      if (p.id !== id) p.classList.add('hidden');
+    });
+
+    // Toggle current help
+    const current = document.getElementById(id);
+    current.classList.toggle('hidden');
+  }
+
+  // Close on outside click
+  document.addEventListener('click', function(event) {
+    const isHelpButton = event.target.matches('button[onclick^="toggleHelp"]');
+    const isHelpText = event.target.closest('p[id^="help-"]');
+
+    if (!isHelpButton && !isHelpText) {
+      document.querySelectorAll('p[id^="help-"]').forEach(p => p.classList.add('hidden'));
+    }
+  });
 </script>
 
     <!-- FOOTER -->
