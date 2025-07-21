@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TIR-ific Network | Site Details</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans">
 
@@ -131,12 +136,37 @@
         <li><strong>CLM PFT:</strong> ${data.CLM_PFT}</li>
       </ul>
     `;
-
+    loadMiniMap(data.lat, data.long);
   }
 
   loadSiteDetails();
+function loadMiniMap(lat, long) {
+    const map = L.map('site-map', {
+      center: [lat, long],
+      zoom: 13
+    });
+
+    const street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenTopoMap contributors'
+    });
+
+    const baseLayers = {
+      "Street": street,
+      "Topographic": topo
+    };
+
+    L.control.layers(baseLayers).addTo(map);
+    L.marker([lat, long]).addTo(map).bindPopup("Site Location").openPopup();
+  }
+  
 </script>
 
+<!-- Small Site Map -->
+<div id="site-map" class="max-w-3xl mx-auto my-8 rounded-2xl overflow-hidden shadow-lg" style="height: 300px;"></div>
 
     <!-- FOOTER -->
   <footer class="bg-gray-200 text-sm text-center p-4 mt-12">
