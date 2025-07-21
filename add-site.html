@@ -230,22 +230,50 @@
   <button type="button" onclick="addContact()" class="mt-2 text-blue-600 text-sm">+ Add Another Contact</button>
 </div>
 
-
-    <!-- Location Info -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Latitude</label>
-        <input type="number" step="any" name="lat" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-      </div>
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Longitude</label>
-        <input type="number" step="any" name="long" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-      </div>
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Elevation (m a.s.l.)</label>
-        <input type="number" step="any" name="elev" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-      </div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+  <!-- Latitude -->
+  <div>
+    <div class="flex items-center mb-1">
+      <label for="lat" class="block text-base font-medium text-gray-700 mr-2">
+        Latitude (°) <span class="text-red-500">*</span>
+      </label>
+      <button type="button" onclick="toggleHelp(this, 'help-lat')" class="text-blue-500 text-xs">[?]</button>
     </div>
+    <p id="help-lat" class="text-sm text-gray-600 hidden">
+      Enter latitude in decimal degrees. Use negative values for the Southern Hemisphere.
+    </p>
+    <input type="number" step="any" name="lat" id="lat" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+  </div>
+
+  <!-- Longitude -->
+  <div>
+    <div class="flex items-center mb-1">
+      <label for="long" class="block text-base font-medium text-gray-700 mr-2">
+        Longitude (°) <span class="text-red-500">*</span>
+      </label>
+      <button type="button" onclick="toggleHelp(this, 'help-long')" class="text-blue-500 text-xs">[?]</button>
+    </div>
+    <p id="help-long" class="text-sm text-gray-600 hidden">
+      Enter longitude in decimal degrees. Use negative values for the Western Hemisphere.
+    </p>
+    <input type="number" step="any" name="long" id="long" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+  </div>
+
+  <!-- Elevation -->
+  <div>
+    <div class="flex items-center mb-1">
+      <label for="elev" class="block text-base font-medium text-gray-700 mr-2">
+        Elevation (m a.s.l.) <span class="text-red-500">*</span>
+      </label>
+      <button type="button" onclick="toggleHelp(this, 'help-elev')" class="text-blue-500 text-xs">[?]</button>
+    </div>
+    <p id="help-elev" class="text-sm text-gray-600 hidden">
+      Enter the site elevation in meters above sea level. This should be the elevation at the base of the tower, not the camera height.
+    </p>
+    <input type="number" step="any" name="elev" id="elev" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+  </div>
+</div>
+
 
     <!-- UTC Offset -->
     <div class="mb-6">
