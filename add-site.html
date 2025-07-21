@@ -95,6 +95,148 @@
     </div>
   </main>
 
+<!-- ADD SITE FORM SECTION -->
+<section class="max-w-5xl mx-auto p-8 bg-white rounded-3xl shadow-xl mb-12">
+  <form id="addSiteForm">
+    <!-- Site ID and Name -->
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700">Site ID (e.g., HARV_BARN)</label>
+      <input type="text" name="siteID" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+    </div>
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700">Descriptive Site Name</label>
+      <input type="text" name="siteName" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+    </div>
+
+    <!-- EC Tower -->
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700">Is there co-located eddy covariance data?</label>
+      <select name="hasEC" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700">EC Tower ID (e.g., AMF_US-HAR)</label>
+      <input type="text" name="ecID" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+    </div>
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700">EC Data Link</label>
+      <input type="url" name="ecLink" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+    </div>
+
+    <!-- Start/End Date and Active Status -->
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700">Site Status</label>
+      <select name="active" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </select>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Start Date (YYYY-MM-DD)</label>
+        <input type="date" name="startDate" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">End Date (if inactive)</label>
+        <input type="date" name="endDate" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+      </div>
+    </div>
+
+    <!-- Contacts -->
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700">Contact(s)</label>
+      <div class="space-y-4" id="contactList">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input type="text" name="contactName[]" placeholder="First Last" class="border border-gray-300 rounded-md p-2" />
+          <input type="email" name="contactEmail[]" placeholder="Email Address" class="border border-gray-300 rounded-md p-2" />
+        </div>
+      </div>
+      <button type="button" onclick="addContact()" class="mt-2 text-blue-600 text-sm">+ Add Another Contact</button>
+    </div>
+
+    <!-- Location Info -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Latitude</label>
+        <input type="number" step="any" name="lat" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Longitude</label>
+        <input type="number" step="any" name="long" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Elevation (m a.s.l.)</label>
+        <input type="number" step="any" name="elev" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+      </div>
+    </div>
+
+    <!-- UTC Offset -->
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700">UTC Offset</label>
+      <select name="timezone" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+        <option value="-12">UTC-12</option>
+        <option value="-11">UTC-11</option>
+        <option value="-10">UTC-10</option>
+        <option value="-9">UTC-9</option>
+        <option value="-8">UTC-8</option>
+        <option value="-7">UTC-7</option>
+        <option value="-6">UTC-6</option>
+        <option value="-5">UTC-5</option>
+        <option value="-4">UTC-4</option>
+        <option value="-3">UTC-3</option>
+        <option value="-2">UTC-2</option>
+        <option value="-1">UTC-1</option>
+        <option value="0">UTC</option>
+        <option value="1">UTC+1</option>
+        <option value="2">UTC+2</option>
+        <option value="3">UTC+3</option>
+        <option value="4">UTC+4</option>
+        <option value="5">UTC+5</option>
+        <option value="6">UTC+6</option>
+        <option value="7">UTC+7</option>
+        <option value="8">UTC+8</option>
+        <option value="9">UTC+9</option>
+        <option value="10">UTC+10</option>
+        <option value="11">UTC+11</option>
+        <option value="12">UTC+12</option>
+      </select>
+    </div>
+
+    <!-- Climate -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Mean Annual Temperature (°C)</label>
+        <input type="number" step="any" name="MAT_site" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Mean Annual Precipitation (cm)</label>
+        <input type="number" step="any" name="MAP_site" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="text-center">
+      <button type="submit" class="mt-4 px-6 py-3 bg-gradient-to-br from-red-600 to-orange-500 text-white font-semibold rounded-full shadow hover:shadow-lg transition">
+        Submit Site
+      </button>
+    </div>
+  </form>
+</section>
+
+<script>
+  function addContact() {
+    const contactList = document.getElementById('contactList');
+    const contactDiv = document.createElement('div');
+    contactDiv.className = "grid grid-cols-1 md:grid-cols-2 gap-4";
+    contactDiv.innerHTML = `
+      <input type="text" name="contactName[]" placeholder="First Last" class="border border-gray-300 rounded-md p-2" />
+      <input type="email" name="contactEmail[]" placeholder="Email Address" class="border border-gray-300 rounded-md p-2" />
+    `;
+    contactList.appendChild(contactDiv);
+  }
+</script>
 
     <!-- FOOTER -->
   <footer class="bg-gray-200 text-sm text-center p-4 mt-12">
