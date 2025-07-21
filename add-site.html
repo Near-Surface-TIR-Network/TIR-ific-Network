@@ -347,6 +347,42 @@
   </div>
 </div>
 
+<!-- Plant Functional Type -->
+<div class="mb-6">
+  <div class="flex items-center mb-1">
+    <label class="block text-base font-medium text-gray-700 mr-2">
+      Plant Functional Type (PFT) <span class="text-red-500">*</span>
+    </label>
+    <button type="button" onclick="toggleHelp(this, 'help-pft')" class="text-blue-500 text-xs">[?]</button>
+  </div>
+  <p id="help-pft" class="text-sm text-gray-600 hidden">
+    Select the dominant CLM Plant Functional Type (PFT) for this site.
+    See <a href="https://escomp.github.io/CTSM/release-clm5.0/tech_note/Ecosystem/CLM50_Tech_Note_Ecosystem.html" target="_blank" class="underline text-blue-500">CLM Technical Note, Table 2.2.1</a> for more detail.
+  </p>
+  <select name="PFT" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+    <option value="">Select a PFT</option>
+    <option value="0">Bare Ground</option>
+    <option value="1">Needleleaf evergreen tree – temperate</option>
+    <option value="2">Needleleaf evergreen tree – boreal</option>
+    <option value="3">Needleleaf deciduous tree – boreal</option>
+    <option value="4">Broadleaf evergreen tree – tropical</option>
+    <option value="5">Broadleaf evergreen tree – temperate</option>
+    <option value="6">Broadleaf deciduous tree – tropical</option>
+    <option value="7">Broadleaf deciduous tree – temperate</option>
+    <option value="8">Broadleaf deciduous tree – boreal</option>
+    <option value="9">Broadleaf evergreen shrub – temperate</option>
+    <option value="10">Broadleaf deciduous shrub – temperate</option>
+    <option value="11">Broadleaf deciduous shrub – boreal</option>
+    <option value="12">C3 arctic grass</option>
+    <option value="13">C3 grass</option>
+    <option value="14">C4 grass</option>
+    <option value="15">C3 Unmanaged Rainfed Crop</option>
+    <option value="16">C3 Unmanaged Irrigated Crop</option>
+    <option value="17">Managed Rainfed Crop</option>
+    <option value="18">Managed Irrigated Crop</option>
+  </select>
+</div>
+
 <div class="mb-6">
   <div class="flex items-center mb-1">
     <label for="instrument_type" class="block text-base font-medium text-gray-700 mr-2">
@@ -355,7 +391,7 @@
     <button type="button" onclick="toggleHelp(this, 'help-instrument-type')" class="text-blue-500 text-xs">[?]</button>
   </div>
   <p id="help-instrument-type" class="text-sm text-gray-600 hidden">
-    Select the type of primary instrument used for thermal measurements at the site. Options include Thermal Camera, Net Radiometer, or Infrared Thermometer (IRT).
+    Select the type of instrument used for thermal measurements at the site. 
   </p>
   <select name="instrument_type" id="instrument_type" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
     <option value="">Select an instrument type</option>
@@ -377,39 +413,6 @@
   </p>
   <input type="text" name="brand_model" id="brand_model" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
 </div>
-
-<!-- Dominant species with Help Button -->
-<div class="flex items-center mb-1">
-  <label class="block text-base font-medium text-gray-700 mr-2">Dominant Species</label>
-  <button type="button" class="text-blue-500 text-xs" onclick="toggleHelp(event, 'help-dominant-species')">[?]</button>
-</div>
-<p id="help-dominant-species" class="text-xs text-gray-600 mt-1 hidden">
-  List the most abundant species in view. Include both common and scientific names. You can add multiple.<br>
-  <span class="italic text-gray-500">Example: Common Name: White Pine, Scientific Name: <i>Pinus strobus</i></span>
-</p>
-
-
-<!-- Help Text -->
-<p id="help-dominant-species" class="text-xs text-gray-600 mb-2 hidden">
-  List the main species in view. Include both common and scientific names. You can add multiple.<br>
-  <span class="italic text-gray-500">Example: Common Name: White Pine, Scientific Name: <i>Pinus strobus</i></span>
-</p>
-
-<!-- Dynamic Species Fields -->
-<div id="species-container" class="space-y-2">
-  <div class="species-entry flex flex-col md:flex-row md:items-center gap-4">
-    <label class="flex-1 text-sm text-gray-700">Common Name:
-      <input type="text" name="species_common[]" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-    </label>
-    <label class="flex-1 text-sm text-gray-700">Scientific Name:
-      <input type="text" name="species_scientific[]" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-    </label>
-  </div>
-</div>
-
-<!-- Add Another Species Button -->
-<button type="button" onclick="addSpecies()" class="mt-2 text-blue-600 text-sm">+ Add Another Species</button>
-
 
     <!-- Submit -->
     <div class="text-center">
