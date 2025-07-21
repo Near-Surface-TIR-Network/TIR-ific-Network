@@ -317,17 +317,36 @@
 </div>
 
 
-    <!-- Climate -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Mean Annual Temperature (°C)</label>
-        <input type="number" step="any" name="MAT_site" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-      </div>
-      <div>
-        <label class="block text-sm font-medium text-gray-700">Mean Annual Precipitation (cm)</label>
-        <input type="number" step="any" name="MAP_site" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-      </div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+  <!-- Mean Annual Temperature -->
+  <div>
+    <div class="flex items-center mb-1">
+      <label for="MAT_site" class="block text-base font-medium text-gray-700 mr-2">
+        Mean Annual Temperature (°C) <span class="text-red-500">*</span>
+      </label>
+      <button type="button" onclick="toggleHelp(this, 'help-mat')" class="text-blue-500 text-xs">[?]</button>
     </div>
+    <p id="help-mat" class="text-sm text-gray-600 hidden">
+      Enter the site’s mean annual temperature in degrees Celsius.
+    </p>
+    <input type="number" step="any" name="MAT_site" id="MAT_site" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+  </div>
+
+  <!-- Mean Annual Precipitation -->
+  <div>
+    <div class="flex items-center mb-1">
+      <label for="MAP_site" class="block text-base font-medium text-gray-700 mr-2">
+        Mean Annual Precipitation (cm) <span class="text-red-500">*</span>
+      </label>
+      <button type="button" onclick="toggleHelp(this, 'help-map')" class="text-blue-500 text-xs">[?]</button>
+    </div>
+    <p id="help-map" class="text-sm text-gray-600 hidden">
+      Enter the site’s mean annual precipitation in centimeters (not mm).
+    </p>
+    <input type="number" step="any" name="MAP_site" id="MAP_site" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+  </div>
+</div>
+
     
 <!-- Dominant species with Help Button -->
 <div class="flex items-center mb-1">
