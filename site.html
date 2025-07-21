@@ -164,7 +164,7 @@ function loadMiniMap(lat, long) {
     "Topo": topo,
     "Imagery": satellite
   };
-    street.addTo(map); // default base layer
+    satellite.addTo(map); // default base layer
     L.control.layers(baseMaps).addTo(map);
     L.marker([lat, long]).addTo(map).bindPopup("Site Location").openPopup();
   }
