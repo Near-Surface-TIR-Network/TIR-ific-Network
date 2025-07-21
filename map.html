@@ -122,13 +122,19 @@
 
   <!-- Leaflet Map Logic -->
 <script>
+  // Basemaps
   const street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
   });
-
-  const satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles &copy; Esri'
+  
+  const topo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenTopoMap contributors'
   });
+  
+  const satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri, Earthstar Geographics'
+  });
+
 
   const map = L.map('map', {
     center: [20, 0],
@@ -138,7 +144,8 @@
 
   const baseMaps = {
     "Street Map": street,
-    "Satellite": satellite
+    "Topo": topo,
+    "Imagery": satellite
   };
 
   L.control.layers(baseMaps).addTo(map);
