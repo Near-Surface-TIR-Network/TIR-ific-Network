@@ -347,7 +347,37 @@
   </div>
 </div>
 
-    
+<div class="mb-6">
+  <div class="flex items-center mb-1">
+    <label for="instrument_type" class="block text-base font-medium text-gray-700 mr-2">
+      Type of Instrument <span class="text-red-500">*</span>
+    </label>
+    <button type="button" onclick="toggleHelp(this, 'help-instrument-type')" class="text-blue-500 text-xs">[?]</button>
+  </div>
+  <p id="help-instrument-type" class="text-sm text-gray-600 hidden">
+    Select the type of primary instrument used for thermal measurements at the site. Options include Thermal Camera, Net Radiometer, or Infrared Thermometer (IRT).
+  </p>
+  <select name="instrument_type" id="instrument_type" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+    <option value="">Select an instrument type</option>
+    <option value="Thermal Camera">Thermal Camera</option>
+    <option value="Net Radiometer">Net Radiometer</option>
+    <option value="IRT">IRT (Infrared Thermometer)</option>
+  </select>
+</div>
+
+<div class="mb-6">
+  <div class="flex items-center mb-1">
+    <label for="brand_model" class="block text-base font-medium text-gray-700 mr-2">
+      Brand, Make, and Model <span class="text-red-500">*</span>
+    </label>
+    <button type="button" onclick="toggleHelp(this, 'help-brand-model')" class="text-blue-500 text-xs">[?]</button>
+  </div>
+  <p id="help-brand-model" class="text-sm text-gray-600 hidden">
+    Provide the full brand, make, and model of the thermal instrument used (e.g., FLIR A655sc, Apogee SI-111).
+  </p>
+  <input type="text" name="brand_model" id="brand_model" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+</div>
+
 <!-- Dominant species with Help Button -->
 <div class="flex items-center mb-1">
   <label class="block text-base font-medium text-gray-700 mr-2">Dominant Species</label>
