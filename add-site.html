@@ -566,11 +566,10 @@
         Scientific Name:
         <input type="text" name="species_scientific[]" class="border border-gray-300 rounded-md p-2 w-full text-sm" required />
       </label>
-      <button type="button" onclick="removeSpecies(this)" class="absolute top-0 right-0 text-red-500 hover:text-red-700">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M8.257 3.099c.366-.446.957-.663 1.53-.561.573.102 1.06.507 1.306 1.063l.861 1.9H15a1 1 0 110 2h-.293l-.823 9.19A2 2 0 0111.89 18H8.11a2 2 0 01-1.993-1.748L5.293 7H5a1 1 0 010-2h2.046l.861-1.9c.096-.21.228-.402.35-.601zM8 8a1 1 0 10-2 0v6a1 1 0 102 0V8zm4 0a1 1 0 10-2 0v6a1 1 0 102 0V8z" clip-rule="evenodd" />
-        </svg>
+      <button type="button" onclick="removeSpecies(this)" class="absolute top-0 right-0 text-xs text-red-500 hover:text-red-700 underline">
+        Remove
       </button>
+
     `;
     container.appendChild(div);
   }
