@@ -112,7 +112,7 @@
     const container = document.getElementById('site-details');
     container.innerHTML = `
       <div class="flex flex-col md:flex-row gap-4 mb-6">
-        <img src="${data.tirImage}" alt="${data.siteName} TIR image" class="w-full md:w-1/2 rounded-xl shadow-md object-cover" />
+        <img src="${data.tirImage}?cb=${Date.now()}" alt="${data.siteName} TIR image" class="w-full md:w-1/2 rounded-xl shadow-md object-cover" />
         <img src="${data.rgbImage}" alt="${data.siteName} RGB image" class="w-full md:w-1/2 rounded-xl shadow-md object-cover" />
       </div>
     
