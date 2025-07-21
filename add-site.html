@@ -124,22 +124,52 @@
 </div>
 
 
-    <!-- EC Tower -->
-    <div class="mb-6">
-      <label class="block text-sm font-medium text-gray-700">Is there co-located eddy covariance data?</label>
-      <select name="hasEC" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-      </select>
-    </div>
-    <div class="mb-6">
-      <label class="block text-sm font-medium text-gray-700">EC Tower ID (e.g., AMF_US-HAR)</label>
-      <input type="text" name="ecID" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-    </div>
-    <div class="mb-6">
-      <label class="block text-sm font-medium text-gray-700">EC Data Link</label>
-      <input type="url" name="ecLink" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-    </div>
+<!-- EC Tower Availability -->
+<div class="mb-6 relative">
+  <label class="block text-sm font-medium text-gray-700 flex items-center">
+    Is there co-located eddy covariance (EC) data?
+    <button type="button" onclick="toggleHelp('help-ec-toggle')" class="ml-2 text-blue-600 text-sm">?</button>
+  </label>
+  <select name="hasEC" id="hasEC" onchange="toggleECDetails()" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+    <option value="">Select</option>
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+  </select>
+  <p id="help-ec-toggle" class="text-xs text-gray-600 mt-1 hidden">
+    Select "Yes" if your thermal setup is co-located with a flux tower that provides eddy covariance data. This helps with data alignment and validation.
+  </p>
+</div>
+
+<!-- EC Details (shown only if "Yes") -->
+<div id="ec-details" class="space-y-6 hidden">
+
+  <!-- EC Tower ID -->
+  <div class="relative">
+    <label class="block text-sm font-medium text-gray-700 flex items-center">
+      EC Tower ID
+      <button type="button" onclick="toggleHelp('help-ec-id')" class="ml-2 text-blue-600 text-sm">?</button>
+    </label>
+    <input type="text" name="ecID" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+    <p id="help-ec-id" class="text-xs text-gray-600 mt-1 hidden">
+      Use the full AmeriFlux/NEON ID if available. 
+      <span class="italic text-gray-500">Example: AMF_US-HAR</span>
+    </p>
+  </div>
+
+  <!-- EC Data Link -->
+  <div class="relative">
+    <label class="block text-sm font-medium text-gray-700 flex items-center">
+      EC Data Link
+      <button type="button" onclick="toggleHelp('help-ec-link')" class="ml-2 text-blue-600 text-sm">?</button>
+    </label>
+    <input type="url" name="ecLink" placeholder="https://..." class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+    <p id="help-ec-link" class="text-xs text-gray-600 mt-1 hidden">
+      Please include a URL where the EC data is hosted or available for download, if applicable.
+    </p>
+  </div>
+
+</div>
+
 
     <!-- Start/End Date and Active Status -->
     <div class="mb-6">
@@ -235,8 +265,13 @@
 <!-- Dominant species with Help Button -->
 <div class="flex items-center mb-1">
   <label class="block text-base font-medium text-gray-700 mr-2">Dominant Species</label>
-  <button type="button" onclick="toggleHelp(this, 'help-dominant-species')" class="text-blue-500 text-xs">[?]</button>
+  <button type="button" class="text-blue-500 text-xs" onclick="toggleHelp(event, 'help-dominant-species')">[?]</button>
 </div>
+<p id="help-dominant-species" class="text-xs text-gray-600 mt-1 hidden">
+  List the most abundant species in view. Include both common and scientific names. You can add multiple.<br>
+  <span class="italic text-gray-500">Example: Common Name: White Pine, Scientific Name: <i>Pinus strobus</i></span>
+</p>
+
 
 <!-- Help Text -->
 <p id="help-dominant-species" class="text-xs text-gray-600 mb-2 hidden">
@@ -281,20 +316,22 @@
     contactList.appendChild(contactDiv);
   }
 
-    function toggleHelp(button, id) {
-    // Close any other open help text
+  function toggleHelp(event, id) {
+    event.stopPropagation(); // Prevents immediate closing on same click
+
+    // Close all other help text
     document.querySelectorAll('p[id^="help-"]').forEach(p => {
       if (p.id !== id) p.classList.add('hidden');
     });
 
-    // Toggle current help
+    // Toggle selected help text
     const current = document.getElementById(id);
     current.classList.toggle('hidden');
   }
 
-  // Close on outside click
+  // Close help text when clicking outside
   document.addEventListener('click', function(event) {
-    const isHelpButton = event.target.matches('button[onclick^="toggleHelp"]');
+    const isHelpButton = event.target.closest('button[onclick^="toggleHelp"]');
     const isHelpText = event.target.closest('p[id^="help-"]');
 
     if (!isHelpButton && !isHelpText) {
