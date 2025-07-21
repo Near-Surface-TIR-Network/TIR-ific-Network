@@ -207,18 +207,28 @@
   </div>
 </div>
 
+<!-- Contacts Section -->
+<div class="mb-6">
+  <div class="flex items-center mb-1">
+    <label class="block text-sm font-medium text-gray-700 mr-2">
+      Contact(s) <span class="text-red-500">*</span>
+    </label>
+    <button type="button" onclick="toggleHelp(this, 'help-contacts')" class="text-blue-500 text-xs">[?]</button>
+  </div>
+  <p id="help-contacts" class="text-sm text-gray-600 hidden">
+    Provide the name and email of the site contact. You may add multiple contacts if more than one person is responsible for site maintenance or data.
+  </p>
 
-    <!-- Contacts -->
-    <div class="mb-6">
-      <label class="block text-sm font-medium text-gray-700">Contact(s)</label>
-      <div class="space-y-4" id="contactList">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input type="text" name="contactName[]" placeholder="First Last" class="border border-gray-300 rounded-md p-2" />
-          <input type="email" name="contactEmail[]" placeholder="Email Address" class="border border-gray-300 rounded-md p-2" />
-        </div>
-      </div>
-      <button type="button" onclick="addContact()" class="mt-2 text-blue-600 text-sm">+ Add Another Contact</button>
+  <div class="space-y-4" id="contactList">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <input type="text" name="contactName[]" placeholder="First and Last Name" required class="border border-gray-300 rounded-md p-2" />
+      <input type="email" name="contactEmail[]" placeholder="Email Address" required class="border border-gray-300 rounded-md p-2" />
     </div>
+  </div>
+
+  <button type="button" onclick="addContact()" class="mt-2 text-blue-600 text-sm">+ Add Another Contact</button>
+</div>
+
 
     <!-- Location Info -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
@@ -356,13 +366,29 @@
   function addContact() {
     const contactList = document.getElementById('contactList');
     const contactDiv = document.createElement('div');
-    contactDiv.className = "grid grid-cols-1 md:grid-cols-2 gap-4";
+    contactDiv.className = "grid grid-cols-1 md:grid-cols-2 gap-4 mt-2";
     contactDiv.innerHTML = `
-      <input type="text" name="contactName[]" placeholder="First Last" class="border border-gray-300 rounded-md p-2" />
-      <input type="email" name="contactEmail[]" placeholder="Email Address" class="border border-gray-300 rounded-md p-2" />
+      <input type="text" name="contactName[]" placeholder="First and Last Name" required class="border border-gray-300 rounded-md p-2" />
+      <input type="email" name="contactEmail[]" placeholder="Email Address" required class="border border-gray-300 rounded-md p-2" />
     `;
     contactList.appendChild(contactDiv);
   }
+
+  function toggleHelp(button, id) {
+    document.querySelectorAll('p[id^="help-"]').forEach(p => {
+      if (p.id !== id) p.classList.add('hidden');
+    });
+    const current = document.getElementById(id);
+    current.classList.toggle('hidden');
+  }
+
+  document.addEventListener('click', function(event) {
+    const isHelpButton = event.target.matches('button[onclick^="toggleHelp"]');
+    const isHelpText = event.target.closest('p[id^="help-"]');
+    if (!isHelpButton && !isHelpText) {
+      document.querySelectorAll('p[id^="help-"]').forEach(p => p.classList.add('hidden'));
+    }
+  });
 
   function toggleHelp(event, id) {
     event.stopPropagation(); // Prevents immediate closing on same click
