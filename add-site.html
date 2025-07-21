@@ -145,33 +145,34 @@
     <option value="no">No</option>
   </select>
 </div>
-<!-- EC Tower ID -->
-<div class="mb-6">
-  <div class="flex items-center mb-1">
-    <label for="ecID" class="block text-sm font-medium text-gray-700 mr-2">
-      EC Tower ID
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-ecid')" class="text-blue-500 text-xs">[?]</button>
+
+<!-- EC Details - Hidden by default -->
+<div id="ecDetails" class="hidden">
+  <!-- EC Tower ID -->
+  <div class="mb-6">
+    <div class="flex items-center mb-1">
+      <label for="ecID" class="block text-sm font-medium text-gray-700 mr-2">EC Tower ID</label>
+      <button type="button" onclick="toggleHelp(this, 'help-ecid')" class="text-blue-500 text-xs">[?]</button>
+    </div>
+    <p id="help-ecid" class="text-sm text-gray-600 hidden">
+      This should match the EC site identifier from AmeriFlux or ICOS (e.g., <code>US-Ha1</code>).
+    </p>
+    <input type="text" name="ecID" id="ecID" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
   </div>
-  <p id="help-ecid" class="text-sm text-gray-600 hidden">
-    This should match the EC site identifier from AmeriFlux or ICOS (e.g., <code>US-Ha1</code>).
-  </p>
-  <input type="text" name="ecID" id="ecID" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+
+  <!-- EC Data Link -->
+  <div class="mb-6">
+    <div class="flex items-center mb-1">
+      <label for="ecLink" class="block text-sm font-medium text-gray-700 mr-2">EC Data Link</label>
+      <button type="button" onclick="toggleHelp(this, 'help-eclink')" class="text-blue-500 text-xs">[?]</button>
+    </div>
+    <p id="help-eclink" class="text-sm text-gray-600 hidden">
+      Paste a link to where the EC data can be downloaded (e.g., ICOS or AmeriFlux data portal).
+    </p>
+    <input type="url" name="ecLink" id="ecLink" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+  </div>
 </div>
 
-<!-- EC Data Link -->
-<div class="mb-6">
-  <div class="flex items-center mb-1">
-    <label for="ecLink" class="block text-sm font-medium text-gray-700 mr-2">
-      EC Data Link
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-eclink')" class="text-blue-500 text-xs">[?]</button>
-  </div>
-  <p id="help-eclink" class="text-sm text-gray-600 hidden">
-    Paste a link to where the EC data can be downloaded (e.g., ICOS or AmeriFlux data portal).
-  </p>
-  <input type="url" name="ecLink" id="ecLink" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-</div>
 
 <!-- Site Status -->
 <div class="mb-6">
@@ -413,9 +414,9 @@
     }
   });
   function toggleECFields() {
-    const hasEC = document.getElementById('hasEC').value;
-    const ecFields = document.getElementById('ecFields');
-    ecFields.classList.toggle('hidden', hasEC !== 'yes');
+    const dropdown = document.getElementById('hasEC');
+    const ecDetails = document.getElementById('ecDetails');
+    ecDetails.classList.toggle('hidden', dropdown.value !== 'yes');
   }
 
   function toggleHelp(button, id) {
