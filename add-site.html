@@ -220,11 +220,12 @@
     Provide the name and email of the site contact. You may add multiple contacts if more than one person is responsible for site maintenance or data.
   </p>
 
-  <div class="space-y-4" id="contactList">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <input type="text" name="contactName[]" placeholder="First and Last Name" required class="border border-gray-300 rounded-md p-2" />
-      <input type="email" name="contactEmail[]" placeholder="Email Address" required class="border border-gray-300 rounded-md p-2" />
-    </div>
+<div class="relative grid grid-cols-1 md:grid-cols-2 gap-4">
+  <input type="text" name="contactName[]" placeholder="First and Last Name" required class="border border-gray-300 rounded-md p-2" />
+  <input type="email" name="contactEmail[]" placeholder="Email Address" required class="border border-gray-300 rounded-md p-2" />
+  <button type="button" onclick="removeContact(this)" class="absolute top-0 right-0 text-xs text-red-500 hover:text-red-700 underline">Remove</button>
+</div>
+
   </div>
 
   <button type="button" onclick="addContact()" class="mt-2 text-blue-600 text-sm">+ Add Another Contact</button>
@@ -493,6 +494,10 @@
     contactList.appendChild(contactDiv);
   }
 
+  function removeContact(button) {
+    const contactDiv = button.closest('div');
+    contactDiv.remove();
+  }
   function toggleHelp(button, id) {
     document.querySelectorAll('p[id^="help-"]').forEach(p => {
       if (p.id !== id) p.classList.add('hidden');
