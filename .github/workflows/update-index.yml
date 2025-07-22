@@ -1,0 +1,31 @@
+name: Update Live Sites Index
+
+on:
+  push:
+    paths:
+      - 'live_sites/*.json'
+      - '!live_sites/index.json'
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Update index.json
+        run: |
+          cd live_sites
+          echo "[" > index.json
+          find . -type f -name '*.json' ! -name 'index.json' -exec basename {} \; | \
+            jq -R . | jq -s '. | sort' >> index.json
+          echo "]" >> index.json
+
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add live_sites/index.json
+          git commit -m "Auto-update index.json"
+          git push
