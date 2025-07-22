@@ -1,5 +1,9 @@
 import { Octokit } from "@octokit/rest";
 
+console.log("Received body from client:", event.body);
+const body = JSON.parse(event.body);
+console.log("Decoded body:", body);
+
 export async function handler(event) {
   try {
     const token = process.env.GITHUB_TOKEN;
