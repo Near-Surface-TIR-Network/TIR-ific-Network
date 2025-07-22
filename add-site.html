@@ -227,9 +227,6 @@
   </div>
 </div>
 
-
-  </div>
-
   <button type="button" onclick="addContact()" class="mt-2 text-blue-600 text-sm">+ Add Another Contact</button>
 </div>
 
@@ -466,6 +463,30 @@
   />
 </div>
 
+<!-- Last Calibration Date -->
+<div class="mb-6">
+  <div class="flex items-start mb-1">
+    <label for="lastCalibrationDate" class="block text-base font-medium text-gray-700 mr-2">
+      Last Calibration Date <span class="text-red-500">*</span>
+    </label>
+    <button type="button" onclick="toggleHelp(this, 'help-calibration-date')" class="text-blue-500 text-xs mt-1">[?]</button>
+  </div>
+  <p id="help-calibration-date" class="text-sm text-gray-600 hidden">
+    Enter the date of the most recent manufacturer or lab calibration in YYYY-MM format.
+    If unknown, enter the month and year the instrument was purchased instead.
+  </p>
+
+  <div class="flex flex-col md:flex-row gap-4">
+    <input type="month" name="lastCalibrationDate" id="lastCalibrationDate" required class="block border border-gray-300 rounded-md p-2" />
+    <label class="flex items-center text-sm">
+      <input type="checkbox" id="usePurchaseDate" onchange="toggleCalibrationFields()" class="mr-2" />
+      Use instrument purchase date instead
+    </label>
+    <input type="month" name="purchaseDate" id="purchaseDate" class="block border border-gray-300 rounded-md p-2 hidden" />
+  </div>
+</div>
+
+
     <!-- Submit -->
     <div class="text-center">
       <button type="submit" class="mt-4 px-6 py-3 bg-gradient-to-br from-red-600 to-orange-500 text-white font-semibold rounded-full shadow hover:shadow-lg transition">
@@ -476,6 +497,25 @@
 </section>
 
 <script>
+    function toggleCalibrationFields() {
+    const checkbox = document.getElementById("usePurchaseDate");
+    const calibrationInput = document.getElementById("lastCalibrationDate");
+    const purchaseInput = document.getElementById("purchaseDate");
+
+    if (checkbox.checked) {
+      calibrationInput.disabled = true;
+      calibrationInput.removeAttribute("required");
+      calibrationInput.value = "";
+      purchaseInput.classList.remove("hidden");
+      purchaseInput.required = true;
+    } else {
+      calibrationInput.disabled = false;
+      calibrationInput.required = true;
+      purchaseInput.classList.add("hidden");
+      purchaseInput.value = "";
+      purchaseInput.removeAttribute("required");
+    }
+  }
     function toggleDateFields() {
     const status = document.getElementById('siteStatus').value;
     const endDateContainer = document.getElementById('endDateContainer');
