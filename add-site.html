@@ -668,7 +668,80 @@ If the instrument was housed in an enclosure with a window (e.g., made of german
   </div>
 </div>
 
-    
+ <!-- Measurement Tiers Section -->
+<div class="mb-6">
+  <div class="flex items-center mb-1">
+    <label class="block text-base font-medium text-gray-700 mr-2">
+      Measurement Tier Levels <span class="text-red-500">*</span>
+    </label>
+    <button type="button" onclick="toggleHelp(this, 'help-tier-info')" class="text-blue-500 text-xs">[?]</button>
+  </div>
+  <p id="help-tier-info" class="text-sm text-gray-600 hidden">
+    Select the appropriate tier (T1–T5) for each measurement component based on the guidance in
+    <a href="https://doi.org/10.1111/nph.19398" target="_blank" class="text-blue-600 underline">Diehl et al. 2023</a>,
+    Table 2. Note that Non-Contact Measurements only range from T1 to T4.
+  </p>
+
+  <label for="pd-tier" class="block mt-4 font-medium text-sm text-gray-700">Pre-deployment Test Tier</label>
+  <select name="pd_tier" id="pd-tier" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+    <option value="">-- Select Tier --</option>
+    <option value="T1">T1</option>
+    <option value="T2">T2</option>
+    <option value="T3">T3</option>
+    <option value="T4">T4</option>
+    <option value="T5">T5</option>
+  </select>
+
+  <label for="corrM-tier" class="block mt-4 font-medium text-sm text-gray-700">Correction Measurement Tier</label>
+  <select name="corrM_tier" id="corrM-tier" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+    <option value="">-- Select Tier --</option>
+    <option value="T1">T1</option>
+    <option value="T2">T2</option>
+    <option value="T3">T3</option>
+    <option value="T4">T4</option>
+    <option value="T5">T5</option>
+  </select>
+
+  <label for="conM-tier" class="block mt-4 font-medium text-sm text-gray-700">Contact Measurement Tier</label>
+  <select name="conM_tier" id="conM-tier" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+    <option value="">-- Select Tier --</option>
+    <option value="T1">T1</option>
+    <option value="T2">T2</option>
+    <option value="T3">T3</option>
+    <option value="T4">T4</option>
+    <option value="T5">T5</option>
+  </select>
+
+  <label for="rp-tier" class="block mt-4 font-medium text-sm text-gray-700">Reference Panel Tier</label>
+  <select name="rp_tier" id="rp-tier" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+    <option value="">-- Select Tier --</option>
+    <option value="T1">T1</option>
+    <option value="T2">T2</option>
+    <option value="T3">T3</option>
+    <option value="T4">T4</option>
+    <option value="T5">T5</option>
+  </select>
+
+  <label for="nonconM-tier" class="block mt-4 font-medium text-sm text-gray-700">Non-Contact Measurement Tier</label>
+  <select name="nonconM_tier" id="nonconM-tier" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+    <option value="">-- Select Tier --</option>
+    <option value="T1">T1</option>
+    <option value="T2">T2</option>
+    <option value="T3">T3</option>
+    <option value="T4">T4</option>
+  </select>
+
+  <label for="interM-tier" class="block mt-4 font-medium text-sm text-gray-700">Interpretation Measurement Tier</label>
+  <select name="interM_tier" id="interM-tier" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+    <option value="">-- Select Tier --</option>
+    <option value="T1">T1</option>
+    <option value="T2">T2</option>
+    <option value="T3">T3</option>
+    <option value="T4">T4</option>
+    <option value="T5">T5</option>
+  </select>
+</div>
+   
     <!-- Submit -->
     <div class="text-center">
       <button type="submit" class="mt-4 px-6 py-3 bg-gradient-to-br from-red-600 to-orange-500 text-white font-semibold rounded-full shadow hover:shadow-lg transition">
