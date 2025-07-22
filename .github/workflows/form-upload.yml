@@ -1,0 +1,32 @@
+name: Save Form Submission
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [form-submission]
+
+jobs:
+  save-form:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Create submission folder if needed
+        run: mkdir -p submissions
+
+      - name: Save uploaded JSON and image files
+        run: |
+          echo "${{ github.event.client_payload.form_json }}" > submissions/${{ github.event.client_payload.filename }}.json
+          echo "${{ github.event.client_payload.image_rgb }}" | base64 -d > submissions/${{ github.event.client_payload.filename }}_RGB.jpg
+          echo "${{ github.event.client_payload.image_tir }}" | base64 -d > submissions/${{ github.event.client_payload.filename }}_TIR.jpg
+
+      - name: Commit and push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add submissions/
+          git commit -m "Add new submission: ${{ github.event.client_payload.filename }}"
+          git push
