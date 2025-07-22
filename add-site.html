@@ -505,15 +505,30 @@
   <div class="grid grid-cols-2 gap-4">
     <div>
       <label for="tempErrorMin" class="block text-sm text-gray-600 mb-1">Lower Bound (°C)</label>
-      <input type="number" name="tempErrorMin" id="tempErrorMin" step="0.1" required class="border border-gray-300 rounded-md p-2 w-full" placeholder="-2" />
+      <input type="number" name="tempErrorMin" id="tempErrorMin" step="0.1" required class="border border-gray-300 rounded-md p-2 w-full" />
     </div>
     <div>
       <label for="tempErrorMax" class="block text-sm text-gray-600 mb-1">Upper Bound (°C)</label>
-      <input type="number" name="tempErrorMax" id="tempErrorMax" step="0.1" required class="border border-gray-300 rounded-md p-2 w-full" placeholder="2" />
+      <input type="number" name="tempErrorMax" id="tempErrorMax" step="0.1" required class="border border-gray-300 rounded-md p-2 w-full"/>
     </div>
   </div>
 </div>
 
+<!-- FOV Angle -->
+<div class="mb-6">
+  <div class="flex items-center mb-1">
+    <label for="fovAngle" class="block text-base font-medium text-gray-700 mr-2">
+      Field of View (FOV) Angle of Camera Specs
+    </label>
+    <button type="button" onclick="toggleHelp(this, 'help-fov-angle')" class="text-blue-500 text-xs">[?]</button>
+  </div>
+  <p id="help-fov-angle" class="text-sm text-gray-600 hidden">
+      Enter the field of view (FOV) angle, in degrees, as specified by the camera manufacturer (e.g., 45°). 
+  </p>
+  <input type="number" name="fovAngle" id="fovAngle" step="0.1" min="0" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+</div>
+
+    
     <!-- Submit -->
     <div class="text-center">
       <button type="submit" class="mt-4 px-6 py-3 bg-gradient-to-br from-red-600 to-orange-500 text-white font-semibold rounded-full shadow hover:shadow-lg transition">
@@ -522,6 +537,7 @@
     </div>
   </form>
 </section>
+  
 
 <script>
     function toggleCalibrationFields() {
