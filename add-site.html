@@ -711,20 +711,24 @@ If the instrument was housed in an enclosure with a window (e.g., made of german
     <option value="T5">T5</option>
   </select>
 
-  <label for="rp-tier" class="block mt-4 font-medium text-sm text-gray-700">Reference Panel (Table 4)<span class="text-red-500">*</span></label>
-  <select name="rp_tier" id="rp-tier" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-    <option value="">-- Select Tier --</option>
-    <option value="T1">T1</option>
-    <option value="T2">T2</option>
-    <option value="T3">T3</option>
-    <option value="T4">T4</option>
-    <option value="T5">T5</option>
-  </select>
+<label for="rp-tier" class="block mt-4 font-medium text-sm text-gray-700">
+  Reference Panel (Table 4)<span class="text-red-500">*</span>
+</label>
+<select name="rp_tier" id="rp-tier" required onchange="toggleRefPanelDetails()" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+  <option value="">-- Select Tier --</option>
+  <option value="T1">T1</option>
+  <option value="T2">T2</option>
+  <option value="T3">T3</option>
+  <option value="T4">T4</option>
+  <option value="T5">T5</option>
+</select>
+
 <div id="ref-panel-fields" class="mt-4" style="display: none;">
   <h3 class="text-sm font-semibold mb-2">Reference Panel Details</h3>
   <div id="refPanelContainer" class="space-y-4"></div>
   <button type="button" onclick="addRefPanel()" class="mt-2 text-blue-600 text-sm">+ Add Another Panel</button>
 </div>
+
 
   <label for="nonconM-tier" class="block mt-4 font-medium text-sm text-gray-700">Non-Contact Measurements (Table 5)<span class="text-red-500">*</span></label>
   <select name="nonconM_tier" id="nonconM-tier" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
