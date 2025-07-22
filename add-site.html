@@ -865,28 +865,37 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
     tir_image_base64: tirBase64,
     tir_image_filename: tirFilename
   };
+try {
+  console.log("Payload being sent to Netlify function:", payload);
+  const response = await fetch("https://guileless-twilight-7d6d23.netlify.app/.netlify/functions/submitForm", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  });
 
-  try {
-    console.log("Payload being sent to Netlify function:", payload);
-    const response = await fetch("https://guileless-twilight-7d6d23.netlify.app/.netlify/functions/submitForm", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-    
-      const messageBox = document.getElementById("formMessage");
-      if (response.ok) {
-        messageBox.textContent = "🎉 Thanks! Your site has been submitted to the TIR-ific Network. Check back in ~15 minutes to see it live.";
-        messageBox.classList.remove("hidden");
-        messageBox.classList.remove("text-red-600");
-        messageBox.classList.add("text-green-600");
-      } else {
-        messageBox.textContent = "⚠️ Something went wrong while submitting the form. Please try again or contact us on our webpage.";
-        messageBox.classList.remove("hidden");
-        messageBox.classList.remove("text-green-600");
-        messageBox.classList.add("text-red-600");
-        console.error(await response.text());
-      }
+  const messageBox = document.getElementById("formMessage");
+  if (response.ok) {
+    messageBox.textContent = "🎉 Thanks! Your site has been submitted to the TIR-ific Network. Check back in ~15 minutes to see it live.";
+    messageBox.classList.remove("hidden");
+    messageBox.classList.remove("text-red-600");
+    messageBox.classList.add("text-green-600");
+  } else {
+    messageBox.textContent = "⚠️ Something went wrong while submitting the form. Please try again or contact us on our webpage.";
+    messageBox.classList.remove("hidden");
+    messageBox.classList.remove("text-green-600");
+    messageBox.classList.add("text-red-600");
+    console.error(await response.text());
+  }
+
+} catch (err) {
+  console.error("Submission error:", err);
+  const messageBox = document.getElementById("formMessage");
+  messageBox.textContent = "⚠️ Network error. Please try again later.";
+  messageBox.classList.remove("hidden");
+  messageBox.classList.remove("text-green-600");
+  messageBox.classList.add("text-red-600");
+}
+
 
 });
 
