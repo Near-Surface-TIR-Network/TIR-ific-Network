@@ -569,6 +569,38 @@
   </select>
 </div>
 
+    <!-- Camera Height on Tower (m) -->
+<div class="mb-6">
+  <div class="flex items-start mb-1">
+    <label for="cameraHeight" class="block text-base font-medium text-gray-700 mr-2">
+      Camera Height on Tower (m) <span class="text-red-500">*</span>
+    </label>
+    <button type="button" onclick="toggleHelp(this, 'help-camera-height')" class="text-blue-500 text-xs mt-1">[?]</button>
+  </div>
+  <p id="help-camera-height" class="text-sm text-gray-600 hidden">
+    Enter the vertical distance from the ground to the camera (in meters). This should reflect the installed height on the tower.
+  </p>
+
+  <input type="number" name="cameraHeight" id="cameraHeight" step="0.01" min="0" required
+         class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="e.g., 3.50">
+</div>
+
+    <!-- Sampling Interval (minutes) -->
+<div class="mb-6">
+  <div class="flex items-start mb-1">
+    <label for="samplingInterval" class="block text-base font-medium text-gray-700 mr-2">
+      Sampling Interval (minutes) <span class="text-red-500">*</span>
+    </label>
+    <button type="button" onclick="toggleHelp(this, 'help-sampling-interval')" class="text-blue-500 text-xs mt-1">[?]</button>
+  </div>
+  <p id="help-sampling-interval" class="text-sm text-gray-600 hidden">
+    Enter the time interval between successive thermal measurements or images, in minutes (e.g., 30 for half-hourly sampling).
+  </p>
+
+  <input type="number" name="samplingInterval" id="samplingInterval" min="1" step="1" required
+         class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="e.g., 30">
+</div>
+
     
     <!-- Submit -->
     <div class="text-center">
