@@ -802,6 +802,43 @@ If the instrument was housed in an enclosure with a window (e.g., made of german
   
 
 <script>
+document.getElementById("addSiteForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+
+  // Convert formData to JSON
+  const data = {};
+  for (let [key, value] of formData.entries()) {
+    if (data[key]) {
+      // Convert to array if key already exists (for multiselects or repeated entries)
+      if (!Array.isArray(data[key])) data[key] = [data[key]];
+      data[key].push(value);
+    } else {
+      data[key] = value;
+    }
+  }
+
+  // Send to backend
+  try {
+    const response = await fetch("https://your-backend-endpoint.com/save-form", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      alert("Form saved successfully!");
+    } else {
+      alert("Error saving form.");
+    }
+  } catch (error) {
+    console.error("Submission error:", error);
+    alert("Network error.");
+  }
+});
+
 
 function toggleROIFields() {
   const hasRois = document.getElementById('has-rois').value;
