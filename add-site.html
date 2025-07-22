@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TIR-ific Network | Contact Us</title>
+  <title>TIR-ific Network | Add Site </title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans">
@@ -220,11 +220,13 @@
     Provide the name and email of the site contact. You may add multiple contacts if more than one person is responsible for site maintenance or data.
   </p>
 
-<div class="relative grid grid-cols-1 md:grid-cols-2 gap-4">
-  <input type="text" name="contactName[]" placeholder="First and Last Name" required class="border border-gray-300 rounded-md p-2" />
-  <input type="email" name="contactEmail[]" placeholder="Email Address" required class="border border-gray-300 rounded-md p-2" />
-  <button type="button" onclick="removeContact(this)" class="absolute top-0 right-0 text-xs text-red-500 hover:text-red-700 underline">Remove</button>
+<div class="space-y-4" id="contactList">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <input type="text" name="contactName[]" placeholder="First and Last Name" required class="border border-gray-300 rounded-md p-2" />
+    <input type="email" name="contactEmail[]" placeholder="Email Address" required class="border border-gray-300 rounded-md p-2" />
+  </div>
 </div>
+
 
   </div>
 
@@ -506,21 +508,19 @@
   
   function addContact() {
     const contactList = document.getElementById('contactList');
-    const contactDiv = document.createElement('div');
-    contactDiv.className = "relative grid grid-cols-1 md:grid-cols-2 gap-4 mt-2";
+    
+    const wrapper = document.createElement('div');
+    wrapper.className = "grid grid-cols-1 md:grid-cols-2 gap-4 mt-2 relative";
 
-    contactDiv.innerHTML = `
+    wrapper.innerHTML = `
       <input type="text" name="contactName[]" placeholder="First and Last Name" required class="border border-gray-300 rounded-md p-2" />
-      <input type="email" name="contactEmail[]" placeholder="Email Address" required class="border border-gray-300 rounded-md p-2" />
-      <button type="button" onclick="removeContact(this)" class="absolute top-0 right-0 text-xs text-red-500 hover:text-red-700 underline">Remove</button>
+      <div class="flex items-center">
+        <input type="email" name="contactEmail[]" placeholder="Email Address" required class="border border-gray-300 rounded-md p-2 w-full" />
+        <button type="button" onclick="this.closest('.grid').remove()" class="text-red-600 text-xs ml-2">Remove</button>
+      </div>
     `;
 
-    contactList.appendChild(contactDiv);
-  }
-
-  function removeContact(button) {
-    const contactDiv = button.closest('div');
-    contactDiv.remove();
+    contactList.appendChild(wrapper);
   }
   
   function toggleHelp(button, id) {
