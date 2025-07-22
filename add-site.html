@@ -853,20 +853,20 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
   
   // Get uploaded files from the form
-  const rgbFile = formData.get("rgb_image");
-  const tirFile = formData.get("tir_image");
+  const rgbFile2 = formData.get("rgb_image");
+  const tirFile2 = formData.get("tir_image");
   
   // Extract original file extensions
-  const rgbExt = rgbFile.name.split('.').pop().toLowerCase();
-  const tirExt = tirFile.name.split('.').pop().toLowerCase();
+  const rgbExt = rgbFile2.name.split('.').pop().toLowerCase();
+  const tirExt = tirFile2.name.split('.').pop().toLowerCase();
   
   // Build filenames using those extensions
-  const rgbFilename = `rgb-${siteID}-${timestamp}.${rgbExt}`;
-  const tirFilename = `tir-${siteID}-${timestamp}.${tirExt}`;
+  const rgbFilename2 = `rgb-${siteID}-${timestamp}.${rgbExt}`;
+  const tirFilename2 = `tir-${siteID}-${timestamp}.${tirExt}`;
   
   // Add the paths to the data object
-  data.rgb_image_path = `site-images/${rgbFilename}`;
-  data.tir_image_path = `site-images/${tirFilename}`;
+  data.rgb_image_path = `site-images/${rgbFilename2}`;
+  data.tir_image_path = `site-images/${tirFilename2}`;
 
   // Encode form JSON
   const jsonContent = JSON.stringify(data, null, 2);
