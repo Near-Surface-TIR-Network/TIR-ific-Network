@@ -443,6 +443,27 @@
   <input type="text" name="brand_model" id="brand_model" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
 </div>
 
+    <!-- Pixel Resolution -->
+<div class="mb-6">
+  <div class="flex items-center mb-1">
+    <label for="pixelResolution" class="block text-base font-medium text-gray-700 mr-2">
+      Pixel Resolution <span class="text-red-500">*</span>
+    </label>
+    <button type="button" onclick="toggleHelp(this, 'help-pixel-resolution')" class="text-blue-500 text-xs">[?]</button>
+  </div>
+  <p id="help-pixel-resolution" class="text-sm text-gray-600 hidden">
+    Enter the native pixel resolution of the instrument (e.g., 640×480).
+  </p>
+  <input
+    type="text"
+    name="pixelResolution"
+    id="pixelResolution"
+    required
+    placeholder="e.g., 640×480"
+    class="mt-1 block w-full border border-gray-300 rounded-md p-2"
+  />
+</div>
+
     <!-- Submit -->
     <div class="text-center">
       <button type="submit" class="mt-4 px-6 py-3 bg-gradient-to-br from-red-600 to-orange-500 text-white font-semibold rounded-full shadow hover:shadow-lg transition">
