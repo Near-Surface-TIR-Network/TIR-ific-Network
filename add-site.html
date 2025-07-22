@@ -807,9 +807,6 @@ If the instrument was housed in an enclosure with a window (e.g., made of german
     <button id="closeModal" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded">OK</button>
   </div>
 </div>
-
-
-
 </section>
   
 
@@ -883,32 +880,30 @@ try {
     body: JSON.stringify(payload)
   });
 
-  const messageBox = document.getElementById("formMessage");
-
   const modal = document.getElementById("submissionModal");
-const modalTitle = document.getElementById("modalTitle");
-const modalMessage = document.getElementById("modalMessage");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalMessage = document.getElementById("modalMessage");
 
-if (response.ok) {
-  modalTitle.textContent = "🎉 Site Submitted!";
-  modalTitle.classList.add("text-green-700");
-  modalTitle.classList.remove("text-red-700");
-  modalMessage.textContent = "Thanks for submitting your site to the TIR-ific Network! Check back in ~15 minutes to see it live.";
-  modal.classList.remove("hidden");
-
-  // Reload after 5 seconds
-  setTimeout(() => {
-    location.reload();
-  }, 5000);
-
-} else {
-  modalTitle.textContent = "⚠️ Submission Failed";
-  modalTitle.classList.add("text-red-700");
-  modalTitle.classList.remove("text-green-700");
-  modalMessage.textContent = "Something went wrong while submitting the form. Please try again or contact us on our webpage.";
-  modal.classList.remove("hidden");
-  console.error(await response.text());
-}
+  if (response.ok) {
+    modalTitle.textContent = "🎉 Site Submitted!";
+    modalTitle.classList.add("text-green-700");
+    modalTitle.classList.remove("text-red-700");
+    modalMessage.textContent = "Thanks for submitting your site to the TIR-ific Network! Check back in ~15 minutes to see it live.";
+    modal.classList.remove("hidden");
+  
+    // Reload after 10 seconds
+    setTimeout(() => {
+      location.reload();
+    }, 10000);
+  
+  } else {
+    modalTitle.textContent = "⚠️ Submission Failed";
+    modalTitle.classList.add("text-red-700");
+    modalTitle.classList.remove("text-green-700");
+    modalMessage.textContent = "Something went wrong while submitting the form. Please try again or contact us on our webpage.";
+    modal.classList.remove("hidden");
+    console.error(await response.text());
+  }
 
 
 function toggleROIFields() {
