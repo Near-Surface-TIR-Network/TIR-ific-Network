@@ -807,35 +807,50 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
 
   const form = e.target;
   const formData = new FormData(form);
+  const formObject = {};
 
-  // Convert formData to JSON
-  const data = {};
   for (let [key, value] of formData.entries()) {
-    if (data[key]) {
-      // Convert to array if key already exists (for multiselects or repeated entries)
-      if (!Array.isArray(data[key])) data[key] = [data[key]];
-      data[key].push(value);
-    } else {
-      data[key] = value;
-    }
+    if (key === "rgb_image" || key === "tir_image") continue; // skip images for now
+    formObject[key] = value;
   }
 
-  // Send to backend
-  try {
-    const response = await fetch("https://your-backend-endpoint.com/save-form", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    });
+  // Convert images to base64
+  const rgbFile = formData.get("rgb_image");
+  const tirFile = formData.get("tir_image");
 
-    if (response.ok) {
-      alert("Form saved successfully!");
-    } else {
-      alert("Error saving form.");
+  const [rgbBase64, tirBase64] = await Promise.all([rgbFile, tirFile].map(file => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(",")[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }));
+
+  const payload = {
+    event_type: "form-submission",
+    client_payload: {
+      filename: `submission-${new Date().toISOString().replace(/[:.]/g, "-")}`,
+      form_json: JSON.stringify(formObject, null, 2),
+      image_rgb: rgbBase64,
+      image_tir: tirBase64
     }
-  } catch (error) {
-    console.error("Submission error:", error);
-    alert("Network error.");
+  };
+
+  const response = await fetch("https://api.github.com/repos/Near-Surface-TIR-Network/TIR-ific-Network/dispatches", {
+    method: "POST",
+    headers: {
+      "Accept": "application/vnd.github+json",
+      "Authorization": "Bearer YOUR_PAT_HERE", 
+      "X-GitHub-Api-Version": "2022-11-28"
+    },
+    body: JSON.stringify(payload)
+  });
+
+  if (response.ok) {
+    alert("Form submitted successfully!");
+  } else {
+    alert("Error submitting form.");
   }
 });
 
