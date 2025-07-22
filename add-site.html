@@ -518,7 +518,7 @@
 <div class="mb-6">
   <div class="flex items-center mb-1">
     <label for="fovAngle" class="block text-base font-medium text-gray-700 mr-2">
-      Field of View (FOV) Angle of Camera Specs
+      Field of View (FOV) Angle of Camera Specs <span class="text-red-500">*</span>
     </label>
     <button type="button" onclick="toggleHelp(this, 'help-fov-angle')" class="text-blue-500 text-xs">[?]</button>
   </div>
@@ -526,6 +526,47 @@
       Enter the field of view (FOV) angle, in degrees, as specified by the camera manufacturer (e.g., 45°). 
   </p>
   <input type="number" name="fovAngle" id="fovAngle" step="0.1" min="0" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+</div>
+
+    <!-- Camera Mount Angle -->
+<div class="mb-6">
+  <div class="flex items-start mb-1">
+    <label for="cameraMountAngle" class="block text-base font-medium text-gray-700 mr-2">
+      Camera Tilt Angle (°) <span class="text-red-500">*</span>
+    </label>
+    <button type="button" onclick="toggleHelp(this, 'help-camera-angle')" class="text-blue-500 text-xs mt-1">[?]</button>
+  </div>
+  <p id="help-camera-angle" class="text-sm text-gray-600 hidden">
+    Enter the angle at which the camera is mounted relative to the horizontal plane. Use 0° for a camera pointing straight out and 90° for one pointing straight down.
+  </p>
+
+  <input type="number" name="cameraMountAngle" id="cameraMountAngle" required min="0" max="90" step="1"
+    placeholder="e.g., 45" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+</div>
+
+    <!-- Camera Orientation -->
+<div class="mb-6">
+  <div class="flex items-start mb-1">
+    <label for="cameraOrientation" class="block text-base font-medium text-gray-700 mr-2">
+      Camera Orientation (Cardinal Direction) <span class="text-red-500">*</span>
+    </label>
+    <button type="button" onclick="toggleHelp(this, 'help-camera-orientation')" class="text-blue-500 text-xs mt-1">[?]</button>
+  </div>
+  <p id="help-camera-orientation" class="text-sm text-gray-600 hidden">
+    Select the cardinal direction the camera is facing. This helps contextualize the sun angle and canopy illumination.
+  </p>
+
+  <select name="cameraOrientation" id="cameraOrientation" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+    <option value="">Select a direction</option>
+    <option value="N">N</option>
+    <option value="NE">NE</option>
+    <option value="E">E</option>
+    <option value="SE">SE</option>
+    <option value="S">S</option>
+    <option value="SW">SW</option>
+    <option value="W">W</option>
+    <option value="NW">NW</option>
+  </select>
 </div>
 
     
