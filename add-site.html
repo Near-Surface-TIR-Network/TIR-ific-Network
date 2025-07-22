@@ -817,10 +817,6 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
 
   const form = e.target;
   const formData = new FormData(form);
-  const siteID = data.siteID || "unknown-site";
-  // Get timestamp now, since it's reused
-  const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-  const filename = `${siteID}-${timestamp}.json`;
 
   // Convert file to base64
   function toBase64(file) {
@@ -838,6 +834,29 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
     });
   }
 
+
+
+  // Convert remaining form data
+  const data = {};
+  for (let [key, value] of formData.entries()) {
+    if (key !== "rgbImage" && key !== "tirImage") {
+      if (data[key]) {
+        if (!Array.isArray(data[key])) data[key] = [data[key]];
+        data[key].push(value);
+      } else {
+        data[key] = value;
+      }
+    }
+  }
+
+  // Encode form JSON
+  const jsonContent = JSON.stringify(data, null, 2);
+  const base64Json = btoa(unescape(encodeURIComponent(jsonContent)));
+  const siteID = data.siteID || "unknown-site";
+  // Get timestamp now, since it's reused
+  const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+  const filename = `${siteID}-${timestamp}.json`;
+  
   // Get files from input elements
   const rgbFile = document.getElementById("rgb-image").files[0];
   const tirFile = document.getElementById("tir-image").files[0];
@@ -856,25 +875,6 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
     tirBase64 = await toBase64(tirFile);
     tirFilename = `TIR-${siteID}-${timestamp}.${tirFile.name.split('.').pop()}`;
   }
-
-  // Convert remaining form data
-  const data = {};
-  for (let [key, value] of formData.entries()) {
-    if (key !== "rgbImage" && key !== "tirImage") {
-      if (data[key]) {
-        if (!Array.isArray(data[key])) data[key] = [data[key]];
-        data[key].push(value);
-      } else {
-        data[key] = value;
-      }
-    }
-  }
-
-  // Encode form JSON
-  const jsonContent = JSON.stringify(data, null, 2);
-  const base64Json = btoa(unescape(encodeURIComponent(jsonContent)));
-  
-
 
   // Build payload for Netlify
 const payload = {
