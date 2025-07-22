@@ -872,54 +872,58 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
     tir_image_base64: tirBase64,
     tir_image_filename: tirFilename
   };
-try {
-  console.log("Payload being sent to Netlify function:", payload);
-  const response = await fetch("https://guileless-twilight-7d6d23.netlify.app/.netlify/functions/submitForm", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
-  });
-
-  const modal = document.getElementById("submissionModal");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalMessage = document.getElementById("modalMessage");
-
-  if (response.ok) {
-    modalTitle.textContent = "🎉 Site Submitted!";
-    modalTitle.classList.add("text-green-700");
-    modalTitle.classList.remove("text-red-700");
-    modalMessage.textContent = "Thanks for submitting your site to the TIR-ific Network! Check back in ~15 minutes to see it live.";
-    modal.classList.remove("hidden");
-
-    setTimeout(() => {
-      location.reload();
-    }, 10000);
-  } else {
-    modalTitle.textContent = "⚠️ Submission Failed";
+  try {
+    console.log("Payload being sent to Netlify function:", payload);
+    const response = await fetch("https://guileless-twilight-7d6d23.netlify.app/.netlify/functions/submitForm", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+  
+    const modal = document.getElementById("submissionModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalMessage = document.getElementById("modalMessage");
+  
+    if (response.ok) {
+      modalTitle.textContent = "🎉 Site Submitted!";
+      modalTitle.classList.add("text-green-700");
+      modalTitle.classList.remove("text-red-700");
+      modalMessage.textContent = "Thanks for submitting your site to the TIR-ific Network! Check back in ~15 minutes to see it live.";
+      modal.classList.remove("hidden");
+  
+      // Reload after 10 seconds
+      setTimeout(() => {
+        location.reload();
+      }, 10000);
+  
+    } else {
+      modalTitle.textContent = "⚠️ Submission Failed";
+      modalTitle.classList.add("text-red-700");
+      modalTitle.classList.remove("text-green-700");
+      modalMessage.textContent = "Something went wrong while submitting the form. Please try again or contact us on our webpage.";
+      modal.classList.remove("hidden");
+      console.error(await response.text());
+    }
+  
+  } catch (err) {
+    console.error("Submission error:", err);
+    const modal = document.getElementById("submissionModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalMessage = document.getElementById("modalMessage");
+  
+    modalTitle.textContent = "⚠️ Network Error";
     modalTitle.classList.add("text-red-700");
     modalTitle.classList.remove("text-green-700");
-    modalMessage.textContent = "Something went wrong while submitting the form. Please try again or contact us on our webpage.";
+    modalMessage.textContent = "A network error occurred. Please try again later.";
     modal.classList.remove("hidden");
-    console.error(await response.text());
   }
-
-} catch (err) {
-  console.error("Submission error:", err);
-  const modal = document.getElementById("submissionModal");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalMessage = document.getElementById("modalMessage");
-
-  modalTitle.textContent = "⚠️ Submission Error";
-  modalTitle.classList.add("text-red-700");
-  modalTitle.classList.remove("text-green-700");
-  modalMessage.textContent = "A network error occurred. Please try again later.";
-  modal.classList.remove("hidden");
-}
-
   
-document.getElementById("closeModal").addEventListener("click", () => {
-  document.getElementById("submissionModal").classList.add("hidden");
-});
+  // Close modal when user clicks X
+  document.getElementById("closeModal").addEventListener("click", () => {
+    document.getElementById("submissionModal").classList.add("hidden");
+  });
+
+
 
 
 function toggleROIFields() {
