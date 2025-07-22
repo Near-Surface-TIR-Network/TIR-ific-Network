@@ -822,14 +822,18 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
   const rgbFile = formData.get("rgbImage");
   const tirFile = formData.get("tirImage");
 
+  // Get timestamp now, since it's reused
+  const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+
   const getExtension = (file) => file.name.split('.').pop();
-  
   const rgbExtension = rgbFile && rgbFile.name ? getExtension(rgbFile) : "";
   const tirExtension = tirFile && tirFile.name ? getExtension(tirFile) : "";
-  
+
+  const rgbBase64 = rgbFile && rgbFile.name ? await toBase64(rgbFile) : "";
+  const tirBase64 = tirFile && tirFile.name ? await toBase64(tirFile) : "";
+
   const rgbFilename = rgbExtension ? `RGB-${timestamp}.${rgbExtension}` : "";
   const tirFilename = tirExtension ? `TIR-${timestamp}.${tirExtension}` : "";
-
 
   // Convert remaining form data
   const data = {};
@@ -847,19 +851,17 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
   // Encode form JSON
   const jsonContent = JSON.stringify(data, null, 2);
   const base64Json = btoa(unescape(encodeURIComponent(jsonContent)));
-  const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
   const siteID = data.siteID || "unknown-site";
   const filename = `${siteID}-${timestamp}.json`;
 
-
   // Build payload for Netlify
   const payload = {
-  filename: filename,
-  json: base64Json,
-  image_base64: rgbBase64,
-  image_filename: rgbFilename,
-  tir_image_base64: tirBase64,
-  tir_image_filename: tirFilename
+    filename: filename,
+    json: base64Json,
+    image_base64: rgbBase64,
+    image_filename: rgbFilename,
+    tir_image_base64: tirBase64,
+    tir_image_filename: tirFilename
   };
 
   try {
