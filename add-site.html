@@ -783,14 +783,34 @@ function addRefPanel() {
   panel.className = "border border-gray-300 p-3 rounded-md relative";
   panel.innerHTML = `
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <label>ID: <input type="number" name="ref_panel_id[]" step="1" min="0" required class="w-full border border-gray-300 p-1 rounded" /></label>
       <label>Width (cm): <input type="number" name="ref_panel_width[]" step="0.1" min="0" required class="w-full border border-gray-300 p-1 rounded" /></label>
       <label>Height (cm): <input type="number" name="ref_panel_height[]" step="0.1" min="0" required class="w-full border border-gray-300 p-1 rounded" /></label>
       <label>Thickness (cm): <input type="number" name="ref_panel_thickness[]" step="0.1" min="0" required class="w-full border border-gray-300 p-1 rounded" /></label>
-      <label>Material: <input type="text" name="ref_panel_material[]" required class="w-full border border-gray-300 p-1 rounded" /></label>
-      <label>Emissivity (0–1): <input type="number" name="ref_panel_emissivity[]" min="0" max="1" step="0.01" required class="w-full border border-gray-300 p-1 rounded" /></label>
+      <!-- Material with help -->
+<div>
+  <label class="block text-sm font-medium text-gray-700">
+    Material <span class="text-red-500">*</span>
+    <button type="button" onclick="toggleHelp(this, 'help-material')" class="text-blue-500 text-xs">[?]</button>
+  </label>
+  <input type="text" name="ref_panel_material[]" required class="w-full border border-gray-300 p-1 rounded" />
+  <p id="help-material" class="text-sm text-gray-600 hidden">
+    Material of the reference panel (e.g., 6061 aluminum).
+  </p>
+</div>
+      <label>Estimated emissivity (0–1): <input type="number" name="ref_panel_emissivity[]" min="0" max="1" step="0.01" required class="w-full border border-gray-300 p-1 rounded" /></label>
       <label>Distance from Camera (m): <input type="number" name="ref_panel_distance[]" min="0" step="0.1" required class="w-full border border-gray-300 p-1 rounded" /></label>
-      <label>Panel Angle (°): <input type="number" name="ref_panel_angle[]" min="0" max="180" step="0.1" required class="w-full border border-gray-300 p-1 rounded" /></label>
-      <label>Independent Contact? 
+<div>
+  <label class="block text-sm font-medium text-gray-700">
+    Panel Angle (°) <span class="text-red-500">*</span>
+    <button type="button" onclick="toggleHelp(this, 'help-angle')" class="text-blue-500 text-xs">[?]</button>
+  </label>
+  <input type="number" name="ref_panel_angle[]" min="0" max="180" step="0.1" required class="w-full border border-gray-300 p-1 rounded" />
+  <p id="help-angle" class="text-sm text-gray-600 hidden">
+    Enter the angle at which the panel is mounted relative to the horizontal plane. Use 0° for a panel pointing straight out and 90° for one pointing straight down.
+  </p>
+</div>
+      <label>Independent contact measurement? 
         <select name="ref_panel_independent_contact[]" required class="w-full border border-gray-300 p-1 rounded">
           <option value="">-- Select --</option>
           <option value="yes">Yes</option>
