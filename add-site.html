@@ -442,26 +442,30 @@
   <input type="text" name="brand_model" id="brand_model" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
 </div>
 
-    <!-- Pixel Resolution -->
+<!-- Pixel Resolution -->
 <div class="mb-6">
-  <div class="flex items-center mb-1">
-    <label for="pixelResolution" class="block text-base font-medium text-gray-700 mr-2">
+  <div class="flex items-start mb-1">
+    <label class="block text-base font-medium text-gray-700 mr-2">
       Pixel Resolution <span class="text-red-500">*</span>
     </label>
-    <button type="button" onclick="toggleHelp(this, 'help-pixel-resolution')" class="text-blue-500 text-xs">[?]</button>
+    <button type="button" onclick="toggleHelp(this, 'help-pixel-resolution')" class="text-blue-500 text-xs mt-1">[?]</button>
   </div>
   <p id="help-pixel-resolution" class="text-sm text-gray-600 hidden">
-    Enter the native pixel resolution of the instrument (e.g., 640×480).
+    Enter the native pixel resolution of the instrument by specifying the width and height in pixels (e.g., 640 × 480).
   </p>
-  <input
-    type="text"
-    name="pixelResolution"
-    id="pixelResolution"
-    required
-    placeholder="e.g., 640×480"
-    class="mt-1 block w-full border border-gray-300 rounded-md p-2"
-  />
+
+  <div class="grid grid-cols-2 gap-4">
+    <div>
+      <label for="pixelWidth" class="block text-sm text-gray-600 mb-1">Width (px)</label>
+      <input type="number" name="pixelWidth" id="pixelWidth" required class="border border-gray-300 rounded-md p-2 w-full" />
+    </div>
+    <div>
+      <label for="pixelHeight" class="block text-sm text-gray-600 mb-1">Height (px)</label>
+      <input type="number" name="pixelHeight" id="pixelHeight" required class="border border-gray-300 rounded-md p-2 w-full" />
+    </div>
+  </div>
 </div>
+
 
 <!-- Last Calibration Date -->
 <div class="mb-6">
@@ -472,7 +476,7 @@
     <button type="button" onclick="toggleHelp(this, 'help-calibration-date')" class="text-blue-500 text-xs mt-1">[?]</button>
   </div>
   <p id="help-calibration-date" class="text-sm text-gray-600 hidden">
-    Enter the date of the most recent manufacturer or lab calibration in YYYY-MM format.
+    Enter the date of the most recent manufacturer calibration in YYYY-MM format.
     If unknown, enter the month and year the instrument was purchased instead.
   </p>
 
