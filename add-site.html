@@ -861,8 +861,8 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
   const rgbFile = document.getElementById("rgb-image").files[0];
   const tirFile = document.getElementById("tir-image").files[0];
   
-  data.rgb_image_path = `site-images/${rgbFilename}`;
-  data.tir_image_path = `site-images/${tirFilename}`;
+  data.rgb_image_path = `site-images/${rgbFile}`;
+  data.tir_image_path = `site-images/${tirFile}`;
   
   let rgbBase64 = "";
   let tirBase64 = "";
