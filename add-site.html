@@ -545,12 +545,12 @@ If the instrument was housed in an enclosure with a window (e.g., made of german
 <div class="mb-6">
   <div class="flex items-center mb-1">
     <label for="fovAngle" class="block text-base font-medium text-gray-700 mr-2">
-      Field of View (FOV) Angle of Camera Specs <span class="text-red-500">*</span>
+      FOV Angle of Camera (°) <span class="text-red-500">*</span>
     </label>
     <button type="button" onclick="toggleHelp(this, 'help-fov-angle')" class="text-blue-500 text-xs">[?]</button>
   </div>
   <p id="help-fov-angle" class="text-sm text-gray-600 hidden">
-      Enter the field of view (FOV) angle, in degrees, as specified by the camera manufacturer (e.g., 45°). 
+      Enter the field of view (FOV) angle, in degrees (°), as specified by the camera manufacturer (e.g., 45°). 
   </p>
   <input type="number" name="fovAngle" id="fovAngle" step="0.1" min="0" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
 </div>
@@ -609,7 +609,7 @@ If the instrument was housed in an enclosure with a window (e.g., made of german
   </p>
 
   <input type="number" name="cameraHeight" id="cameraHeight" step="0.01" min="0" required
-         class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="e.g., 3.50">
+         class="mt-1 block w-full border border-gray-300 rounded-md p-2" >
 </div>
 
     <!-- Sampling Interval (minutes) -->
@@ -625,7 +625,7 @@ If the instrument was housed in an enclosure with a window (e.g., made of german
   </p>
 
   <input type="number" name="samplingInterval" id="samplingInterval" min="1" step="1" required
-         class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="e.g., 30">
+         class="mt-1 block w-full border border-gray-300 rounded-md p-2" ">
 </div>
 
     <!-- Software Override -->
