@@ -817,6 +817,7 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
 
   const form = e.target;
   const formData = new FormData(form);
+  const siteID = data.siteID || "unknown-site";
 
   // Convert file to base64
   function toBase64(file) {
@@ -869,7 +870,7 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
   // Encode form JSON
   const jsonContent = JSON.stringify(data, null, 2);
   const base64Json = btoa(unescape(encodeURIComponent(jsonContent)));
-  const siteID = data.siteID || "unknown-site";
+  
   // Get timestamp now, since it's reused
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
   const filename = `${siteID}-${timestamp}.json`;
