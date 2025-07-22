@@ -775,56 +775,95 @@ function toggleRefPanelDetails() {
   }
 }
 
+function toggleHelp(button, id) {
+  const helpText = document.getElementById(id);
+  helpText.classList.toggle("hidden");
+}
+
 function addRefPanel() {
   const container = document.getElementById("refPanelContainer");
   const panelIndex = container.children.length;
 
   const panel = document.createElement("div");
-  panel.className = "border border-gray-300 p-3 rounded-md relative";
+  panel.className = "border border-gray-300 p-3 rounded-md relative mt-4";
   panel.innerHTML = `
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <label>ID: <input type="number" name="ref_panel_id[]" step="1" min="0" required class="w-full border border-gray-300 p-1 rounded" /></label>
+      <!-- ID with help -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700">
+          ID <span class="text-red-500">*</span>
+          <button type="button" onclick="toggleHelp(this, 'help-id-${panelIndex}')" class="text-blue-500 text-xs">[?]</button>
+        </label>
+        <input type="number" name="ref_panel_id[]" step="1" min="0" required class="w-full border border-gray-300 p-1 rounded" />
+        <p id="help-id-${panelIndex}" class="text-sm text-gray-600 hidden">
+          Unique identifier for the panel. Useful for keeping track if you are using multiple reference panels.
+        </p>
+      </div>
+
       <label>Width (cm): <input type="number" name="ref_panel_width[]" step="0.1" min="0" required class="w-full border border-gray-300 p-1 rounded" /></label>
       <label>Height (cm): <input type="number" name="ref_panel_height[]" step="0.1" min="0" required class="w-full border border-gray-300 p-1 rounded" /></label>
       <label>Thickness (cm): <input type="number" name="ref_panel_thickness[]" step="0.1" min="0" required class="w-full border border-gray-300 p-1 rounded" /></label>
+
       <!-- Material with help -->
-<div>
-  <label class="block text-sm font-medium text-gray-700">
-    Material <span class="text-red-500">*</span>
-    <button type="button" onclick="toggleHelp(this, 'help-material')" class="text-blue-500 text-xs">[?]</button>
-  </label>
-  <input type="text" name="ref_panel_material[]" required class="w-full border border-gray-300 p-1 rounded" />
-  <p id="help-material" class="text-sm text-gray-600 hidden">
-    Material of the reference panel (e.g., 6061 aluminum).
-  </p>
-</div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">
+          Material <span class="text-red-500">*</span>
+          <button type="button" onclick="toggleHelp(this, 'help-material-${panelIndex}')" class="text-blue-500 text-xs">[?]</button>
+        </label>
+        <input type="text" name="ref_panel_material[]" required class="w-full border border-gray-300 p-1 rounded" />
+        <p id="help-material-${panelIndex}" class="text-sm text-gray-600 hidden">
+          Material of the reference panel (e.g., 6061 aluminum).
+        </p>
+      </div>
+
       <label>Estimated emissivity (0–1): <input type="number" name="ref_panel_emissivity[]" min="0" max="1" step="0.01" required class="w-full border border-gray-300 p-1 rounded" /></label>
       <label>Distance from Camera (m): <input type="number" name="ref_panel_distance[]" min="0" step="0.1" required class="w-full border border-gray-300 p-1 rounded" /></label>
-<div>
-  <label class="block text-sm font-medium text-gray-700">
-    Panel Angle (°) <span class="text-red-500">*</span>
-    <button type="button" onclick="toggleHelp(this, 'help-angle')" class="text-blue-500 text-xs">[?]</button>
-  </label>
-  <input type="number" name="ref_panel_angle[]" min="0" max="180" step="0.1" required class="w-full border border-gray-300 p-1 rounded" />
-  <p id="help-angle" class="text-sm text-gray-600 hidden">
-    Enter the angle at which the panel is mounted relative to the horizontal plane. Use 0° for a panel pointing straight out and 90° for one pointing straight down.
-  </p>
-</div>
+
+      <!-- Panel Angle with help -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700">
+          Panel Angle (°) <span class="text-red-500">*</span>
+          <button type="button" onclick="toggleHelp(this, 'help-angle-${panelIndex}')" class="text-blue-500 text-xs">[?]</button>
+        </label>
+        <input type="number" name="ref_panel_angle[]" min="0" max="180" step="0.1" required class="w-full border border-gray-300 p-1 rounded" />
+        <p id="help-angle-${panelIndex}" class="text-sm text-gray-600 hidden">
+          Enter the angle at which the panel is mounted relative to the horizontal plane. Use 0° for a panel pointing straight out and 90° for one pointing straight down.
+        </p>
+      </div>
+
+      <!-- Independent contact selector -->
       <label>Independent contact measurement? 
-        <select name="ref_panel_independent_contact[]" required class="w-full border border-gray-300 p-1 rounded">
+        <select name="ref_panel_independent_contact[]" required class="w-full border border-gray-300 p-1 rounded" onchange="toggleMeasurementInterval(this)">
           <option value="">-- Select --</option>
           <option value="yes">Yes</option>
           <option value="no">No</option>
         </select>
       </label>
-      <label>Measurement Interval (min): 
-        <input type="number" name="ref_interval[]" min="1" step="1" required class="w-full border border-gray-300 p-1 rounded" />
-      </label>
+
+      <!-- Measurement interval (conditionally shown) -->
+      <div class="measurement-interval-container hidden">
+        <label>Measurement Interval (min): 
+          <input type="number" name="ref_interval[]" min="1" step="1" class="w-full border border-gray-300 p-1 rounded" />
+        </label>
+      </div>
     </div>
-    <button type="button" onclick="this.parentElement.remove()" class="text-red-600 text-xs mt-2">Remove Panel</button>
+
+    ${panelIndex > 0 ? `<button type="button" onclick="this.parentElement.remove()" class="text-red-600 text-xs mt-2">Remove Panel</button>` : ''}
   `;
 
   container.appendChild(panel);
+}
+
+// Show/hide measurement interval based on contact dropdown
+function toggleMeasurementInterval(select) {
+  const container = select.closest('.grid').querySelector('.measurement-interval-container');
+  if (select.value === 'yes') {
+    container.classList.remove('hidden');
+    container.querySelector('input').setAttribute('required', 'required');
+  } else {
+    container.classList.add('hidden');
+    container.querySelector('input').removeAttribute('required');
+  }
 }
   function toggleSoftwareDefaults() {
   const value = document.getElementById("softwareOverride").value;
