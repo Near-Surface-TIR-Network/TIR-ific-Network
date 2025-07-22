@@ -766,6 +766,28 @@ If the instrument was housed in an enclosure with a window (e.g., made of german
   <div id="roiFields"></div>
   <button type="button" onclick="addROI()" class="mt-2 text-blue-600 text-sm">+ Add Another ROI</button>
 </div>
+
+    <!-- RGB Image Upload -->
+<div class="mt-6">
+  <label for="rgb-image" class="block font-medium text-sm text-gray-700">
+    Upload RGB Image of Site <span class="text-red-500">*</span>
+  </label>
+  <input type="file" id="rgb-image" name="rgb_image" accept=".jpg,.jpeg,.png" required
+         class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+  <p class="text-sm text-gray-600 mt-1">Accepted formats: .jpg, .jpeg, .png</p>
+</div>
+
+<!-- TIR Image Upload -->
+<div class="mt-4">
+  <label for="tir-image" class="block font-medium text-sm text-gray-700">
+    Upload Thermal Infrared (TIR) Image of Site <span class="text-red-500">*</span>
+  </label>
+  <input type="file" id="tir-image" name="tir_image" accept=".jpg,.jpeg,.png,.tif,.tiff" required
+         class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+  <p class="text-sm text-gray-600 mt-1">Accepted formats: .jpg, .jpeg, .png, .tif, .tiff</p>
+</div>
+
+    
     <!-- Submit -->
     <div class="text-center">
       <button type="submit" class="mt-4 px-6 py-3 bg-gradient-to-br from-red-600 to-orange-500 text-white font-semibold rounded-full shadow hover:shadow-lg transition">
