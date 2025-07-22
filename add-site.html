@@ -107,7 +107,7 @@
     <button type="button" class="text-blue-500 text-xs" onclick="toggleHelp(event, 'help-site-id')">[?]</button>
   </div>
   <p id="help-site-id" class="text-xs text-gray-600 mt-1 hidden">
-    Provide a short, unique identifier for your site. Avoid special characters. For example, "HARV_BARN" for the Harvard Forest Barn Tower.
+    Provide a short, unique name using only letters and numbers. No spaces, underscores, or special characters. Example: harvbarn for the Harvard Forest Barn Tower
   </p>
   <input type="text" name="siteID" id="siteID" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
 </div>
@@ -432,12 +432,12 @@
 <div class="mb-6">
   <div class="flex items-center mb-1">
     <label for="brand_model" class="block text-base font-medium text-gray-700 mr-2">
-      Brand, Make, and Model <span class="text-red-500">*</span>
+      Brand and Model <span class="text-red-500">*</span>
     </label>
     <button type="button" onclick="toggleHelp(this, 'help-brand-model')" class="text-blue-500 text-xs">[?]</button>
   </div>
   <p id="help-brand-model" class="text-sm text-gray-600 hidden">
-    Provide the full brand, make, and model of the thermal instrument used (e.g., FLIR A655sc, Apogee SI-111).
+    Provide the full brand and model of the thermal instrument used (e.g., FLIR A655sc, Apogee SI-111).
   </p>
   <input type="text" name="brand_model" id="brand_model" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
 </div>
@@ -605,7 +605,7 @@ If the instrument was housed in an enclosure with a window (e.g., made of german
     <button type="button" onclick="toggleHelp(this, 'help-camera-height')" class="text-blue-500 text-xs mt-1">[?]</button>
   </div>
   <p id="help-camera-height" class="text-sm text-gray-600 hidden">
-    Enter the vertical distance from the ground to the camera (in meters). This should reflect the installed height on the tower.
+    Enter the vertical distance from the ground to the camera (in meters). This should reflect the installed height on the tower or stand.
   </p>
 
   <input type="number" name="cameraHeight" id="cameraHeight" step="0.01" min="0" required
@@ -637,7 +637,7 @@ If the instrument was housed in an enclosure with a window (e.g., made of german
     <button type="button" onclick="toggleHelp(this, 'help-software-override')" class="text-blue-500 text-xs mt-1">[?]</button>
   </div>
   <p id="help-software-override" class="text-sm text-gray-600 hidden">
-    If you were not able to override the default settings (e.g., emissivity, transmittance, or distance), please provide the values the software used.
+    This info is important for understanding post-processing needs for the thermal data. If you were not able to override the default settings (e.g., emissivity, transmittance, or distance), please provide the values the software used.
   </p>
 
   <select name="softwareOverride" id="softwareOverride" required onchange="toggleSoftwareDefaults()"
@@ -784,7 +784,7 @@ If the instrument was housed in an enclosure with a window (e.g., made of german
   </label>
   <input type="file" id="tir-image" name="tir_image" accept=".jpg,.jpeg,.png,.tif,.tiff" required
          class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-  <p class="text-sm text-gray-600 mt-1">Accepted formats: .jpg, .jpeg, .png, .tif, .tiff</p>
+  <p class="text-sm text-gray-600 mt-1">Accepted formats: .tif/.tiff (in °C)</p>
 </div>
 
     
