@@ -904,6 +904,10 @@ try {
     modal.classList.remove("hidden");
     console.error(await response.text());
   }
+  
+document.getElementById("closeModal").addEventListener("click", () => {
+  document.getElementById("submissionModal").classList.add("hidden");
+});
 
 
 function toggleROIFields() {
