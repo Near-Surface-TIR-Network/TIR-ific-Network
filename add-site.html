@@ -523,7 +523,8 @@
     <button type="button" onclick="toggleHelp(this, 'help-enclosure')" class="text-blue-500 text-xs mt-1">[?]</button>
   </div>
   <p id="help-enclosure" class="text-sm text-gray-600 hidden">
-    Select "No enclosure" if the instrument had no germanium window. If there was an enclosure window, enter its transmittance value reported by the manufacturer (between 0 and 1, e.g., 0.95).
+    If your instrument was not enclosed (i.e., had no protective window), select “No enclosure.”
+If the instrument was housed in an enclosure with a window (e.g., made of germanium or other material), enter the manufacturer-reported transmittance value for that window as a decimal between 0 and 1 (e.g., 0.95).
   </p>
 
   <select name="hasEnclosure" id="hasEnclosure" required onchange="toggleEnclosureField()"
