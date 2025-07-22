@@ -17,18 +17,18 @@ jobs:
 
       - name: Move submission files
         run: |
-          mkdir -p pending/
+          mkdir -p live_sites/
           shopt -s nullglob
           for f in submissions/*.json; do
-            echo "Moving $f to pending/"
-            mv "$f" pending/
+            echo "Moving $f to live_sites/"
+            mv "$f" live_sites/
           done
 
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add pending/*.json
+          git add live_sites/*.json
           git rm submissions/*.json || true
-          git commit -m "Move new submissions to pending" || echo "Nothing to commit"
+          git commit -m "Move new submissions to live_sites" || echo "Nothing to commit"
           git push
