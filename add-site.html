@@ -866,7 +866,7 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
 
   try {
     console.log("Payload being sent to Netlify function:", payload);
-    const response = await fetch("/.netlify/functions/submitForm", {
+    const response = await fetch("https://guileless-twilight-7d6d23.netlify.app/.netlify/functions/submitForm", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
