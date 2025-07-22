@@ -490,6 +490,29 @@
   </div>
 </div>
 
+<!-- Manufacturer-Reported Temperature Error -->
+<div class="mb-6">
+  <div class="flex items-start mb-1">
+    <label class="block text-base font-medium text-gray-700 mr-2">
+      Manufacturer-Reported Temperature Error (°C) <span class="text-red-500">*</span>
+    </label>
+    <button type="button" onclick="toggleHelp(this, 'help-temp-error')" class="text-blue-500 text-xs mt-1">[?]</button>
+  </div>
+  <p id="help-temp-error" class="text-sm text-gray-600 hidden">
+    Enter the temperature error range reported by the manufacturer. Provide the lower and upper bounds in degrees Celsius (e.g., -2 to 2).
+  </p>
+
+  <div class="grid grid-cols-2 gap-4">
+    <div>
+      <label for="tempErrorMin" class="block text-sm text-gray-600 mb-1">Lower Bound (°C)</label>
+      <input type="number" name="tempErrorMin" id="tempErrorMin" step="0.1" required class="border border-gray-300 rounded-md p-2 w-full" placeholder="-2" />
+    </div>
+    <div>
+      <label for="tempErrorMax" class="block text-sm text-gray-600 mb-1">Upper Bound (°C)</label>
+      <input type="number" name="tempErrorMax" id="tempErrorMax" step="0.1" required class="border border-gray-300 rounded-md p-2 w-full" placeholder="2" />
+    </div>
+  </div>
+</div>
 
     <!-- Submit -->
     <div class="text-center">
