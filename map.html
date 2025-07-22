@@ -50,14 +50,13 @@
     <!-- Add Site Dropdown -->
     <div class="relative dropdown-container">
       <button onclick="toggleDropdown('addSiteMenu')" class="hover:underline flex items-center gap-1 focus:outline-none">
-        Add Site
+        Contribute
         <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
           <path d="M5.5 7l4.5 4.5L14.5 7z" />
         </svg>
       </button>
       <div id="addSiteMenu" class="dropdown-menu absolute left-0 mt-2 bg-white text-gray-900 rounded-md shadow-lg w-48 hidden z-50">
         <a href="add-site.html" class="block px-4 py-2 hover:bg-gray-100">New Site Form</a>
-        <a href="update-site.html" class="block px-4 py-2 hover:bg-gray-100">Update Site Form</a>
       </div>
     </div>
     <!-- How To Dropdown -->
@@ -150,26 +149,27 @@
 
   L.control.layers(baseMaps).addTo(map);
 
-  async function loadSites() {
-    const indexResponse = await fetch(`sites/index.json?cache_bust=${Date.now()}`);
-    const siteFiles = await indexResponse.json();
-    
-    for (const file of siteFiles) {
-      const response = await fetch(`sites/${file}?cache_bust=${Date.now()}`);
-      const site = await response.json();
+async function loadSites() {
+  const indexResponse = await fetch(`live_sites/index.json?cache_bust=${Date.now()}`);
+  const siteFiles = await indexResponse.json();
+  
+  for (const file of siteFiles) {
+    const response = await fetch(`live_sites/${file}?cache_bust=${Date.now()}`);
+    const site = await response.json();
 
-      const marker = L.marker([site.lat, site.long]).addTo(map);
-      marker.bindPopup(`
-        <div class="text-sm">
-          <strong>${site.siteName}</strong><br>
-          ${site.siteID}<br>
-          <a href="site.html?site=${file}" class="text-blue-600 underline mt-2 inline-block">View Full Site Info</a>
-        </div>
-      `);
-    }
+    const marker = L.marker([site.lat, site.long]).addTo(map);
+    marker.bindPopup(`
+      <div class="text-sm">
+        <div class="text-red-600 font-semibold text-base">${site.siteName}</div>
+        <div class="text-gray-500 italic text-xs mb-2">${site.PFT}</div>
+        <a href="site.html?site=${file}" class="text-blue-600 underline mt-2 inline-block">View Full Site Info</a>
+      </div>
+    `);
   }
+}
 
-  loadSites();
+loadSites();
+
 </script>
 
 
