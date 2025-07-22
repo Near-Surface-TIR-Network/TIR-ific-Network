@@ -57,18 +57,35 @@ export async function handler(event) {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "Submission saved successfully." }),
+      headers: {
+        "Access-Control-Allow-Origin": "*", // or restrict to your GitHub Pages domain
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+      body: JSON.stringify({ message: "Submitted successfully." }),
     };
-
   } catch (err) {
-    console.error("Netlify function error:", err);
+    console.error("Error submitting:", err);
     return {
       statusCode: 500,
-      body: JSON.stringify({
-        error: "Submission failed.",
-        detail: err.message
-      }),
+      headers: {
+        "Access-Control-Allow-Origin": "*", // or restrict as needed
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+      body: JSON.stringify({ error: "Submission failed." }),
     };
   }
 }
 
+// Also handle the preflight OPTIONS request
+export async function handler(event) {
+  if (event.httpMethod === "OPTIONS") {
+    return {
+      statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+      },
+      body: "",
+    };
+  }
