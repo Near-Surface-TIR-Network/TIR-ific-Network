@@ -750,6 +750,22 @@ If the instrument was housed in an enclosure with a window (e.g., made of german
   </select>
 </div>
 
+    <!-- Step 1: Do you have ROIs defined? -->
+<div class="mt-6">
+  <label for="has-rois" class="block font-medium text-sm text-gray-700">Have you already defined Regions of Interest (ROIs)? <span class="text-red-500">*</span></label>
+  <select id="has-rois" name="has_rois" required onchange="toggleROIFields()" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+    <option value="">-- Select --</option>
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+  </select>
+</div>
+
+<!-- Step 2: ROI Input Section (Initially Hidden) -->
+<div id="roiContainer" class="mt-4 hidden">
+  <label class="block font-semibold text-gray-800 mb-2">Region(s) of Interest (ROI):</label>
+  <div id="roiFields"></div>
+  <button type="button" onclick="addROI()" class="mt-2 text-blue-600 text-sm">+ Add Another ROI</button>
+</div>
     <!-- Submit -->
     <div class="text-center">
       <button type="submit" class="mt-4 px-6 py-3 bg-gradient-to-br from-red-600 to-orange-500 text-white font-semibold rounded-full shadow hover:shadow-lg transition">
@@ -761,6 +777,41 @@ If the instrument was housed in an enclosure with a window (e.g., made of german
   
 
 <script>
+
+  function toggleROIFields() {
+  const hasRois = document.getElementById('has-rois').value;
+  const roiContainer = document.getElementById('roiContainer');
+  const roiFields = document.getElementById('roiFields');
+
+  if (hasRois === 'yes') {
+    roiContainer.classList.remove('hidden');
+    if (roiFields.children.length === 0) addROI();  // Add initial ROI
+  } else {
+    roiContainer.classList.add('hidden');
+    roiFields.innerHTML = ''; // Clear previous entries
+  }
+}
+
+function addROI() {
+  const container = document.getElementById("roiFields");
+  const roiIndex = container.children.length;
+
+  const roi = document.createElement("div");
+  roi.className = "border border-gray-300 p-3 rounded-md relative mb-4";
+  roi.innerHTML = `
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <label>ROI ID: <input type="text" name="roi_id[]" required class="w-full border border-gray-300 p-1 rounded" /></label>
+      <label>Description: <input type="text" name="roi_description[]" required class="w-full border border-gray-300 p-1 rounded" /></label>
+      <label>Width (px or m): <input type="text" name="roi_width[]" required class="w-full border border-gray-300 p-1 rounded" /></label>
+      <label>Height (px or m): <input type="text" name="roi_height[]" required class="w-full border border-gray-300 p-1 rounded" /></label>
+      <label>Position (e.g., coordinates in image): <input type="text" name="roi_position[]" required class="w-full border border-gray-300 p-1 rounded" /></label>
+    </div>
+
+    ${roiIndex > 0 ? `<button type="button" onclick="this.parentElement.remove()" class="text-red-600 text-xs mt-2">Remove ROI</button>` : ''}
+  `;
+
+  container.appendChild(roi);
+}
 function toggleRefPanelDetails() {
   const selected = document.getElementById("rp-tier").value;
   const panelSection = document.getElementById("ref-panel-fields");
@@ -832,7 +883,7 @@ function addRefPanel() {
       </div>
 
       <!-- Independent contact selector -->
-      <label>Independent contact measurement? 
+      <label>Independent contact measurement? <span class="text-red-500">*</span>
         <select name="ref_panel_independent_contact[]" required class="w-full border border-gray-300 p-1 rounded" onchange="toggleMeasurementInterval(this)">
           <option value="">-- Select --</option>
           <option value="yes">Yes</option>
