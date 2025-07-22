@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TIR-ific Network | Sites</title>
+  <title>TIR-ific Network | Gallery</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans">
@@ -106,20 +106,17 @@
 
 <!-- LOAD SITE JSONS AND CREATE GALLERY -->
 <script>
-  const indexPath = 'sites/index.json';
+  const indexPath = 'live_sites/index.json';
 
   async function loadSites() {
-    const cacheBuster = `?cache_bust=${Date.now()}`; // Cache buster query string
-
-    // Fetch index.json with cache buster
+    const cacheBuster = `?cache_bust=${Date.now()}`;
     const indexRes = await fetch(indexPath + cacheBuster);
     const files = await indexRes.json();
 
     const container = document.getElementById('site-cards');
 
     for (const file of files) {
-      // Fetch each site JSON with cache buster
-      const res = await fetch(`sites/${file}${cacheBuster}`);
+      const res = await fetch(`live_sites/${file}${cacheBuster}`);
       const data = await res.json();
 
       const card = document.createElement('a');
@@ -127,10 +124,10 @@
       card.className = "block bg-white border border-gray-200 rounded-2xl shadow hover:shadow-lg transition p-6";
 
       card.innerHTML = `
-        <img src="${data.tirImage}" alt="${data.siteName} TIR preview" class="rounded-xl mb-4 w-full h-40 object-cover" />
+        <img src="${data.tir_image_path}" alt="${data.siteName} TIR preview" class="rounded-xl mb-4 w-full h-40 object-cover" />
         <h3 class="text-2xl font-semibold mb-2 text-red-600">${data.siteName}</h3>
-        <p class="text-sm text-gray-600 mb-1"><strong>Site ID:</strong> ${data.siteID}</p>
-        <p class="text-sm text-gray-600"><strong>Location:</strong> ${data.lat}, ${data.long}</p>
+        <p class="text-sm text-gray-600 mb-1"><strong>Status:</strong> ${data.siteStatus}</p>
+        <p class="text-sm text-gray-600"><strong>PFT:</strong> ${data.PFT}</p>
       `;
 
       container.appendChild(card);
@@ -139,6 +136,7 @@
 
   loadSites();
 </script>
+
 
 </body>
 </html>
