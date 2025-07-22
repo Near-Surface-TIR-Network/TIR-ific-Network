@@ -798,6 +798,8 @@ If the instrument was housed in an enclosure with a window (e.g., made of german
       </button>
     </div>
   </form>
+  <div id="formMessage" class="mt-4 text-green-600 font-semibold hidden"></div>
+
 </section>
   
 
@@ -871,17 +873,21 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
+    
+      const messageBox = document.getElementById("formMessage");
+      if (response.ok) {
+        messageBox.textContent = "🎉 Thanks! Your site has been submitted to the TIR-ific Network. Check back in ~15 minutes to see it live.";
+        messageBox.classList.remove("hidden");
+        messageBox.classList.remove("text-red-600");
+        messageBox.classList.add("text-green-600");
+      } else {
+        messageBox.textContent = "⚠️ Something went wrong while submitting the form. Please try again or contact us on our webpage.";
+        messageBox.classList.remove("hidden");
+        messageBox.classList.remove("text-green-600");
+        messageBox.classList.add("text-red-600");
+        console.error(await response.text());
+      }
 
-    if (response.ok) {
-      alert("Form submitted successfully!");
-    } else {
-      alert("Error submitting form.");
-      console.error(await response.text());
-    }
-  } catch (err) {
-    console.error("Submission error:", err);
-    alert("Network error.");
-  }
 });
 
 
