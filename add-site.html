@@ -808,55 +808,57 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
   const form = e.target;
   const formData = new FormData(form);
 
-  // Process images
+  // Convert file to base64
   async function toBase64(file) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onload = () => resolve(reader.result.split(',')[1]); // strip "data:image/jpeg;base64,"
       reader.onerror = reject;
     });
   }
 
+  // Get image files
   const rgbFile = formData.get("rgbImage");
   const tirFile = formData.get("tirImage");
 
   const rgbBase64 = rgbFile && rgbFile.name ? await toBase64(rgbFile) : "";
   const tirBase64 = tirFile && tirFile.name ? await toBase64(tirFile) : "";
 
-  // Convert the rest of the form data to a plain object
+  // Convert remaining form data
   const data = {};
   for (let [key, value] of formData.entries()) {
-    if (data[key]) {
-      if (!Array.isArray(data[key])) data[key] = [data[key]];
-      data[key].push(value);
-    } else {
-      data[key] = value;
+    if (key !== "rgbImage" && key !== "tirImage") {
+      if (data[key]) {
+        if (!Array.isArray(data[key])) data[key] = [data[key]];
+        data[key].push(value);
+      } else {
+        data[key] = value;
+      }
     }
   }
 
+  // Encode form JSON
   const jsonContent = JSON.stringify(data, null, 2);
   const base64Json = btoa(unescape(encodeURIComponent(jsonContent)));
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
 
+  // Build payload for Netlify
   const payload = {
-    event_type: "new-form-submission",
-    client_payload: {
-      filename: `submission-${timestamp}.json`,
-      json: base64Json,
-      image_base64: rgbBase64,
-      image_filename: rgbFile && rgbFile.name ? `RGB-${timestamp}.jpg` : ""
-      // You can add TIR if desired in the same way
-    }
+    filename: `submission-${timestamp}.json`,
+    json: base64Json,
+    image_base64: rgbBase64,
+    image_filename: rgbFile && rgbFile.name ? `RGB-${timestamp}.jpg` : "",
+    tir_image_base64: tirBase64,
+    tir_image_filename: tirFile && tirFile.name ? `TIR-${timestamp}.jpg` : ""
   };
 
   try {
     const response = await fetch("/.netlify/functions/submitForm", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
+      body: JSON.stringify(payload)
     });
-
 
     if (response.ok) {
       alert("Form submitted successfully!");
@@ -869,6 +871,7 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
     alert("Network error.");
   }
 });
+
 
 function toggleROIFields() {
   const hasRois = document.getElementById('has-rois').value;
