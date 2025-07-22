@@ -740,7 +740,24 @@ If the instrument was housed in an enclosure with a window (e.g., made of german
     <option value="T5">T5</option>
   </select>
 </div>
-   
+   <!-- Reference Panel Use Dropdown -->
+<div class="mb-6">
+  <label for="has-ref-panel" class="block font-medium text-sm text-gray-700">Is a reference panel used? <span class="text-red-500">*</span></label>
+  <select id="has-ref-panel" name="has_ref_panel" onchange="toggleRefPanelFields()" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
+    <option value="">-- Select --</option>
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+  </select>
+</div>
+
+<!-- Reference Panel Fields -->
+<div id="ref-panel-fields" style="display: none;">
+  <div id="refPanelContainer" class="space-y-6">
+    <!-- Panel blocks will be inserted here -->
+  </div>
+
+  <button type="button" onclick="addRefPanel()" class="text-blue-600 text-sm mt-2">+ Add Another Reference Panel</button>
+</div>
     <!-- Submit -->
     <div class="text-center">
       <button type="submit" class="mt-4 px-6 py-3 bg-gradient-to-br from-red-600 to-orange-500 text-white font-semibold rounded-full shadow hover:shadow-lg transition">
@@ -752,7 +769,66 @@ If the instrument was housed in an enclosure with a window (e.g., made of german
   
 
 <script>
+function toggleRefPanelFields() {
+  const usePanel = document.getElementById("has-ref-panel").value;
+  const refPanelFields = document.getElementById("ref-panel-fields");
+  const container = document.getElementById("refPanelContainer");
 
+  if (usePanel === "yes") {
+    refPanelFields.style.display = "block";
+    if (container.children.length === 0) {
+      addRefPanel(); // Add initial panel
+    }
+  } else {
+    refPanelFields.style.display = "none";
+    container.innerHTML = ""; // Clear all
+  }
+}
+
+function addRefPanel() {
+  const container = document.getElementById("refPanelContainer");
+  const panelDiv = document.createElement("div");
+  panelDiv.className = "ref-panel border border-gray-300 rounded-md p-4 bg-gray-50";
+  panelDiv.innerHTML = `
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <label>Reference Panel Width (cm)
+        <input type="number" name="ref_panel_width[]" step="0.1" min="0" required class="w-full p-2 border border-gray-300 rounded-md">
+      </label>
+      <label>Reference Panel Height (cm)
+        <input type="number" name="ref_panel_height[]" step="0.1" min="0" required class="w-full p-2 border border-gray-300 rounded-md">
+      </label>
+      <label>Reference Panel Thickness (cm)
+        <input type="number" name="ref_panel_thickness[]" step="0.1" min="0" required class="w-full p-2 border border-gray-300 rounded-md">
+      </label>
+      <label>Material
+        <input type="text" name="ref_panel_material[]" required class="w-full p-2 border border-gray-300 rounded-md">
+      </label>
+      <label>Estimated Emissivity (0–1)
+        <input type="number" name="ref_panel_emissivity[]" step="0.01" min="0" max="1" required class="w-full p-2 border border-gray-300 rounded-md">
+      </label>
+      <label>Distance from Camera (m)
+        <input type="number" name="ref_panel_distance[]" step="0.1" min="0" required class="w-full p-2 border border-gray-300 rounded-md">
+      </label>
+      <label>Panel Positioning Angle (degrees)
+        <input type="number" name="ref_panel_angle[]" step="0.1" min="0" max="180" required class="w-full p-2 border border-gray-300 rounded-md">
+      </label>
+      <label>Independent Contact Measurement Embedded?
+        <select name="ref_panel_independent_contact[]" required class="w-full p-2 border border-gray-300 rounded-md">
+          <option value="">-- Select --</option>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </label>
+      <label>Measurement Interval (minutes)
+        <input type="number" name="ref_interval[]" min="1" step="1" required class="w-full p-2 border border-gray-300 rounded-md">
+      </label>
+    </div>
+    <div class="text-right mt-2">
+      <button type="button" onclick="this.closest('.ref-panel').remove()" class="text-red-600 text-xs underline">Remove</button>
+    </div>
+  `;
+  container.appendChild(panelDiv);
+}
   function toggleSoftwareDefaults() {
   const value = document.getElementById("softwareOverride").value;
   const defaultsDiv = document.getElementById("software-defaults");
