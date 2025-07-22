@@ -848,21 +848,34 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
       }
     }
   }
+  const siteID = data.siteID || "unknown-site";
+  // Get timestamp now, since it's reused
+  const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+  
+  // Get uploaded files from the form
+  const rgbFile = formData.get("rgb_image");
+  const tirFile = formData.get("tir_image");
+  
+  // Extract original file extensions
+  const rgbExt = rgbFile.name.split('.').pop().toLowerCase();
+  const tirExt = tirFile.name.split('.').pop().toLowerCase();
+  
+  // Build filenames using those extensions
+  const rgbFilename = `rgb-${siteID}-${timestamp}.${rgbExt}`;
+  const tirFilename = `tir-${siteID}-${timestamp}.${tirExt}`;
+  
+  // Add the paths to the data object
+  data.rgb_image_path = `site-images/${rgbFilename}`;
+  data.tir_image_path = `site-images/${tirFilename}`;
 
   // Encode form JSON
   const jsonContent = JSON.stringify(data, null, 2);
   const base64Json = btoa(unescape(encodeURIComponent(jsonContent)));
-  const siteID = data.siteID || "unknown-site";
-  // Get timestamp now, since it's reused
-  const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
   const filename = `${siteID}-${timestamp}.json`;
   
   // Get files from input elements
   const rgbFile = document.getElementById("rgb-image").files[0];
   const tirFile = document.getElementById("tir-image").files[0];
-  
-  data.rgb_image_path = `site-images/${rgbFile}`;
-  data.tir_image_path = `site-images/${tirFile}`;
   
   let rgbBase64 = "";
   let tirBase64 = "";
@@ -871,12 +884,12 @@ document.getElementById("addSiteForm").addEventListener("submit", async function
   
   if (rgbFile) {
     rgbBase64 = await toBase64(rgbFile);
-    rgbFilename = `RGB-${siteID}-${timestamp}.${rgbFile.name.split('.').pop()}`;
+    rgbFilename = `rgb-${siteID}-${timestamp}.${rgbFile.name.split('.').pop()}`;
   }
   
   if (tirFile) {
     tirBase64 = await toBase64(tirFile);
-    tirFilename = `TIR-${siteID}-${timestamp}.${tirFile.name.split('.').pop()}`;
+    tirFilename = `tir-${siteID}-${timestamp}.${tirFile.name.split('.').pop()}`;
   }
 
   // Build payload for Netlify
