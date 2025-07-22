@@ -40,14 +40,13 @@
     <!-- Add Site Dropdown -->
     <div class="relative dropdown-container">
       <button onclick="toggleDropdown('addSiteMenu')" class="hover:underline flex items-center gap-1 focus:outline-none">
-        Add Site
+        Contribute
         <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
           <path d="M5.5 7l4.5 4.5L14.5 7z" />
         </svg>
       </button>
       <div id="addSiteMenu" class="dropdown-menu absolute left-0 mt-2 bg-white text-gray-900 rounded-md shadow-lg w-48 hidden z-50">
         <a href="add-site.html" class="block px-4 py-2 hover:bg-gray-100">New Site Form</a>
-        <a href="update-site.html" class="block px-4 py-2 hover:bg-gray-100">Update Site Form</a>
       </div>
     </div>
     <!-- How To Dropdown -->
@@ -106,36 +105,52 @@
 <script>
   async function loadSiteDetails() {
     const params = new URLSearchParams(window.location.search);
-    const file = params.get('site');  // e.g., harv_test.json
+    const file = params.get('site');
     if (!file) return;
 
-    const cacheBuster = `?cb=${Date.now()}`; // Add a unique timestamp
-
-    const res = await fetch(`sites/${file}${cacheBuster}`);
+    const cacheBuster = `?cb=${Date.now()}`;
+    const res = await fetch(`live_sites/${file}${cacheBuster}`);
     const data = await res.json();
 
     const container = document.getElementById('site-details');
-    container.innerHTML = `
+
+    const tirImageURL = `site-images/processed/${data.siteID}_TIR_preview.png`;
+    const rgbImageURL = data.rgb_image_path || 'fallback_rgb.png';
+
+    // Start building HTML
+    let html = `
       <div class="flex flex-col md:flex-row gap-4 mb-6">
-        <img src="${data.tirImage}?cb=${Date.now()}" alt="${data.siteName} TIR image" class="w-full md:w-1/2 rounded-xl shadow-md object-cover" />
-        <img src="${data.rgbImage}" alt="${data.siteName} RGB image" class="w-full md:w-1/2 rounded-xl shadow-md object-cover" />
+        <img src="${tirImageURL}" alt="${data.siteName} TIR preview" class="w-full md:w-1/2 rounded-xl shadow-md object-cover" />
+        <img src="${rgbImageURL}" alt="${data.siteName} RGB image" class="w-full md:w-1/2 rounded-xl shadow-md object-cover" />
       </div>
-    
-      <h1 class="text-4xl font-bold mb-4">${data.siteName}</h1>
-      <p class="text-gray-600 mb-6">${data.siteID}</p>
+
+      <h1 class="text-4xl font-bold mb-4 text-red-600">${data.siteName}</h1>
+      <p class="text-gray-700 mb-2 text-sm font-semibold">${data.siteStatus?.toUpperCase() || 'UNKNOWN STATUS'}</p>
+      <p class="text-gray-600 mb-6 italic">PFT: ${data.PFT || 'N/A'}</p>
+
       <ul class="text-sm leading-relaxed space-y-2">
-        <li><strong>Start Date:</strong> ${data.startDate}</li>
-        <li><strong>End Date:</strong> ${data.endDate || 'Ongoing'}</li>
-        <li><strong>Latitude / Longitude:</strong> ${data.lat}, ${data.long}</li>
-        <li><strong>Elevation:</strong> ${data.elev} m</li>
-        <li><strong>Mean Annual Temp:</strong> ${data.MAT_site} °C</li>
-        <li><strong>Mean Annual Precip:</strong> ${data.MAP_site} cm</li>
-        <li><strong>Instrument:</strong> ${data.instrument_descrip}</li>
-        <li><strong>Species:</strong> ${data.dominant_species}</li>
-        <li><strong>IGBP:</strong> ${data.landcover_igbp}</li>
-        <li><strong>CLM PFT:</strong> ${data.CLM_PFT}</li>
-      </ul>
     `;
+
+    // Dynamically show all key-value pairs in a readable format
+    for (const [key, value] of Object.entries(data)) {
+      if (["siteID", "siteName", "tir_image_path", "rgb_image_path"].includes(key)) continue;
+
+      const formattedKey = key
+        .replace(/_/g, " ")
+        .replace(/\[\]/g, "")
+        .replace(/\b\w/g, (l) => l.toUpperCase()); // Capitalize
+
+      const displayValue = Array.isArray(value)
+        ? value.join(", ")
+        : value === "" ? "N/A" : value;
+
+      html += `<li><strong>${formattedKey}:</strong> ${displayValue}</li>`;
+    }
+
+    html += `</ul>`;
+
+    container.innerHTML = html;
+
     loadMiniMap(data.lat, data.long);
   }
 
