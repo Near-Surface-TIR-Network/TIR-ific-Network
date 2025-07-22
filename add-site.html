@@ -992,7 +992,7 @@ function addROI() {
         </label>
         <input type="text" name="roi_id[]" required pattern="[A-Za-z0-9_\\-]+" title="No special characters. Use letters, numbers, _ or - only." class="w-full border border-gray-300 p-1 rounded" />
         <p id="roi-help-${roiIndex}" class="text-sm text-gray-600 hidden">
-          Provide a short, unique identifier for your site. Avoid special characters. Example: <strong>Fir_1</strong>
+          Provide a short, unique identifier for your site. Avoid special characters. Example: Fir_1
         </p>
       </div>
 
@@ -1080,7 +1080,7 @@ function addRefPanel() {
           ID <span class="text-red-500">*</span>
           <button type="button" onclick="toggleHelp(this, 'help-id-${panelIndex}')" class="text-blue-500 text-xs">[?]</button>
         </label>
-        <input type="number" name="ref_panel_id[]" step="1" min="0" required class="w-full border border-gray-300 p-1 rounded" />
+        <input type="text" name="ref_panel_id[]" required pattern="[A-Za-z0-9_\\-]+" title="No special characters. Use letters, numbers, _ or - only."
         <p id="help-id-${panelIndex}" class="text-sm text-gray-600 hidden">
           Unique identifier for the panel. Useful for keeping track if you are using multiple reference panels.
         </p>
