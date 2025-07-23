@@ -102,7 +102,14 @@
   <!-- SITE INFO CONTAINER -->
   <div id="site-details" class="max-w-3xl mx-auto bg-white p-8 rounded-3xl shadow-lg">
     <p>Loading site information...</p>
+    <div class="mt-6">
+      <button id="download-csv" class="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded">
+        Download Site Details (CSV)
+      </button>
+    </div>
+
   </div>
+  
 <script>
 
 // Cleaned-up site page with sections and dropdowns for all form entries
@@ -321,7 +328,39 @@ html += `</div></details>`;
 
 
   container.innerHTML = html;
+
+  document.getElementById("download-csv").addEventListener("click", () => {
+  const flattened = flattenObject(data);
+  const csvContent = convertToCSV(flattened);
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.setAttribute("href", url);
+  link.setAttribute("download", `${data.siteID || 'site'}_details.csv`);
+  link.style.visibility = 'hidden';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+});
+
   loadMiniMap(data.lat, data.long);
+}
+function flattenObject(obj, parentKey = '', res = {}) {
+  for (const key in obj) {
+    const propName = parentKey ? `${parentKey}.${key}` : key;
+    if (typeof obj[key] === 'object' && obj[key] !== null && !Array.isArray(obj[key])) {
+      flattenObject(obj[key], propName, res);
+    } else {
+      res[propName] = Array.isArray(obj[key]) ? obj[key].join('; ') : obj[key];
+    }
+  }
+  return res;
+}
+
+function convertToCSV(obj) {
+  const headers = Object.keys(obj).join(',');
+  const values = Object.values(obj).map(v => `"${String(v).replace(/"/g, '""')}"`).join(',');
+  return headers + '\n' + values;
 }
 
 function formatPFT(pftCode) {
