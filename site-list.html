@@ -184,7 +184,6 @@ async function loadSiteTable() {
   }
 
   allSites = rows.sort((a, b) => a.siteID.localeCompare(b.siteID));
-  populateSensorOptions(allSites);
   renderSiteTable(allSites);
 }
 
