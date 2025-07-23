@@ -108,50 +108,44 @@
   <h2 class="text-2xl font-bold text-red-600 mb-4">Contact Us</h2>
 
   <div id="form-wrapper" class="space-y-4">
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-          id="contact-form" class="space-y-4">
-      <input type="hidden" name="form-name" value="contact" />
-      <p hidden>
-        <label>Don’t fill this out: <input name="bot-field" /></label>
-      </p>
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="contact" />
+  
+  <!-- honeypot field (hidden to users) -->
+  <p hidden>
+    <label>Don’t fill this out: <input name="bot-field" /></label>
+  </p>
 
-      <div>
-        <label for="subject" class="block font-semibold mb-1">Subject</label>
-        <select id="subject" name="subject" class="w-full border border-gray-300 rounded-md p-2" required>
-          <option value="">-- Select a Subject --</option>
-          <option value="general">General Inquiry</option>
-          <option value="site-correction">Site Correction</option>
-          <option value="tir-paper">TIR Paper</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
+  <!-- Subject -->
+  <label>Subject
+    <select name="subject" required>
+      <option value="">-- Select a Subject --</option>
+      <option value="general">General Inquiry</option>
+      <option value="site-correction">Site Correction</option>
+      <option value="tir-paper">TIR Paper</option>
+      <option value="other">Other</option>
+    </select>
+  </label>
 
-      <div>
-        <label for="name" class="block font-semibold mb-1">Your Name</label>
-        <input type="text" id="name" name="name"
-               class="w-full border border-gray-300 rounded-md p-2" required />
-      </div>
+  <!-- Name -->
+  <label>Your Name
+    <input type="text" name="name" required />
+  </label>
 
-      <div>
-        <label for="email" class="block font-semibold mb-1">Email Address</label>
-        <input type="email" id="email" name="email"
-               class="w-full border border-gray-300 rounded-md p-2" required />
-      </div>
+  <!-- Email -->
+  <label>Email Address
+    <input type="email" name="email" required />
+  </label>
 
-      <div>
-        <label for="message" class="block font-semibold mb-1">Message (max 300 words)</label>
-        <textarea id="message" name="message" rows="6" maxlength="3000"
-                  class="w-full border border-gray-300 rounded-md p-2" required></textarea>
-        <p id="word-count" class="text-sm text-gray-500 mt-1">0 / 300 words</p>
-      </div>
+  <!-- Message -->
+  <label>Message (max 300 words)
+    <textarea name="message" rows="6" maxlength="3000" required></textarea>
+  </label>
 
-      <div class="flex justify-end">
-        <button type="submit"
-                class="px-6 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition">
-          Submit
-        </button>
-      </div>
-    </form>
+  <!-- Submit -->
+  <button type="submit">Submit</button>
+</form>
+
 
     <!-- Success Message -->
     <div id="success-message" class="hidden text-green-600 font-semibold mt-4">
