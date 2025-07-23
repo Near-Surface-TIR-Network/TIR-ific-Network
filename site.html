@@ -167,10 +167,10 @@ async function loadSiteDetails() {
         <summary class="font-semibold cursor-pointer text-red-700">Site Contacts</summary>
         <ul class="text-sm mt-2 space-y-1">
     `;
-    const contactCount = Math.max(data["contactName[]"]?.length || 0, data["contactEmail[]"]?.length || 0);
+    const contactCount = Math.max(data["contactName[]"].length || 0, data["contactEmail[]"].length || 0);
     for (let i = 0; i < contactCount; i++) {
-      const name = data["contactName[]"]?.[i] || 'N/A';
-      const email = data["contactEmail[]"]?.[i] || 'N/A';
+      const name = data["contactName[]"][i] || 'N/A';
+      const email = data["contactEmail[]"][i] || 'N/A';
       html += `<li><strong>${name}:</strong> <a href="mailto:${email}" class="text-blue-600 underline">${email}</a></li>`;
     }
     html += '</ul></details>';
