@@ -261,14 +261,15 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   </div>
 
-      <!-- Status Type Filter -->
+    <!-- Status Type Filter -->
     <div>
       <label for="statusFilter" class="mr-2 font-medium">Site Status:</label>
-      <select id="statusFilter" class="border border-gray-300 rounded p-2"></select>
+      <select id="statusFilter" class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-full">
         <option value="">All Sites</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
       </select>
     </div>
-  </div>
 
   <div class="overflow-x-auto">
     <table class="min-w-full bg-white border border-gray-300 text-sm rounded-xl overflow-hidden shadow-md" id="siteTable">
@@ -281,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <th class="p-3 border-b">PFT</th>
           <th class="p-3 border-b">Sensor Type</th>
           <th class="p-3 border-b">Site Status</th>
-          <th class="p-3 border-b">Link</th>
+          <th class="p-3 border-b">Site Details</th>
         </tr>
       </thead>
       <tbody id="siteTableBody"></tbody>
