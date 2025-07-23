@@ -1076,16 +1076,24 @@ function addRefPanel() {
   panel.innerHTML = `
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <!-- ID with help -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700">
-          ID <span class="text-red-500">*</span>
-          <button type="button" onclick="toggleHelp(this, 'help-id-${panelIndex}')" class="text-blue-500 text-xs">[?]</button>
-        </label>
-        <input type="text" name="ref_panel_id[]" required pattern="[A-Za-z0-9_\\-]+" title="No special characters. Use letters, numbers, _ or - only."
-        <p id="help-id-${panelIndex}" class="text-sm text-gray-600 hidden">
-          Unique identifier for the panel. Useful for keeping track if you are using multiple reference panels.
-        </p>
-      </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">
+        ID <span class="text-red-500">*</span>
+        <button type="button" onclick="toggleHelp(this, 'help-id-${panelIndex}')" class="text-blue-500 text-xs">[?]</button>
+      </label>
+      <input
+        type="text"
+        name="ref_panel_id[]"
+        required
+        pattern="[A-Za-z0-9_\-]+"
+        title="No special characters. Use letters, numbers, _ or - only."
+        class="w-full border border-gray-300 rounded-md p-2 mt-1"
+      />
+      <p id="help-id-${panelIndex}" class="text-sm text-gray-600 hidden">
+        Unique identifier for the panel. Useful for keeping track if you are using multiple reference panels.
+      </p>
+    </div>
+
 
       <label>Width (cm): <span class="text-red-500">*</span><input type="number" name="ref_panel_width[]" step="0.1" min="0" required class="w-full border border-gray-300 p-1 rounded" /></label>
       <label>Height (cm): <span class="text-red-500">*</span><input type="number" name="ref_panel_height[]" step="0.1" min="0" required class="w-full border border-gray-300 p-1 rounded" /></label>
