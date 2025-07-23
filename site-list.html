@@ -143,6 +143,7 @@ function renderSiteTable(data) {
       <td class="p-3">${site.elev}</td>
       <td class="p-3">${site.PFT}</td>
       <td class="p-3">${site.sensor}</td>
+      <td class="p-3">${site.siteStatus}</td>
       <td class="p-3">
         <a href="site.html?site=${site.file}" class="text-blue-600 underline">View</a>
       </td>
@@ -180,6 +181,7 @@ async function loadSiteTable() {
       elev: site.elev,
       PFT: PFT_LOOKUP[site.PFT] || "Unknown",
       sensor: site.instrument_type || "—",
+      status: site.siteStatus,
       file
     });
   }
@@ -237,6 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <th class="p-3 border-b">Elevation (m)</th>
           <th class="p-3 border-b">PFT</th>
           <th class="p-3 border-b">Sensor Type</th>
+          <th class="p-3 border-b">Status</th>
           <th class="p-3 border-b">Link</th>
         </tr>
       </thead>
