@@ -133,7 +133,7 @@ function populateSensorOptions() {
   });
 }
   
-const STATUS_TYPES = ["active", "inactive", "planned"];
+const STATUS_TYPES = ["active", "inactive"];
 
 function populateStatusOptions() {
   const statusFilter = document.getElementById("statusFilter");
@@ -168,7 +168,7 @@ function renderSiteTable(data) {
       <td class="p-3">${site.elev}</td>
       <td class="p-3">${site.PFT}</td>
       <td class="p-3">${site.sensor}</td>
-      <td class="p-3">${site.status}</td>
+      <td class="p-3">${capitalize(site.status)}</td>
       <td class="p-3">
         <a href="site.html?site=${site.file}" class="text-blue-600 underline">View</a>
       </td>
@@ -179,15 +179,18 @@ function renderSiteTable(data) {
 function applyFilters() {
   const pftValue = document.getElementById("pftFilter").value;
   const sensorValue = document.getElementById("sensorFilter").value;
+  const statusValue = document.getElementById("statusFilter").value;
 
   const filtered = allSites.filter(site => {
     const matchesPFT = !pftValue || site.PFT === pftValue;
     const matchesSensor = !sensorValue || site.sensor === sensorValue;
-    return matchesPFT && matchesSensor;
+    const matchesStatus = !statusValue || site.status === statusValue;
+    return matchesPFT && matchesSensor && matchesStatus;
   });
 
   renderSiteTable(filtered);
 }
+
 
 async function loadSiteTable() {
   const cacheBuster = `?cb=${Date.now()}`;
@@ -258,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   </div>
 
-      <!-- Sensor Type Filter -->
+      <!-- Status Type Filter -->
     <div>
       <label for="statusFilter" class="mr-2 font-medium">Site Status:</label>
       <select id="statusFilter" class="border border-gray-300 rounded p-2"></select>
@@ -277,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <th class="p-3 border-b">Elevation (m)</th>
           <th class="p-3 border-b">PFT</th>
           <th class="p-3 border-b">Sensor Type</th>
-          <th class="p-3 border-b">Status</th>
+          <th class="p-3 border-b">Site Status</th>
           <th class="p-3 border-b">Link</th>
         </tr>
       </thead>
