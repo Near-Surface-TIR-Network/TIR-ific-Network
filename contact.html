@@ -148,15 +148,15 @@
 </section>
 
 <script>
-// Word count check
-document.getElementById("message").addEventListener("input", function () {
-  const text = this.value.trim();
-  const words = text === "" ? 0 : text.split(/\s+/).length;
-  document.getElementById("word-count").textContent = `${words} / 300 words`;
+  const textarea = document.getElementById('message');
+  const countDisplay = document.getElementById('word-count');
 
-  this.setCustomValidity(words > 300 ? "Message cannot exceed 300 words." : "");
-});
+  textarea.addEventListener('input', () => {
+    const words = textarea.value.trim().split(/\s+/).filter(w => w.length > 0);
+    countDisplay.textContent = `${words.length} / 300 words`;
+  });
 </script>
+
 
 
     <!-- FOOTER -->
