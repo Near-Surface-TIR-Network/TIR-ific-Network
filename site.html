@@ -252,7 +252,7 @@ const maxPanels = Math.max(...panelData.map(arr => arr.length));
 if (maxPanels > 0) {
   html += `
     <details class="mb-4 border rounded-lg p-4 bg-gray-50">
-      <summary class="font-semibold cursor-pointer text-red-700">Reference Panels</summary>
+      <summary class="font-semibold cursor-pointer text-red-700">Reference Panel(s)</summary>
       <ul class="text-sm mt-2 space-y-4">
   `;
 
@@ -265,9 +265,46 @@ if (maxPanels > 0) {
     html += `<li><strong>Material:</strong> ${panelData[4][i] || 'N/A'}</li>`;
     html += `<li><strong>Emissivity:</strong> ${panelData[5][i] || 'N/A'}</li>`;
     html += `<li><strong>Distance from Camera:</strong> ${panelData[6][i] || 'N/A'} m</li>`;
-    html += `<li><strong>Angle from Horizontal:</strong> ${panelData[7][i] || 'N/A'}°</li>`;
-    html += `<li><strong>Independent Contact:</strong> ${panelData[8][i] || 'N/A'}</li>`;
+    html += `<li><strong>Angle from Horizontal Plane:</strong> ${panelData[7][i] || 'N/A'}°</li>`;
+    html += `<li><strong>Independent Contact Measurements:</strong> ${panelData[8][i] || 'N/A'}</li>`;
     html += `<li><strong>Measurement Interval:</strong> ${panelData[9][i] || 'N/A'} minutes</li>`;
+    html += `</ul></li>`;
+  }
+
+  html += `</ul></details>`;
+}
+
+// ROI section
+const roiFields = [
+  "roi_id[]",
+  "roi_species_common[]",
+  "roi_species_scientific[]",
+  "roi_emissivity[]",
+  "roi_distance[]"
+];
+
+// Normalize ROI data to arrays
+const roiData = roiFields.map(field => {
+  const val = data[field];
+  if (Array.isArray(val)) return val;
+  if (typeof val === 'string' && val.includes(',')) return val.split(',').map(v => v.trim());
+  return val !== undefined ? [val] : [];
+});
+
+const maxROIs = Math.max(...roiData.map(arr => arr.length));
+
+if (maxROIs > 0) {
+  html += `
+    <details class="mb-4 border rounded-lg p-4 bg-gray-50">
+      <summary class="font-semibold cursor-pointer text-red-700">Region(s) of Interest (ROIs)</summary>
+      <ul class="text-sm mt-2 space-y-4">
+  `;
+
+  for (let i = 0; i < maxROIs; i++) {
+    html += `<li><strong>ROI ${roiData[0][i] || i + 1}</strong><ul class="ml-4 list-disc">`;
+    html += `<li><strong>Species:</strong> ${roiData[1][i] || 'N/A'} (<em>${roiData[2][i] || 'N/A'}</em>)</li>`;
+    html += `<li><strong>Emissivity:</strong> ${roiData[3][i] || 'N/A'}</li>`;
+    html += `<li><strong>Distance from Camera:</strong> ${roiData[4][i] || 'N/A'} m</li>`;
     html += `</ul></li>`;
   }
 
