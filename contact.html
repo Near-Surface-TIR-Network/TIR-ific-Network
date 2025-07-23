@@ -153,7 +153,7 @@
       </div>
     </form>
 
-    <!-- ✅ Success Message -->
+    <!-- Success Message -->
     <div id="success-message" class="hidden text-green-600 font-semibold mt-4">
       Thank you for your message! We'll get back to you soon.
     </div>
@@ -173,11 +173,15 @@
   document.getElementById('contact-form').addEventListener('submit', function (e) {
     e.preventDefault();
     const form = e.target;
-    const data = new FormData(form);
+    
+    // Add the hidden form-name manually to the FormData (important!)
+    const formData = new FormData(form);
+    formData.append('form-name', 'contact'); // ensure name matches Netlify form name
+
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(data).toString()
+      body: new URLSearchParams(formData).toString()
     })
     .then(() => {
       form.reset();
