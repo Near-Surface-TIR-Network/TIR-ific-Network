@@ -127,7 +127,7 @@ function populateSensorOptions() {
   const sensorFilter = document.getElementById("sensorFilter");
   SENSOR_TYPES.forEach(type => {
     const option = document.createElement("option");
-    option.value = type;
+    option.textContent = type;
     sensorFilter.appendChild(option);
   });
 }
