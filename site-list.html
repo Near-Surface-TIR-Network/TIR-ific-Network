@@ -109,7 +109,7 @@ let allSites = [];
   
 function populatePFTOptions() {
   const pftFilter = document.getElementById("pftFilter");
-  for (const key of Object.keys(PFT_LOOKUP).sort((a, b) => PFT_LOOKUP[a].localeCompare(PFT_LOOKUP[b]))) {
+  for (const key of Object.keys(PFT_LOOKUP) {
     const option = document.createElement("option");
     option.value = PFT_LOOKUP[key];
     option.textContent = PFT_LOOKUP[key];
@@ -162,12 +162,13 @@ function applyFilters() {
 }
 
 async function loadSiteTable() {
-  const res = await fetch(`live_sites/index.json?cb=${Date.now()}`);
+  const cacheBuster = `?cb=${Date.now()}`;
+  const res = await fetch(`live_sites/index.json${cacheBuster}`);
   const files = await res.json();
   const rows = [];
 
   for (const file of files) {
-    const siteRes = await fetch(`live_sites/${file}`);
+    const siteRes = await fetch(`live_sites/${file}${cacheBuster}`);
     const site = await siteRes.json();
 
     rows.push({
