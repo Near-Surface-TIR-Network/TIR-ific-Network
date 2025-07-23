@@ -106,6 +106,7 @@
   <div class="mb-8">
     <h3 class="text-xl font-semibold mb-2">Jump to a Tier Table:</h3>
     <ul class="list-disc list-inside text-red-600">
+      <li><a href="#testing" class="underline hover:text-red-800">Pre-Deployment Testing</a></li>
       <li><a href="#deployment" class="underline hover:text-red-800">Deployment & Mounting</a></li>
       <li><a href="#roi" class="underline hover:text-red-800">Field of View & ROI</a></li>
       <li><a href="#processing" class="underline hover:text-red-800">Data Processing & Correction</a></li>
@@ -114,15 +115,50 @@
   </div>
 
   <!-- Tier Tables -->
-  <div id="deployment" class="mb-12">
-    <h4 class="text-2xl font-bold mb-2">Deployment & Mounting</h4>
-    <!-- Paste Table HTML Here -->
-    <div class="overflow-x-auto">
-      <table class="min-w-full border border-gray-300 text-sm">
-        <!-- Table Content from Paper -->
-      </table>
-    </div>
+<div id="testing" class="mb-12">
+  <h4 class="text-2xl font-bold mb-2">Pre-Deployment Testing</h4>
+  <p class="text-gray-700 mb-4">
+    Recommended Best Practice: <strong>Tier 1</strong><br>
+  </p>
+
+  <div class="overflow-x-auto">
+    <table class="min-w-full border border-gray-300 text-sm table-auto">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="border px-4 py-2 text-left">Tier</th>
+          <th class="border px-4 py-2 text-left">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border px-4 py-2">Tier 1</td>
+          <td class="border px-4 py-2">Blackbody testing at 3 different room temperatures.</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Tier 2</td>
+          <td class="border px-4 py-2">Blackbody testing at 1 room temperature.</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Tier 3</td>
+          <td class="border px-4 py-2">Waterbath testing at 3 different room temperatures.</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Tier 4</td>
+          <td class="border px-4 py-2">Waterbath testing at 1 room temperature.</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Tier 5</td>
+          <td class="border px-4 py-2">No prior testing done.</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
+  <p class="text-xs text-gray-500 mt-2 italic">
+    Table 1. Tiers for testing performed prior to deployment.
+  </p>
+</div>
+
 
   <div id="roi" class="mb-12">
     <h4 class="text-2xl font-bold mb-2">Field of View & ROI</h4>
