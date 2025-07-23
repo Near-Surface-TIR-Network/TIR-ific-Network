@@ -110,6 +110,8 @@
       <li><a href="#corrections" class="underline hover:text-red-800">Correction Measurements</a></li>
       <li><a href="#contact-veg" class="underline hover:text-red-800">Contact Vegetation Measurements</a></li>
       <li><a href="#reference-panel" class="underline hover:text-red-800">Reference Panel</a></li>
+      <li><a href="#non-contact" class="underline hover:text-red-800">Non-Contact Measurement</a></li>
+      <li><a href="#interpretation" class="underline hover:text-red-800">Interpretation (RGB Imaging)</a></li>
     </ul>
   </div>
 
@@ -157,38 +159,6 @@
     Table 1. Tiers for testing performed prior to deployment.
   </p>
 </div>
-
-
-  <div id="roi" class="mb-12">
-    <h4 class="text-2xl font-bold mb-2">Field of View & ROI</h4>
-    <!-- Paste Table HTML Here -->
-    <div class="overflow-x-auto">
-      <table class="min-w-full border border-gray-300 text-sm">
-        <!-- Table Content from Paper -->
-      </table>
-    </div>
-  </div>
-
-  <div id="processing" class="mb-12">
-    <h4 class="text-2xl font-bold mb-2">Data Processing & Correction</h4>
-    <!-- Paste Table HTML Here -->
-    <div class="overflow-x-auto">
-      <table class="min-w-full border border-gray-300 text-sm">
-        <!-- Table Content from Paper -->
-      </table>
-    </div>
-  </div>
-
-  <div id="reporting" class="mb-12">
-    <h4 class="text-2xl font-bold mb-2">Metadata & Reporting</h4>
-    <!-- Paste Table HTML Here -->
-    <div class="overflow-x-auto">
-      <table class="min-w-full border border-gray-300 text-sm">
-        <!-- Table Content from Paper -->
-      </table>
-    </div>
-  </div>
-</section>
 
 <div id="corrections" class="mb-12">
   <h4 class="text-2xl font-bold mb-2">Correction Measurements</h4>
@@ -322,6 +292,92 @@
   </p>
 </div>
 
+  <div id="non-contact" class="mb-12">
+  <h4 class="text-2xl font-bold mb-2">Non-Contact Measurement of Reference Panel</h4>
+  <p class="text-gray-700 mb-4">
+    Recommended Best Practice: <strong>Tier 1</strong><br>
+  </p>
+
+  <div class="overflow-x-auto">
+    <table class="min-w-full border border-gray-300 text-sm table-auto">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="border px-4 py-2 text-left">Tier</th>
+          <th class="border px-4 py-2 text-left">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border px-4 py-2">Tier 1</td>
+          <td class="border px-4 py-2">Non-contact measurement co-located (within 1 m) and concurrent (within 10 minutes).</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Tier 2</td>
+          <td class="border px-4 py-2">Non-contact measurement mismatched in either space (&gt;1 m) or time (&gt;10 minutes).</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Tier 3</td>
+          <td class="border px-4 py-2">Non-contact measurement mismatched in both space (&gt;1 m) and time (&gt;10 minutes).</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Tier 4</td>
+          <td class="border px-4 py-2">No non-contact measurements used.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="text-xs text-gray-500 mt-2 italic">
+    Table 5. Tiers for non-contact measurement of reference panel.
+  </p>
+</div>
+
+    <div id="interpretation" class="mb-12">
+  <h4 class="text-2xl font-bold mb-2">Interpretation Measurements (RGB Imaging)</h4>
+  <p class="text-gray-700 mb-4">
+    Recommended Best Practice: <strong>Tier 1</strong><br>
+  </p>
+
+  <div class="overflow-x-auto">
+    <table class="min-w-full border border-gray-300 text-sm table-auto">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="border px-4 py-2 text-left">Tier</th>
+          <th class="border px-4 py-2 text-left">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border px-4 py-2">Tier 1</td>
+          <td class="border px-4 py-2">RGB camera co-located (within 1 m) and concurrent (within 10 minutes).</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Tier 2</td>
+          <td class="border px-4 py-2">RGB camera mismatched in either space (&gt;1 m) or time (&gt;10 minutes).</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Tier 3</td>
+          <td class="border px-4 py-2">RGB camera mismatched in both space (&gt;1 m) and time (&gt;10 minutes).</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Tier 4</td>
+          <td class="border px-4 py-2">Single RGB image obtained.</td>
+        </tr>
+        <tr>
+          <td class="border px-4 py-2">Tier 5</td>
+          <td class="border px-4 py-2">No RGB image obtained.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="text-xs text-gray-500 mt-2 italic">
+    Table 6. Tiers for interpretation measurements.
+  </p>
+</div>
+
+
+</section>
     <!-- FOOTER -->
   <footer class="bg-gray-200 text-sm text-center p-4 mt-12">
     © 2025 TIR-ific Network. All rights reserved.<br />
