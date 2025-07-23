@@ -205,14 +205,14 @@ async function loadSiteDetails() {
   html += `
     <details class="mb-4 border rounded-lg p-4 bg-gray-50">
       <summary class="font-semibold cursor-pointer text-red-700">Tier Assignments</summary>
-      <p class="text-sm italic mb-2">See <a href="tier-tables.html" target="_blank" class="text-blue-600 underline">tier definitions</a> for details.</p>
+      <p class="text-sm italic mb-2">See <a href="tier-tables.html" target="_blank" class="text-blue-600 underline">Tier Tables</a> for details.</p>
       <ul class="text-sm mt-2 space-y-1">
-        <li><strong>Pre-Deployment Testing Tier:</strong> ${data.pd_tier || 'N/A'}</li>
-        <li><strong>Correction Measurements Tier:</strong> ${data.corrM_tier || 'N/A'}</li>
-        <li><strong>Contact Vegetation Measurements Tier:</strong> ${data.conM_tier || 'N/A'}</li>
-        <li><strong>Reference Panel Tier:</strong> ${data.rp_tier || 'N/A'}</li>
-        <li><strong>Non-Contact Measurements Tier:</strong> ${data.nonconM_tier || 'N/A'}</li>
-        <li><strong>Interpretation Measurements Tier:</strong> ${data.interM_tier || 'N/A'}</li>
+        <li><strong>Pre-Deployment Testing:</strong> ${data.pd_tier || 'N/A'}</li>
+        <li><strong>Correction Measurements:</strong> ${data.corrM_tier || 'N/A'}</li>
+        <li><strong>Contact Vegetation Measurements:</strong> ${data.conM_tier || 'N/A'}</li>
+        <li><strong>Reference Panel:</strong> ${data.rp_tier || 'N/A'}</li>
+        <li><strong>Non-Contact Measurements:</strong> ${data.nonconM_tier || 'N/A'}</li>
+        <li><strong>Interpretation Measurements:</strong> ${data.interM_tier || 'N/A'}</li>
       </ul>
     </details>
   `;
