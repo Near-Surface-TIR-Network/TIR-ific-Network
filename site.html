@@ -170,7 +170,7 @@ async function loadSiteDetails() {
   if (contactNames.length || contactEmails.length) {
     html += `
       <details class="mb-4 border rounded-lg p-4 bg-gray-50">
-        <summary class="font-semibold cursor-pointer text-red-700">Site Contacts</summary>
+        <summary class="font-semibold cursor-pointer text-red-700">Site Contact(s)</summary>
         <ul class="text-sm mt-2 space-y-1">
     `;
     const contactCount = Math.max(contactNames.length, contactEmails.length);
@@ -208,7 +208,7 @@ async function loadSiteDetails() {
     </details>
   `;
 
-    // Tier Info section
+  // Tier Info section
   html += `
     <details class="mb-4 border rounded-lg p-4 bg-gray-50">
       <summary class="font-semibold cursor-pointer text-red-700">Tier Assignments</summary>
@@ -223,6 +223,57 @@ async function loadSiteDetails() {
       </ul>
     </details>
   `;
+
+  // Reference Panel section
+const panelFields = [
+  "ref_panel_id[]",
+  "ref_panel_width[]",
+  "ref_panel_height[]",
+  "ref_panel_thickness[]",
+  "ref_panel_material[]",
+  "ref_panel_emissivity[]",
+  "ref_panel_distance[]",
+  "ref_panel_angle[]",
+  "ref_panel_independent_contact[]",
+  "ref_interval[]"
+];
+
+// Convert each field to array form for uniform processing
+const panelData = panelFields.map(field => {
+  const val = data[field];
+  if (Array.isArray(val)) return val;
+  if (typeof val === 'string' && val.includes(',')) return val.split(',').map(v => v.trim());
+  return val !== undefined ? [val] : [];
+});
+
+// Get max number of entries among all fields
+const maxPanels = Math.max(...panelData.map(arr => arr.length));
+
+if (maxPanels > 0) {
+  html += `
+    <details class="mb-4 border rounded-lg p-4 bg-gray-50">
+      <summary class="font-semibold cursor-pointer text-red-700">Reference Panels</summary>
+      <ul class="text-sm mt-2 space-y-4">
+  `;
+
+  for (let i = 0; i < maxPanels; i++) {
+    html += `<li><strong>Panel ${i + 1}</strong><ul class="ml-4 list-disc">`;
+    html += `<li><strong>ID:</strong> ${panelData[0][i] || 'N/A'}</li>`;
+    html += `<li><strong>Width:</strong> ${panelData[1][i] || 'N/A'} cm</li>`;
+    html += `<li><strong>Height:</strong> ${panelData[2][i] || 'N/A'} cm</li>`;
+    html += `<li><strong>Thickness:</strong> ${panelData[3][i] || 'N/A'} cm</li>`;
+    html += `<li><strong>Material:</strong> ${panelData[4][i] || 'N/A'}</li>`;
+    html += `<li><strong>Emissivity:</strong> ${panelData[5][i] || 'N/A'}</li>`;
+    html += `<li><strong>Distance from Camera:</strong> ${panelData[6][i] || 'N/A'} m</li>`;
+    html += `<li><strong>Angle from Horizontal:</strong> ${panelData[7][i] || 'N/A'}°</li>`;
+    html += `<li><strong>Independent Contact:</strong> ${panelData[8][i] || 'N/A'}</li>`;
+    html += `<li><strong>Measurement Interval:</strong> ${panelData[9][i] || 'N/A'} minutes</li>`;
+    html += `</ul></li>`;
+  }
+
+  html += `</ul></details>`;
+}
+
   container.innerHTML = html;
   loadMiniMap(data.lat, data.long);
 }
