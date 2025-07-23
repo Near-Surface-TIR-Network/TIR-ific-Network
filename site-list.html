@@ -106,6 +106,16 @@ const PFT_LOOKUP = {
 };
 
 let allSites = [];
+  
+function populatePFTOptions() {
+  const pftFilter = document.getElementById("pftFilter");
+  for (const key of Object.keys(PFT_LOOKUP).sort((a, b) => PFT_LOOKUP[a].localeCompare(PFT_LOOKUP[b]))) {
+    const option = document.createElement("option");
+    option.value = PFT_LOOKUP[key];
+    option.textContent = PFT_LOOKUP[key];
+    pftFilter.appendChild(option);
+  }
+}
 
 function populateSensorOptions(sites) {
   const sensorSet = new Set();
@@ -177,11 +187,12 @@ async function loadSiteTable() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  loadSiteTable();
-
+  populatePFTOptions();      
+  loadSiteTable();         
   document.getElementById("pftFilter").addEventListener("change", applyFilters);
   document.getElementById("sensorFilter").addEventListener("change", applyFilters);
 });
+
 
 
 </script>
@@ -201,7 +212,6 @@ document.addEventListener("DOMContentLoaded", () => {
       <label for="pftFilter" class="block mb-1 font-medium text-gray-700">Filter by PFT:</label>
       <select id="pftFilter" class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-full">
         <option value="">All PFTs</option>
-        ${Object.entries(PFT_LOOKUP).map(([_, name]) => `<option value="${name}">${name}</option>`).join('')}
       </select>
     </div>
   
