@@ -145,47 +145,10 @@
   <!-- Submit -->
   <button type="submit">Submit</button>
 </form>
-
-
-    <!-- Success Message -->
-    <div id="success-message" class="hidden text-green-600 font-semibold mt-4">
-      Thank you for your message! We'll get back to you soon.
-    </div>
   </div>
 </section>
 
 
-<script>
-  // Word count tracker
-  document.getElementById('message').addEventListener('input', function () {
-    const text = this.value.trim();
-    const wordCount = text ? text.split(/\s+/).length : 0;
-    document.getElementById('word-count').textContent = `${wordCount} / 300 words`;
-  });
-
-document.getElementById('contact-form').addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  const form = e.target;
-  const formData = new FormData(form);
-  formData.append('form-name', form.getAttribute('name')); // Crucial!
-
-  fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(formData).toString()
-  })
-  .then(() => {
-    form.reset();
-    document.getElementById('success-message').classList.remove('hidden');
-  })
-  .catch((error) => {
-    console.error('Form submission error:', error);
-    alert('There was an issue submitting the form. Please try again.');
-  });
-});
-
-</script>
 
 
 
