@@ -118,7 +118,7 @@ async function loadSiteDetails() {
   const container = document.getElementById('site-details');
 
   const tirImageURL = `site-images/processed/${data.siteID}_tir_preview.png`;
-  const rgbImageURL = data.rgb_image || 'fallback_rgb.png';
+  const rgbImageURL = data.rgb_image_path || 'fallback_rgb.png';
 
   // Header Section
   let html = `
@@ -128,64 +128,66 @@ async function loadSiteDetails() {
     </div>
 
     <h1 class="text-4xl font-bold mb-2 text-red-600">${data.siteName}</h1>
-    <p class="text-gray-700 text-sm font-semibold">${data.siteStatus?.toUpperCase() || 'UNKNOWN STATUS'}</p>
-    <p class="text-gray-600 italic mb-4">PFT: ${data.PFT || 'N/A'}</p>
+  `;
+  // Site Info section
+  html += `
+    <details class="mb-4 border rounded-lg p-4 bg-gray-50">
+      <summary class="font-semibold cursor-pointer text-red-700">Site Info</summary>
+      <ul class="text-sm mt-2 space-y-1">
+        <li><strong>Latitude:</strong> ${data.lat ?? 'N/A'} (decimal degrees)</li>
+        <li><strong>Longitude:</strong> ${data.long ?? 'N/A'} (decimal degrees)</li>
+        <li><strong>Elevation:</strong> ${data.elev ?? 'N/A'} m above sea level</li>
+        <li><strong>Timezone:</strong> ${data.timezone ?? 'N/A'} (UTC offset)</li>
+        <li><strong>Mean Annual Temperature:</strong> ${data.MAT_site ?? 'N/A'} °C (site reported)</li>
+        <li><strong>Mean Annual Precipitation:</strong> ${data.MAP_site ?? 'N/A'} cm (site reported)</li>
+        <li><strong>Plant Functional Type:</strong> ${formatPFT(data.PFT)}</li>
+        <li><strong>Co-located EC System:</strong> ${data.hasEC === 'yes' ? 'Yes' : 'No'}</li>
+        ${data.ecID ? `<li><strong>EC Site ID:</strong> ${data.ecID}</li>` : ''}
+        ${data.ecLink ? `<li><strong>EC Data Link:</strong> <a href="${data.ecLink}" class="text-blue-600 underline" target="_blank">${data.ecLink}</a></li>` : ''}
   `;
 
-  // Define updated form entry sections
-  const sections = {
-    "Site Info": ['siteID', 'siteName', 'siteStatus', 'PFT', 'ecID', 'ecLink', 'lat', 'long', 'elev', 'timezone', 'MAP_site', 'MAT_site'],
-    "Deployment Details": ['brand_model', 'purchaseDate', 'startDate', 'endDate', 'cameraHeight', 'cameraMountAngle', 'cameraOrientation', 'pixelHeight', 'pixelWidth', 'fovAngle'],
-    "ROI & Vegetation": ['has_rois', 'species_common[]', 'species_scientific[]', 'roi_id[]', 'roi_species_common[]', 'roi_species_scientific[]', 'roi_emissivity[]', 'roi_distance[]'],
-    "Reference Panel": ['rp_tier', 'Ref Panel Id[]', 'Ref Panel Width[]', 'Ref Panel Height[]', 'Ref Panel Thickness[]', 'Ref Panel Material[]', 'Ref Panel Emissivity[]', 'Ref Panel Distance[]', 'Ref Panel Angle[]', 'Ref Panel Independent Contact[]', 'Ref Interval[]'],
-    "Measurement Tiers": ['pd_tier', 'corrM_tier', 'conM_tier', 'nonconM_tier', 'interM_tier'],
-    "Instrument & Enclosure": ['instrument_type', 'hasEC', 'hasEnclosure', 'enclosureTransmittance'],
-    "Software Settings": ['softwareOverride', 'software_distance', 'software_emissivity', 'software_transmittance', 'samplingInterval', 'lastCalibrationDate', 'tempErrorMin', 'tempErrorMax'],
-    "Contacts": ['contactName[]', 'contactEmail[]'],
-    "Images": ['tir_image', 'rgb_image']
-  };
-
-  // Render known sections
-  for (const [sectionTitle, keys] of Object.entries(sections)) {
-    html += `
-      <details class="mb-4 border rounded-lg p-4 bg-gray-50">
-        <summary class="font-semibold cursor-pointer text-red-700">${sectionTitle}</summary>
-        <ul class="text-sm mt-2 space-y-1">
-    `;
-    for (const key of keys) {
-      for (const dataKey in data) {
-        if (dataKey === key || dataKey.startsWith(key.replace(/\[\]/, ''))) {
-          const displayKey = dataKey.replace(/_/g, ' ').replace(/\[\]/g, '').replace(/\b\w/g, l => l.toUpperCase());
-          const value = Array.isArray(data[dataKey]) ? data[dataKey].map((v, i) => `<li><strong>${displayKey} [${i + 1}]:</strong> ${v}</li>`).join('') : `<li><strong>${displayKey}:</strong> ${data[dataKey]}</li>`;
-          html += value;
-        }
-      }
+  if (data.species_common?.length && data.species_scientific?.length) {
+    html += `<li><strong>Dominant Species:</strong><ul class="list-disc list-inside ml-4">`;
+    for (let i = 0; i < data.species_common.length; i++) {
+      const common = data.species_common[i] || 'Unknown';
+      const sci = data.species_scientific[i] || 'Unknown';
+      html += `<li>${common} (<em>${sci}</em>)</li>`;
     }
-    html += `</ul></details>`;
+    html += `</ul></li>`;
   }
 
-  // Handle any remaining fields not included in the sections
-  const allKeys = Object.values(sections).flat();
-  const knownKeys = ["tir_image_path", "rgb_image_path", ...allKeys];
-  const remainingEntries = Object.entries(data).filter(([key]) => !knownKeys.some(k => key.startsWith(k.replace(/\[\]/, ''))));
-
-  if (remainingEntries.length > 0) {
-    html += `
-      <details class="mb-4 border rounded-lg p-4 bg-gray-50">
-        <summary class="font-semibold cursor-pointer text-red-700">Uncategorized Fields</summary>
-        <ul class="text-sm mt-2 space-y-1">
-    `;
-    for (const [key, value] of remainingEntries) {
-      const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-      const displayValue = Array.isArray(value) ? value.join(', ') : value === '' ? 'N/A' : value;
-      html += `<li><strong>${formattedKey}:</strong> ${displayValue}</li>`;
-    }
-    html += `</ul></details>`;
-  }
+  html += '</ul></details>';
 
   container.innerHTML = html;
   loadMiniMap(data.lat, data.long);
 }
+
+function formatPFT(pftCode) {
+  const map = {
+    0: "Bare Ground",
+    1: "Needleleaf evergreen tree – temperate",
+    2: "Needleleaf evergreen tree – boreal",
+    3: "Needleleaf deciduous tree – boreal",
+    4: "Broadleaf evergreen tree – tropical",
+    5: "Broadleaf evergreen tree – temperate",
+    6: "Broadleaf deciduous tree – tropical",
+    7: "Broadleaf deciduous tree – temperate",
+    8: "Broadleaf deciduous tree – boreal",
+    9: "Broadleaf evergreen shrub – temperate",
+    10: "Broadleaf deciduous shrub – temperate",
+    11: "Broadleaf deciduous shrub – boreal",
+    12: "C3 arctic grass",
+    13: "C3 grass",
+    14: "C4 grass",
+    15: "C3 Unmanaged Rainfed Crop",
+    16: "C3 Unmanaged Irrigated Crop",
+    17: "Managed Rainfed Crop",
+    18: "Managed Irrigated Crop"
+  };
+  return map[pftCode] || pftCode || 'N/A';
+}
+
+
 
 loadSiteDetails();
 
