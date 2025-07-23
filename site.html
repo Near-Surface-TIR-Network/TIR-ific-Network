@@ -161,14 +161,13 @@ async function loadSiteDetails() {
     html += '</ul></details>';
 
   // Site Contacts section
-  if (data["contactName[]"]?.length || data["contactEmail[]"]?.length) {
+  if (Array.isArray(data["contactName[]"]) && Array.isArray(data["contactEmail[]"])) {
     html += `
       <details class="mb-4 border rounded-lg p-4 bg-gray-50">
         <summary class="font-semibold cursor-pointer text-red-700">Site Contacts</summary>
         <ul class="text-sm mt-2 space-y-1">
     `;
-    const contactCount = Math.max(data["contactName[]"]?.length || 0, data["contactEmail[]"]?.length || 0);
-    for (let i = 0; i < contactCount; i++) {
+    for (let i = 0; i < data["contactName[]"].length; i++) {
       const name = data["contactName[]"][i] || 'N/A';
       const email = data["contactEmail[]"][i] || 'N/A';
       html += `<li><strong>${name}:</strong> <a href="mailto:${email}" class="text-blue-600 underline">${email}</a></li>`;
@@ -181,11 +180,11 @@ async function loadSiteDetails() {
     <details class="mb-4 border rounded-lg p-4 bg-gray-50">
       <summary class="font-semibold cursor-pointer text-red-700">Instrument Details</summary>
       <ul class="text-sm mt-2 space-y-1">
-        <li><strong>Instrument Type:</strong> ${data.instrument_type || 'N/A'}</li>
+        <li><strong>Sensor Type:</strong> ${data.instrument_type || 'N/A'}</li>
         <li><strong>Brand / Model:</strong> ${data.brand_model || 'N/A'}</li>
         <li><strong>Pixel Resolution:</strong> ${data.pixelWidth || 'N/A'} x ${data.pixelHeight || 'N/A'}</li>
         <li><strong>Last Calibration Date:</strong> ${data.lastCalibrationDate || 'N/A'}</li>
-        <li><strong>Purchase Date:</strong> ${data.purchaseDate || 'N/A'}</li>
+        <li><strong>Purchase Date:</strong> ${data.purchaseDate || 'Unknown'}</li>
         <li><strong>Temperature Error Range:</strong> ${data.tempErrorMin || 'N/A'} to ${data.tempErrorMax || 'N/A'} °C</li>
         <li><strong>Camera Height:</strong> ${data.cameraHeight || 'N/A'} m</li>
         <li><strong>Camera Mount Angle:</strong> ${data.cameraMountAngle || 'N/A'} °</li>
