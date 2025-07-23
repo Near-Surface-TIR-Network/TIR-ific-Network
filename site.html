@@ -105,6 +105,7 @@
   </div>
 <script>
 // Cleaned-up site page with sections and dropdowns for all form entries
+// Cleaned-up site page with sections and dropdowns for all form entries
 async function loadSiteDetails() {
   const params = new URLSearchParams(window.location.search);
   const file = params.get('site');
@@ -140,6 +141,8 @@ async function loadSiteDetails() {
     "Site Description": ['site_history', 'land_use', 'disturbance_history', 'management'],
     "Data Collection & Processing": ['processing_notes', 'image_frequency', 'data_pipeline', 'calibration_method'],
     "Environmental Context": ['climate_zone', 'soil_type', 'dominant_species', 'LAI'],
+    "Reference Panel Details": ['Ref Panel Id[]', 'Ref Panel Width[]', 'Ref Panel Height[]', 'Ref Panel Thickness[]', 'Ref Panel Material[]', 'Ref Panel Emissivity[]', 'Ref Panel Distance[]', 'Ref Panel Angle[]', 'Ref Panel Independent Contact[]', 'Ref Interval[]'],
+    "ROI (Region of Interest) Details": ['roi_id[]', 'roi_species_common[]', 'roi_species_scientific[]', 'roi_emissivity[]', 'roi_distance[]'],
     "Additional Notes": ['notes', 'comments', 'links']
   };
 
@@ -151,17 +154,26 @@ async function loadSiteDetails() {
         <ul class="text-sm mt-2 space-y-1">
     `;
     for (const key of keys) {
-      if (data[key] !== undefined) {
-        const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
-        const value = Array.isArray(data[key]) ? data[key].join(', ') : data[key] === '' ? 'N/A' : data[key];
-        html += `<li><strong>${formattedKey}:</strong> ${value}</li>`;
+      const value = data[key];
+      if (value !== undefined) {
+        const formattedKey = key.replace(/\[\]/g, '').replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+        if (Array.isArray(value)) {
+          value.forEach((item, idx) => {
+            html += `<li><strong>${formattedKey} ${value.length > 1 ? idx + 1 : ''}:</strong> ${item}</li>`;
+          });
+        } else {
+          html += `<li><strong>${formattedKey}:</strong> ${value === '' ? 'N/A' : value}</li>`;
+        }
       }
     }
     html += `</ul></details>`;
   }
 
   // Render any remaining fields not explicitly handled
-  const knownKeys = ["siteID", "siteName", "tir_image_path", "rgb_image_path", ...Object.values(sections).flat()];
+  const knownKeys = [
+    "siteID", "siteName", "tir_image_path", "rgb_image_path",
+    ...Object.values(sections).flat()
+  ];
   const remainingEntries = Object.entries(data).filter(([key]) => !knownKeys.includes(key));
   if (remainingEntries.length > 0) {
     html += `
@@ -170,7 +182,7 @@ async function loadSiteDetails() {
         <ul class="text-sm mt-2 space-y-1">
     `;
     for (const [key, value] of remainingEntries) {
-      const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+      const formattedKey = key.replace(/_/g, ' ').replace(/\[\]/g, '').replace(/\b\w/g, (l) => l.toUpperCase());
       const displayValue = Array.isArray(value) ? value.join(', ') : value === '' ? 'N/A' : value;
       html += `<li><strong>${formattedKey}:</strong> ${displayValue}</li>`;
     }
@@ -182,6 +194,7 @@ async function loadSiteDetails() {
 }
 
 loadSiteDetails();
+
 
 function loadMiniMap(lat, long) {
     const map = L.map('site-map', {
