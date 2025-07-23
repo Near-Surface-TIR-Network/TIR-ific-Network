@@ -104,7 +104,7 @@
     <p>Loading site information...</p>
   </div>
 <script>
-// Cleaned-up site page with sections and dropdowns for all form entries
+
 // Cleaned-up site page with sections and dropdowns for all form entries
 async function loadSiteDetails() {
   const params = new URLSearchParams(window.location.search);
@@ -118,7 +118,7 @@ async function loadSiteDetails() {
   const container = document.getElementById('site-details');
 
   const tirImageURL = `site-images/processed/${data.siteID}_tir_preview.png`;
-  const rgbImageURL = data.rgb_image_path || 'fallback_rgb.png';
+  const rgbImageURL = data.rgb_image || 'fallback_rgb.png';
 
   // Header Section
   let html = `
@@ -132,18 +132,17 @@ async function loadSiteDetails() {
     <p class="text-gray-600 italic mb-4">PFT: ${data.PFT || 'N/A'}</p>
   `;
 
-  // Define form entry sections
+  // Define updated form entry sections
   const sections = {
-    "Location & Timezone": ['lat', 'long', 'elevation', 'timezone'],
-    "Deployment Details": ['installation_date', 'camera_model', 'mounting_height', 'ROI_description', 'site_orientation', 'mount_type'],
-    "Measurement Setup": ['sw_instrument', 'reference_panel', 'non_contact_method', 'camera_angle', 'vegetation_type'],
-    "Team & Contacts": ['operator', 'affiliation', 'collaborators', 'contact_email'],
-    "Site Description": ['site_history', 'land_use', 'disturbance_history', 'management'],
-    "Data Collection & Processing": ['processing_notes', 'image_frequency', 'data_pipeline', 'calibration_method'],
-    "Environmental Context": ['climate_zone', 'soil_type', 'dominant_species', 'LAI'],
-    "Reference Panel Details": ['Ref Panel Id[]', 'Ref Panel Width[]', 'Ref Panel Height[]', 'Ref Panel Thickness[]', 'Ref Panel Material[]', 'Ref Panel Emissivity[]', 'Ref Panel Distance[]', 'Ref Panel Angle[]', 'Ref Panel Independent Contact[]', 'Ref Interval[]'],
-    "ROI (Region of Interest) Details": ['roi_id[]', 'roi_species_common[]', 'roi_species_scientific[]', 'roi_emissivity[]', 'roi_distance[]'],
-    "Additional Notes": ['notes', 'comments', 'links']
+    "Site Info": ['siteID', 'siteName', 'siteStatus', 'PFT', 'ecID', 'ecLink', 'lat', 'long', 'elev', 'timezone', 'MAP_site', 'MAT_site'],
+    "Deployment Details": ['brand_model', 'purchaseDate', 'startDate', 'endDate', 'cameraHeight', 'cameraMountAngle', 'cameraOrientation', 'pixelHeight', 'pixelWidth', 'fovAngle'],
+    "ROI & Vegetation": ['has_rois', 'species_common[]', 'species_scientific[]', 'roi_id[]', 'roi_species_common[]', 'roi_species_scientific[]', 'roi_emissivity[]', 'roi_distance[]'],
+    "Reference Panel": ['rp_tier', 'Ref Panel Id[]', 'Ref Panel Width[]', 'Ref Panel Height[]', 'Ref Panel Thickness[]', 'Ref Panel Material[]', 'Ref Panel Emissivity[]', 'Ref Panel Distance[]', 'Ref Panel Angle[]', 'Ref Panel Independent Contact[]', 'Ref Interval[]'],
+    "Measurement Tiers": ['pd_tier', 'corrM_tier', 'conM_tier', 'nonconM_tier', 'interM_tier'],
+    "Instrument & Enclosure": ['instrument_type', 'hasEC', 'hasEnclosure', 'enclosureTransmittance'],
+    "Software Settings": ['softwareOverride', 'software_distance', 'software_emissivity', 'software_transmittance', 'samplingInterval', 'lastCalibrationDate', 'tempErrorMin', 'tempErrorMax'],
+    "Contacts": ['contactName[]', 'contactEmail[]'],
+    "Images": ['tir_image', 'rgb_image']
   };
 
   // Render known sections
@@ -154,27 +153,22 @@ async function loadSiteDetails() {
         <ul class="text-sm mt-2 space-y-1">
     `;
     for (const key of keys) {
-      const value = data[key];
-      if (value !== undefined) {
-        const formattedKey = key.replace(/\[\]/g, '').replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
-        if (Array.isArray(value)) {
-          value.forEach((item, idx) => {
-            html += `<li><strong>${formattedKey} ${value.length > 1 ? idx + 1 : ''}:</strong> ${item}</li>`;
-          });
-        } else {
-          html += `<li><strong>${formattedKey}:</strong> ${value === '' ? 'N/A' : value}</li>`;
+      for (const dataKey in data) {
+        if (dataKey === key || dataKey.startsWith(key.replace(/\[\]/, ''))) {
+          const displayKey = dataKey.replace(/_/g, ' ').replace(/\[\]/g, '').replace(/\b\w/g, l => l.toUpperCase());
+          const value = Array.isArray(data[dataKey]) ? data[dataKey].map((v, i) => `<li><strong>${displayKey} [${i + 1}]:</strong> ${v}</li>`).join('') : `<li><strong>${displayKey}:</strong> ${data[dataKey]}</li>`;
+          html += value;
         }
       }
     }
     html += `</ul></details>`;
   }
 
-  // Render any remaining fields not explicitly handled
-  const knownKeys = [
-    "siteID", "siteName", "tir_image_path", "rgb_image_path",
-    ...Object.values(sections).flat()
-  ];
-  const remainingEntries = Object.entries(data).filter(([key]) => !knownKeys.includes(key));
+  // Handle any remaining fields not included in the sections
+  const allKeys = Object.values(sections).flat();
+  const knownKeys = ["tir_image_path", "rgb_image_path", ...allKeys];
+  const remainingEntries = Object.entries(data).filter(([key]) => !knownKeys.some(k => key.startsWith(k.replace(/\[\]/, ''))));
+
   if (remainingEntries.length > 0) {
     html += `
       <details class="mb-4 border rounded-lg p-4 bg-gray-50">
@@ -182,7 +176,7 @@ async function loadSiteDetails() {
         <ul class="text-sm mt-2 space-y-1">
     `;
     for (const [key, value] of remainingEntries) {
-      const formattedKey = key.replace(/_/g, ' ').replace(/\[\]/g, '').replace(/\b\w/g, (l) => l.toUpperCase());
+      const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
       const displayValue = Array.isArray(value) ? value.join(', ') : value === '' ? 'N/A' : value;
       html += `<li><strong>${formattedKey}:</strong> ${displayValue}</li>`;
     }
@@ -194,6 +188,7 @@ async function loadSiteDetails() {
 }
 
 loadSiteDetails();
+
 
 
 function loadMiniMap(lat, long) {
