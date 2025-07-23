@@ -104,58 +104,85 @@
     <p>Loading site information...</p>
   </div>
 <script>
-  async function loadSiteDetails() {
-    const params = new URLSearchParams(window.location.search);
-    const file = params.get('site');
-    if (!file) return;
+// Cleaned-up site page with sections and dropdowns for all form entries
+async function loadSiteDetails() {
+  const params = new URLSearchParams(window.location.search);
+  const file = params.get('site');
+  if (!file) return;
 
-    const cacheBuster = `?cb=${Date.now()}`;
-    const res = await fetch(`live_sites/${file}${cacheBuster}`);
-    const data = await res.json();
+  const cacheBuster = `?cb=${Date.now()}`;
+  const res = await fetch(`live_sites/${file}${cacheBuster}`);
+  const data = await res.json();
 
-    const container = document.getElementById('site-details');
+  const container = document.getElementById('site-details');
 
-    const tirImageURL = `site-images/processed/${data.siteID}_tir_preview.png`;
-    const rgbImageURL = data.rgb_image_path || 'fallback_rgb.png';
+  const tirImageURL = `site-images/processed/${data.siteID}_tir_preview.png`;
+  const rgbImageURL = data.rgb_image_path || 'fallback_rgb.png';
 
-    // Start building HTML
-    let html = `
-      <div class="flex flex-col md:flex-row gap-4 mb-6">
-        <img src="${tirImageURL}" alt="${data.siteName} TIR preview" class="w-full md:w-1/2 rounded-xl shadow-md object-cover" />
-        <img src="${rgbImageURL}" alt="${data.siteName} RGB image" class="w-full md:w-1/2 rounded-xl shadow-md object-cover" />
-      </div>
+  // Header Section
+  let html = `
+    <div class="flex flex-col md:flex-row gap-4 mb-6">
+      <img src="${tirImageURL}" alt="${data.siteName} TIR preview" class="w-full md:w-1/2 rounded-xl shadow-md object-cover" />
+      <img src="${rgbImageURL}" alt="${data.siteName} RGB image" class="w-full md:w-1/2 rounded-xl shadow-md object-cover" />
+    </div>
 
-      <h1 class="text-4xl font-bold mb-4 text-red-600">${data.siteName}</h1>
-      <p class="text-gray-700 mb-2 text-sm font-semibold">${data.siteStatus?.toUpperCase() || 'UNKNOWN STATUS'}</p>
-      <p class="text-gray-600 mb-6 italic">PFT: ${data.PFT || 'N/A'}</p>
+    <h1 class="text-4xl font-bold mb-2 text-red-600">${data.siteName}</h1>
+    <p class="text-gray-700 text-sm font-semibold">${data.siteStatus?.toUpperCase() || 'UNKNOWN STATUS'}</p>
+    <p class="text-gray-600 italic mb-4">PFT: ${data.PFT || 'N/A'}</p>
+  `;
 
-      <ul class="text-sm leading-relaxed space-y-2">
+  // Define form entry sections
+  const sections = {
+    "Location & Timezone": ['lat', 'long', 'elevation', 'timezone'],
+    "Deployment Details": ['installation_date', 'camera_model', 'mounting_height', 'ROI_description', 'site_orientation', 'mount_type'],
+    "Measurement Setup": ['sw_instrument', 'reference_panel', 'non_contact_method', 'camera_angle', 'vegetation_type'],
+    "Team & Contacts": ['operator', 'affiliation', 'collaborators', 'contact_email'],
+    "Site Description": ['site_history', 'land_use', 'disturbance_history', 'management'],
+    "Data Collection & Processing": ['processing_notes', 'image_frequency', 'data_pipeline', 'calibration_method'],
+    "Environmental Context": ['climate_zone', 'soil_type', 'dominant_species', 'LAI'],
+    "Additional Notes": ['notes', 'comments', 'links']
+  };
+
+  // Render known sections
+  for (const [sectionTitle, keys] of Object.entries(sections)) {
+    html += `
+      <details class="mb-4 border rounded-lg p-4 bg-gray-50">
+        <summary class="font-semibold cursor-pointer text-red-700">${sectionTitle}</summary>
+        <ul class="text-sm mt-2 space-y-1">
     `;
-
-    // Dynamically show all key-value pairs in a readable format
-    for (const [key, value] of Object.entries(data)) {
-      if (["siteID", "siteName", "tir_image_path", "rgb_image_path"].includes(key)) continue;
-
-      const formattedKey = key
-        .replace(/_/g, " ")
-        .replace(/\[\]/g, "")
-        .replace(/\b\w/g, (l) => l.toUpperCase()); // Capitalize
-
-      const displayValue = Array.isArray(value)
-        ? value.join(", ")
-        : value === "" ? "N/A" : value;
-
-      html += `<li><strong>${formattedKey}:</strong> ${displayValue}</li>`;
+    for (const key of keys) {
+      if (data[key] !== undefined) {
+        const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+        const value = Array.isArray(data[key]) ? data[key].join(', ') : data[key] === '' ? 'N/A' : data[key];
+        html += `<li><strong>${formattedKey}:</strong> ${value}</li>`;
+      }
     }
-
-    html += `</ul>`;
-
-    container.innerHTML = html;
-
-    loadMiniMap(data.lat, data.long);
+    html += `</ul></details>`;
   }
 
-  loadSiteDetails();
+  // Render any remaining fields not explicitly handled
+  const knownKeys = ["siteID", "siteName", "tir_image_path", "rgb_image_path", ...Object.values(sections).flat()];
+  const remainingEntries = Object.entries(data).filter(([key]) => !knownKeys.includes(key));
+  if (remainingEntries.length > 0) {
+    html += `
+      <details class="mb-4 border rounded-lg p-4 bg-gray-50">
+        <summary class="font-semibold cursor-pointer text-red-700">Uncategorized Fields</summary>
+        <ul class="text-sm mt-2 space-y-1">
+    `;
+    for (const [key, value] of remainingEntries) {
+      const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+      const displayValue = Array.isArray(value) ? value.join(', ') : value === '' ? 'N/A' : value;
+      html += `<li><strong>${formattedKey}:</strong> ${displayValue}</li>`;
+    }
+    html += `</ul></details>`;
+  }
+
+  container.innerHTML = html;
+  loadMiniMap(data.lat, data.long);
+}
+
+loadSiteDetails();
+
 function loadMiniMap(lat, long) {
     const map = L.map('site-map', {
       center: [lat, long],
