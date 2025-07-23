@@ -132,6 +132,31 @@ function populateSensorOptions() {
     sensorFilter.appendChild(option);
   });
 }
+  
+const STATUS_TYPES = ["active", "inactive", "planned"];
+
+function populateStatusOptions() {
+  const statusFilter = document.getElementById("statusFilter");
+
+  // Add default option
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "";
+  defaultOption.textContent = "-- Select Status --";
+  statusFilter.appendChild(defaultOption);
+
+  // Add status options
+  STATUS_TYPES.forEach(status => {
+    const option = document.createElement("option");
+    option.value = status;
+    option.textContent = capitalize(status);
+    statusFilter.appendChild(option);
+  });
+}
+
+// Optional utility to capitalize the first letter
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 function renderSiteTable(data) {
   const tableBody = document.getElementById("siteTableBody");
@@ -143,7 +168,7 @@ function renderSiteTable(data) {
       <td class="p-3">${site.elev}</td>
       <td class="p-3">${site.PFT}</td>
       <td class="p-3">${site.sensor}</td>
-      <td class="p-3">${site.siteStatus}</td>
+      <td class="p-3">${site.status}</td>
       <td class="p-3">
         <a href="site.html?site=${site.file}" class="text-blue-600 underline">View</a>
       </td>
@@ -190,12 +215,16 @@ async function loadSiteTable() {
   renderSiteTable(allSites);
 }
 
+
+
 document.addEventListener("DOMContentLoaded", () => {
   populatePFTOptions();
   populateSensorOptions();
-  loadSiteTable();         
+  populateStatusOptions(); 
+  loadSiteTable();
   document.getElementById("pftFilter").addEventListener("change", applyFilters);
   document.getElementById("sensorFilter").addEventListener("change", applyFilters);
+  document.getElementById("statusFilter").addEventListener("change", applyFilters);
 });
 
 
@@ -225,6 +254,15 @@ document.addEventListener("DOMContentLoaded", () => {
       <label for="sensorFilter" class="mr-2 font-medium">Sensor Type:</label>
       <select id="sensorFilter" class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-full">
         <option value="">All Sensors</option>
+      </select>
+    </div>
+  </div>
+
+      <!-- Sensor Type Filter -->
+    <div>
+      <label for="statusFilter" class="mr-2 font-medium">Site Status:</label>
+      <select id="statusFilter" class="border border-gray-300 rounded p-2"></select>
+        <option value="">All Sites</option>
       </select>
     </div>
   </div>
