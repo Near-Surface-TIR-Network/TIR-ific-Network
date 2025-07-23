@@ -86,8 +86,8 @@
 
   <!-- WELCOME SECTION-->
   <main class="flex justify-center items-center my-12 px-4">
-    <div class="text-center bg-gradient-to-br from-red-600 to-orange-500 text-white p-10 rounded-3xl shadow-lg max-w-4xl w-full">
-      <h2 class="text-5xl font-extrabold mb-4 whitespace">All Sites</h2>
+    <div class="text-center bg-gradient-to-br from-red-600 to-orange-500 text-white p-10 rounded-3xl shadow-lg max-w-4xl w-full space-y-4">
+      <h2 class="text-5xl font-extrabold whitespace">All Sites</h2>
       <p class="text-xl opacity-90">Click on an image to go to that site's page.</p>
       <p class="text-sm italic opacity-90">Ability to filter sites coming soon</p>
     </div>
@@ -135,18 +135,27 @@
     };
 
     const container = document.getElementById('site-cards');
+    const siteDataList = [];
 
+    // Step 1: Load all site data
     for (const file of files) {
       const res = await fetch(`live_sites/${file}${cacheBuster}`);
       const data = await res.json();
+      siteDataList.push({ file, data });
+    }
 
+    // Step 2: Sort by siteName
+    siteDataList.sort((a, b) => a.data.siteName.localeCompare(b.data.siteName));
+
+    // Step 3: Render cards
+    for (const { file, data } of siteDataList) {
       const card = document.createElement('a');
       card.href = `site.html?site=${file}`;
       card.className = "block bg-white border border-gray-200 rounded-2xl shadow hover:shadow-lg transition p-6";
 
       const status = data.siteStatus?.charAt(0).toUpperCase() + data.siteStatus?.slice(1).toLowerCase();
       const pftName = pftMap[data.PFT] || "Unknown";
-      
+
       card.innerHTML = `
         <img src="site-images/processed/${data.siteID}_tir_preview.png" alt="${data.siteName} TIR preview"
              class="rounded-xl mb-3 w-full h-56 object-cover" />
@@ -155,13 +164,13 @@
         <p class="text-xs text-gray-600"><strong>PFT:</strong> ${pftName}</p>
       `;
 
-
       container.appendChild(card);
     }
   }
 
   loadSites();
 </script>
+
 
 
 </body>
