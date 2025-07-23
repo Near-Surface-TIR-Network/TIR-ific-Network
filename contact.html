@@ -169,29 +169,28 @@
     document.getElementById('word-count').textContent = `${wordCount} / 300 words`;
   });
 
-  // Handle Netlify form submit with success message
-  document.getElementById('contact-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const form = e.target;
-    
-    // Add the hidden form-name manually to the FormData (important!)
-    const formData = new FormData(form);
-    formData.append('form-name', 'contact'); // ensure name matches Netlify form name
+document.getElementById('contact-form').addEventListener('submit', function (e) {
+  e.preventDefault();
 
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString()
-    })
-    .then(() => {
-      form.reset();
-      document.getElementById('success-message').classList.remove('hidden');
-    })
-    .catch((error) => {
-      alert('There was an issue submitting your message. Please try again.');
-      console.error(error);
-    });
+  const form = e.target;
+  const formData = new FormData(form);
+  formData.append('form-name', form.getAttribute('name')); // Crucial!
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(formData).toString()
+  })
+  .then(() => {
+    form.reset();
+    document.getElementById('success-message').classList.remove('hidden');
+  })
+  .catch((error) => {
+    console.error('Form submission error:', error);
+    alert('There was an issue submitting the form. Please try again.');
   });
+});
+
 </script>
 
 
