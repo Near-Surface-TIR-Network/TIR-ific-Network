@@ -148,8 +148,7 @@ async function loadSiteDetails() {
         ${data.ecID ? `<li><strong>EC Site ID:</strong> ${data.ecID}</li>` : ''}
         ${data.ecLink ? `<li><strong>EC Data Link:</strong> <a href="${data.ecLink}" class="text-blue-600 underline" target="_blank">${data.ecLink}</a></li>` : ''}
   `;
-
-  if (data.species_common?.length && data.species_scientific?.length) {
+  if (Array.isArray(data.species_common) && Array.isArray(data.species_scientific) && data.species_common.length > 0) {
     html += `<li><strong>Dominant Species:</strong><ul class="list-disc list-inside ml-4">`;
     for (let i = 0; i < data.species_common.length; i++) {
       const common = data.species_common[i] || 'Unknown';
