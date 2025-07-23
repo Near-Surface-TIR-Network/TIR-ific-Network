@@ -109,7 +109,7 @@ let allSites = [];
   
 function populatePFTOptions() {
   const pftFilter = document.getElementById("pftFilter");
-  for (const key of Object.keys(PFT_LOOKUP) {
+  for (const key of Object.keys(PFT_LOOKUP)) {
     const option = document.createElement("option");
     option.value = PFT_LOOKUP[key];
     option.textContent = PFT_LOOKUP[key];
