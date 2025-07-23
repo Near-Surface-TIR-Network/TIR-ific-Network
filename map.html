@@ -184,11 +184,11 @@ async function loadSites() {
 
     const marker = L.marker([site.lat, site.long]).addTo(map);
     marker.bindPopup(`
-      <div class="text-sm">
+      <div class="text-sm space-y-1.5">
         <div class="text-red-600 font-semibold text-base">${site.siteName}</div>
-        <div class="text-gray-500 italic text-s mb-2">${pftLabel}</div>
-        <div class="text-gray-600 text-s mb-2"><strong>Sensor:</strong> ${site.instrument_type || "Unknown"}</div>
-        <a href="site.html?site=${file}" class="text-blue-600 underline text-xs mt-1 inline-block">View Full Site Info</a>
+        <div class="text-gray-500 italic text-s">${pftLabel}</div>
+        <div class="text-gray-600 text-s"><strong>Sensor:</strong> ${site.instrument_type || "Unknown"}</div>
+        <a href="site.html?site=${file}" class="text-blue-600 underline text-xs inline-block">View Full Site Info</a>
       </div>
     `);
   }
