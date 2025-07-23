@@ -274,42 +274,51 @@ if (maxPanels > 0) {
   html += `</ul></details>`;
 }
 
-// ROI section
-const roiFields = [
-  "roi_id[]",
-  "roi_species_common[]",
-  "roi_species_scientific[]",
-  "roi_emissivity[]",
-  "roi_distance[]"
-];
+// ROI section (always show the dropdown)
+html += `
+  <details class="mb-4 border rounded-lg p-4 bg-gray-50">
+    <summary class="font-semibold cursor-pointer text-red-700">Regions of Interest (ROIs)</summary>
+    <div class="text-sm mt-2">
+`;
 
-// Normalize ROI data to arrays
-const roiData = roiFields.map(field => {
-  const val = data[field];
-  if (Array.isArray(val)) return val;
-  if (typeof val === 'string' && val.includes(',')) return val.split(',').map(v => v.trim());
-  return val !== undefined ? [val] : [];
-});
+if (data.has_rois === 'yes') {
+  const roiFields = [
+    "roi_id[]",
+    "roi_species_common[]",
+    "roi_species_scientific[]",
+    "roi_emissivity[]",
+    "roi_distance[]"
+  ];
 
-const maxROIs = Math.max(...roiData.map(arr => arr.length));
+  // Normalize to arrays
+  const roiData = roiFields.map(field => {
+    const val = data[field];
+    if (Array.isArray(val)) return val;
+    if (typeof val === 'string' && val.includes(',')) return val.split(',').map(v => v.trim());
+    return val !== undefined ? [val] : [];
+  });
 
-if (maxROIs > 0) {
-  html += `
-    <details class="mb-4 border rounded-lg p-4 bg-gray-50">
-      <summary class="font-semibold cursor-pointer text-red-700">Region(s) of Interest (ROIs)</summary>
-      <ul class="text-sm mt-2 space-y-4">
-  `;
+  const maxROIs = Math.max(...roiData.map(arr => arr.length));
 
-  for (let i = 0; i < maxROIs; i++) {
-    html += `<li><strong>ROI ${roiData[0][i] || i + 1}</strong><ul class="ml-4 list-disc">`;
-    html += `<li><strong>Species:</strong> ${roiData[1][i] || 'N/A'} (<em>${roiData[2][i] || 'N/A'}</em>)</li>`;
-    html += `<li><strong>Emissivity:</strong> ${roiData[3][i] || 'N/A'}</li>`;
-    html += `<li><strong>Distance from Camera:</strong> ${roiData[4][i] || 'N/A'} m</li>`;
-    html += `</ul></li>`;
+  if (maxROIs > 0) {
+    html += `<ul class="space-y-4">`;
+    for (let i = 0; i < maxROIs; i++) {
+      html += `<li><strong>ROI ${roiData[0][i] || i + 1}</strong><ul class="ml-4 list-disc">`;
+      html += `<li><strong>Species:</strong> ${roiData[1][i] || 'N/A'} (<em>${roiData[2][i] || 'N/A'}</em>)</li>`;
+      html += `<li><strong>Emissivity:</strong> ${roiData[3][i] || 'N/A'}</li>`;
+      html += `<li><strong>Distance from Camera:</strong> ${roiData[4][i] || 'N/A'} m</li>`;
+      html += `</ul></li>`;
+    }
+    html += `</ul>`;
+  } else {
+    html += `<p>No ROI data available, despite "has_rois" being marked "yes".</p>`;
   }
-
-  html += `</ul></details>`;
+} else {
+  html += `<p>No known ROIs reported for this site.</p>`;
 }
+
+html += `</div></details>`;
+
 
   container.innerHTML = html;
   loadMiniMap(data.lat, data.long);
