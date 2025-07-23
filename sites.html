@@ -53,7 +53,7 @@
         </svg>
       </button>
       <div id="howToMenu" class="dropdown-menu absolute left-0 mt-2 bg-white text-gray-900 rounded-md shadow-lg w-48 hidden z-50">
-        <a href="best-practices.html" class="block px-4 py-2 hover:bg-gray-100">Best Practices</a>
+        <a href="best-practices.html" class="block px-4 py-2 hover:bg-gray-100">Installation Guide</a>
         <a href="post-process.html" class="block px-4 py-2 hover:bg-gray-100">Post-Processing</a>
       </div>
     </div>
@@ -111,6 +111,27 @@
     const cacheBuster = `?cache_bust=${Date.now()}`;
     const indexRes = await fetch(indexPath + cacheBuster);
     const files = await indexRes.json();
+    const pftMap = {
+      0: "Bare Ground",
+      1: "Needleleaf evergreen tree – temperate",
+      2: "Needleleaf evergreen tree – boreal",
+      3: "Needleleaf deciduous tree – boreal",
+      4: "Broadleaf evergreen tree – tropical",
+      5: "Broadleaf evergreen tree – temperate",
+      6: "Broadleaf deciduous tree – tropical",
+      7: "Broadleaf deciduous tree – temperate",
+      8: "Broadleaf deciduous tree – boreal",
+      9: "Broadleaf evergreen shrub – temperate",
+      10: "Broadleaf deciduous shrub – temperate",
+      11: "Broadleaf deciduous shrub – boreal",
+      12: "C3 arctic grass",
+      13: "C3 grass",
+      14: "C4 grass",
+      15: "C3 Unmanaged Rainfed Crop",
+      16: "C3 Unmanaged Irrigated Crop",
+      17: "Managed Rainfed Crop",
+      18: "Managed Irrigated Crop"
+    };
 
     const container = document.getElementById('site-cards');
 
@@ -122,12 +143,17 @@
       card.href = `site.html?site=${file}`;
       card.className = "block bg-white border border-gray-200 rounded-2xl shadow hover:shadow-lg transition p-6";
 
+      const status = data.siteStatus?.charAt(0).toUpperCase() + data.siteStatus?.slice(1).toLowerCase();
+      const pftName = pftMap[data.PFT] || "Unknown";
+      
       card.innerHTML = `
-        <img src="site-images/processed/${data.siteID}_tir_preview.png" alt="${data.siteName} TIR preview" class="rounded-xl mb-4 w-full h-40 object-cover" />
-        <h3 class="text-2xl font-semibold mb-2 text-red-600">${data.siteName}</h3>
-        <p class="text-sm text-gray-600 mb-1"><strong>Status:</strong> ${data.siteStatus}</p>
-        <p class="text-sm text-gray-600"><strong>PFT:</strong> ${data.PFT}</p>
+        <img src="site-images/processed/${data.siteID}_tir_preview.png" alt="${data.siteName} TIR preview"
+             class="rounded-xl mb-3 w-full h-56 object-cover" />
+        <h3 class="text-xl font-semibold mb-1 text-red-600 truncate">${data.siteName}</h3>
+        <p class="text-xs text-gray-600"><strong>Status:</strong> ${status}</p>
+        <p class="text-xs text-gray-600"><strong>PFT:</strong> ${pftName}</p>
       `;
+
 
       container.appendChild(card);
     }
