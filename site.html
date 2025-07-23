@@ -176,6 +176,31 @@ async function loadSiteDetails() {
     html += '</ul></details>';
   }
 
+    // Instrument Details section
+  html += `
+    <details class="mb-4 border rounded-lg p-4 bg-gray-50">
+      <summary class="font-semibold cursor-pointer text-red-700">Instrument Details</summary>
+      <ul class="text-sm mt-2 space-y-1">
+        <li><strong>Instrument Type:</strong> ${data.instrument_type || 'N/A'}</li>
+        <li><strong>Brand / Model:</strong> ${data.brand_model || 'N/A'}</li>
+        <li><strong>Pixel Resolution:</strong> ${data.pixelWidth || 'N/A'} x ${data.pixelHeight || 'N/A'}</li>
+        <li><strong>Last Calibration Date:</strong> ${data.lastCalibrationDate || 'N/A'}</li>
+        <li><strong>Purchase Date:</strong> ${data.purchaseDate || 'N/A'}</li>
+        <li><strong>Temperature Error Range:</strong> ${data.tempErrorMin || 'N/A'} to ${data.tempErrorMax || 'N/A'} °C</li>
+        <li><strong>Camera Height:</strong> ${data.cameraHeight || 'N/A'} m</li>
+        <li><strong>Camera Mount Angle:</strong> ${data.cameraMountAngle || 'N/A'} °</li>
+        <li><strong>Camera Orientation:</strong> ${data.cameraOrientation || 'N/A'}</li>
+        <li><strong>Sampling Interval:</strong> ${data.samplingInterval || 'N/A'} minutes</li>
+        <li><strong>Field of View Angle:</strong> ${data.fovAngle || 'N/A'} °</li>
+        <li><strong>Enclosure Used:</strong> ${data.hasEnclosure === 'yes' ? 'Yes' : 'No'}</li>
+        <li><strong>Enclosure Transmittance:</strong> ${data.enclosureTransmittance || 'N/A'}</li>
+        <li><strong>Software Override Enabled:</strong> ${data.softwareOverride === 'yes' ? 'Yes' : 'No'}</li>
+        <li><strong>Software Emissivity:</strong> ${data.software_emissivity || 'N/A'}</li>
+        <li><strong>Software Transmittance:</strong> ${data.software_transmittance || 'N/A'}</li>
+        <li><strong>Software Distance:</strong> ${data.software_distance || 'N/A'}</li>
+      </ul>
+    </details>
+  `;
   container.innerHTML = html;
   loadMiniMap(data.lat, data.long);
 }
