@@ -151,6 +151,28 @@
   L.control.layers(baseMaps).addTo(map);
 
 async function loadSites() {
+  const PFT_NAMES = {
+    0: "Bare Ground",
+    1: "Needleleaf evergreen tree – temperate",
+    2: "Needleleaf evergreen tree – boreal",
+    3: "Needleleaf deciduous tree – boreal",
+    4: "Broadleaf evergreen tree – tropical",
+    5: "Broadleaf evergreen tree – temperate",
+    6: "Broadleaf deciduous tree – tropical",
+    7: "Broadleaf deciduous tree – temperate",
+    8: "Broadleaf deciduous tree – boreal",
+    9: "Broadleaf evergreen shrub – temperate",
+    10: "Broadleaf deciduous shrub – temperate",
+    11: "Broadleaf deciduous shrub – boreal",
+    12: "C3 arctic grass",
+    13: "C3 grass",
+    14: "C4 grass",
+    15: "C3 Unmanaged Rainfed Crop",
+    16: "C3 Unmanaged Irrigated Crop",
+    17: "Managed Rainfed Crop",
+    18: "Managed Irrigated Crop"
+  };
+
   const indexResponse = await fetch(`live_sites/index.json?cache_bust=${Date.now()}`);
   const siteFiles = await indexResponse.json();
   
@@ -158,16 +180,19 @@ async function loadSites() {
     const response = await fetch(`live_sites/${file}?cache_bust=${Date.now()}`);
     const site = await response.json();
 
+    const pftLabel = PFT_NAMES[parseInt(site.PFT)] || "Unknown PFT";
+
     const marker = L.marker([site.lat, site.long]).addTo(map);
     marker.bindPopup(`
       <div class="text-sm">
         <div class="text-red-600 font-semibold text-base">${site.siteName}</div>
-        <div class="text-gray-500 italic text-xs mb-2">${site.PFT}</div>
+        <div class="text-gray-500 italic text-xs mb-2">${pftLabel}</div>
         <a href="site.html?site=${file}" class="text-blue-600 underline mt-2 inline-block">View Full Site Info</a>
       </div>
     `);
   }
 }
+
 
 loadSites();
 
