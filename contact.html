@@ -103,36 +103,48 @@
   </a>
 </section>
 
-  <section class="max-w-2xl mx-auto mt-16 p-6 bg-white rounded-lg shadow">
+<section class="max-w-2xl mx-auto mt-16 p-6 bg-white rounded-lg shadow">
   <h2 class="text-2xl font-bold text-red-600 mb-4">Contact Us</h2>
-  <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form" class="space-y-4">
   <input type="hidden" name="form-name" value="contact" />
-  
-  <!-- Honeypot for bots -->
   <p hidden>
     <label>Don’t fill this out: <input name="bot-field" /></label>
   </p>
 
-  <label for="subject">Subject:</label>
-  <select name="subject" required>
-    <option value="">Select one</option>
-    <option value="General Inquiry">General Inquiry</option>
-    <option value="Site Correction">Site Correction</option>
-    <option value="TIR Paper">TIR Paper</option>
-    <option value="Other">Other</option>
-  </select>
+  <div>
+    <label for="subject" class="block font-semibold mb-1">Subject</label>
+    <select id="subject" name="subject" class="w-full border border-gray-300 rounded-md p-2" required>
+      <option value="">-- Select a Subject --</option>
+      <option value="general">General Inquiry</option>
+      <option value="site-correction">Site Correction</option>
+      <option value="tir-paper">TIR Paper</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
 
-  <label for="name">Name:</label>
-  <input type="text" name="name" required />
+  <div>
+    <label for="name" class="block font-semibold mb-1">Your Name</label>
+    <input type="text" id="name" name="name" class="w-full border border-gray-300 rounded-md p-2" required />
+  </div>
 
-  <label for="email">Email:</label>
-  <input type="email" name="email" required />
+  <div>
+    <label for="email" class="block font-semibold mb-1">Email Address</label>
+    <input type="email" id="email" name="email" class="w-full border border-gray-300 rounded-md p-2" required />
+  </div>
 
-  <label for="message">Message (max 300 words):</label>
-  <textarea name="message" maxlength="300" rows="6" required></textarea>
+  <div>
+    <label for="message" class="block font-semibold mb-1">Message (max 300 words)</label>
+    <textarea id="message" name="message" rows="6" maxlength="3000" class="w-full border border-gray-300 rounded-md p-2" required></textarea>
+    <p id="word-count" class="text-sm text-gray-500 mt-1">0 / 300 words</p>
+  </div>
 
-  <button type="submit">Send Message</button>
+  <div class="flex justify-end">
+    <button type="submit" class="px-6 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition">
+      Submit
+    </button>
+  </div>
 </form>
+
 </section>
 
 <script>
