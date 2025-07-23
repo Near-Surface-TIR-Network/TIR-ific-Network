@@ -83,6 +83,68 @@
       document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.add('hidden'));
     }
   });
+const PFT_LOOKUP = {
+  "0": "Bare Ground",
+  "1": "Needleleaf evergreen tree – temperate",
+  "2": "Needleleaf evergreen tree – boreal",
+  "3": "Needleleaf deciduous tree – boreal",
+  "4": "Broadleaf evergreen tree – tropical",
+  "5": "Broadleaf evergreen tree – temperate",
+  "6": "Broadleaf deciduous tree – tropical",
+  "7": "Broadleaf deciduous tree – temperate",
+  "8": "Broadleaf deciduous tree – boreal",
+  "9": "Broadleaf evergreen shrub – temperate",
+  "10": "Broadleaf deciduous shrub – temperate",
+  "11": "Broadleaf deciduous shrub – boreal",
+  "12": "C3 arctic grass",
+  "13": "C3 grass",
+  "14": "C4 grass",
+  "15": "C3 Unmanaged Rainfed Crop",
+  "16": "C3 Unmanaged Irrigated Crop",
+  "17": "Managed Rainfed Crop",
+  "18": "Managed Irrigated Crop"
+};
+
+async function loadSiteTable() {
+  const res = await fetch(`live_sites/index.json?cb=${Date.now()}`);
+  const files = await res.json();
+  const rows = [];
+
+  for (const file of files) {
+    const siteRes = await fetch(`live_sites/${file}`);
+    const site = await siteRes.json();
+
+    rows.push({
+      siteID: site.siteID,
+      lat: site.lat,
+      long: site.long,
+      elev: site.elev,
+      PFT: PFT_LOOKUP[site.PFT] || "Unknown",
+      sensor: site.instrument_type || "—",
+      file
+    });
+  }
+
+  // Sort alphabetically by siteID
+  rows.sort((a, b) => a.siteID.localeCompare(b.siteID));
+
+  const tableBody = document.getElementById("siteTableBody");
+  tableBody.innerHTML = rows.map(site => `
+    <tr class="border-t hover:bg-gray-50">
+      <td class="p-3">${site.siteID}</td>
+      <td class="p-3">${site.lat}</td>
+      <td class="p-3">${site.long}</td>
+      <td class="p-3">${site.elev}</td>
+      <td class="p-3">${site.PFT}</td>
+      <td class="p-3">${site.sensor}</td>
+      <td class="p-3">
+        <a href="site.html?site=${site.file}" class="text-blue-600 underline">View</a>
+      </td>
+    </tr>
+  `).join('');
+}
+
+loadSiteTable();
 </script>
   
   <!-- WELCOME SECTION-->
@@ -92,6 +154,25 @@
       <p class="text-xl opacity-90">A comprehensive list of all TIR monitoring sites in our network.</p>
     </div>
   </main>
+  
+<section class="max-w-6xl mx-auto my-12 px-4">
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white border border-gray-300 text-sm rounded-xl overflow-hidden shadow-md" id="siteTable">
+      <thead class="bg-gray-100 text-left">
+        <tr>
+          <th class="p-3 border-b">Site ID</th>
+          <th class="p-3 border-b">Latitude</th>
+          <th class="p-3 border-b">Longitude</th>
+          <th class="p-3 border-b">Elevation (m)</th>
+          <th class="p-3 border-b">PFT</th>
+          <th class="p-3 border-b">Sensor Type</th>
+          <th class="p-3 border-b">Link</th>
+        </tr>
+      </thead>
+      <tbody id="siteTableBody"></tbody>
+    </table>
+  </div>
+</section>
 
 
     <!-- FOOTER -->
