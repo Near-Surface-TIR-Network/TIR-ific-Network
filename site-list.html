@@ -137,13 +137,6 @@ const STATUS_TYPES = ["active", "inactive"];
 
 function populateStatusOptions() {
   const statusFilter = document.getElementById("statusFilter");
-
-  // Add default option
-  const defaultOption = document.createElement("option");
-  defaultOption.value = "";
-  defaultOption.textContent = "-- Select Status --";
-  statusFilter.appendChild(defaultOption);
-
   // Add status options
   STATUS_TYPES.forEach(status => {
     const option = document.createElement("option");
@@ -243,33 +236,34 @@ document.addEventListener("DOMContentLoaded", () => {
   </main>
   
 <section class="max-w-6xl mx-auto my-12 px-4">
-  <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mb-4">
+  <!-- Filter Controls -->
+  <div class="flex flex-wrap gap-4 mb-4">
+    
     <!-- PFT Filter -->
-    <div>
-      <label for="pftFilter" class="block mb-1 font-medium text-gray-700">Filter by PFT:</label>
-      <select id="pftFilter" class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-full">
+    <div class="flex flex-col">
+      <label for="pftFilter" class="mb-1 font-medium text-gray-700">Filter by PFT:</label>
+      <select id="pftFilter" class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
         <option value="">All PFTs</option>
       </select>
     </div>
-  
+
     <!-- Sensor Type Filter -->
-    <div>
-      <label for="sensorFilter" class="mr-2 font-medium">Sensor Type:</label>
-      <select id="sensorFilter" class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-full">
+    <div class="flex flex-col">
+      <label for="sensorFilter" class="mb-1 font-medium text-gray-700">Sensor Type:</label>
+      <select id="sensorFilter" class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
         <option value="">All Sensors</option>
       </select>
     </div>
-  </div>
 
-    <!-- Status Type Filter -->
-    <div>
-      <label for="statusFilter" class="mr-2 font-medium">Site Status:</label>
-      <select id="statusFilter" class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-full">
+    <!-- Status Filter -->
+    <div class="flex flex-col">
+      <label for="statusFilter" class="mb-1 font-medium text-gray-700">Site Status:</label>
+      <select id="statusFilter" class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
         <option value="">All Sites</option>
-        <option value="active">Active</option>
-        <option value="inactive">Inactive</option>
       </select>
     </div>
+
+  </div>
 
   <div class="overflow-x-auto">
     <table class="min-w-full bg-white border border-gray-300 text-sm rounded-xl overflow-hidden shadow-md" id="siteTable">
