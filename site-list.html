@@ -133,13 +133,6 @@ function populateSensorOptions() {
   });
 }
 
-
-  const sensorFilter = document.getElementById("sensorFilter");
-  sensorFilter.innerHTML += Array.from(sensorSet).sort().map(sensor =>
-    `<option value="${sensor}">${sensor}</option>`
-  ).join('');
-}
-
 function renderSiteTable(data) {
   const tableBody = document.getElementById("siteTableBody");
   tableBody.innerHTML = data.map(site => `
