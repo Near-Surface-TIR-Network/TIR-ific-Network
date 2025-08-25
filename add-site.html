@@ -12,945 +12,126 @@
 <nav class="bg-gradient-to-br from-red-600 to-orange-500 text-white sticky top-0 z-50 shadow-lg">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16 items-center">
-      <div class="text-white font-extrabold text-xl">TIR-ific Network</div>
-
-      <div class="flex items-center space-x-6"> 
-        <a href="index.html" class="hover:underline">Home</a>
-        <a href="map.html" class="hover:underline">Map</a>
-
-    <!-- Sites Dropdown -->
-    <div class="relative dropdown-container">
-      <button onclick="toggleDropdown('sitesMenu')" class="hover:underline flex items-center gap-1 focus:outline-none">
-        Sites
-        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
-          <path d="M5.5 7l4.5 4.5L14.5 7z" />
-        </svg>
-      </button>
-      <div id="sitesMenu" class="dropdown-menu absolute left-0 mt-2 bg-white text-gray-900 rounded-md shadow-lg w-40 hidden z-50">
-        <a href="sites.html" class="block px-4 py-2 hover:bg-gray-100">Gallery</a>
-        <a href="site-list.html" class="block px-4 py-2 hover:bg-gray-100">Site List</a>
-      </div>
-    </div>
-    
-    <!-- Add Site Dropdown -->
-    <div class="relative dropdown-container">
-      <button onclick="toggleDropdown('addSiteMenu')" class="hover:underline flex items-center gap-1 focus:outline-none">
-        Contribute
-        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
-          <path d="M5.5 7l4.5 4.5L14.5 7z" />
-        </svg>
-      </button>
-      <div id="addSiteMenu" class="dropdown-menu absolute left-0 mt-2 bg-white text-gray-900 rounded-md shadow-lg w-48 hidden z-50">
-        <a href="add-site.html" class="block px-4 py-2 hover:bg-gray-100">New Site Form</a>
-      </div>
-    </div>
-    <!-- How To Dropdown -->
-    <div class="relative dropdown-container">
-      <button onclick="toggleDropdown('howToMenu')" class="hover:underline flex items-center gap-1 focus:outline-none">
-        How To
-        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
-          <path d="M5.5 7l4.5 4.5L14.5 7z" />
-        </svg>
-      </button>
-      <div id="howToMenu" class="dropdown-menu absolute left-0 mt-2 bg-white text-gray-900 rounded-md shadow-lg w-48 hidden z-50">
-        <a href="best-practices.html" class="block px-4 py-2 hover:bg-gray-100">Installation Guide</a>
-        <a href="tier-tables.html" class="block px-4 py-2 hover:bg-gray-100">Tiers</a>
-        <a href="post-process.html" class="block px-4 py-2 hover:bg-gray-100">Post-Processing</a>
-      </div>
-    </div>
-        <a href="about.html" class="hover:underline">About</a> 
-        <a href="contact.html" class="hover:underline">Contact</a>
+      <a href="index.html" class="text-xl font-semibold tracking-wide">TIR-ific Network</a>
+      <div class="relative">
+        <button id="addSiteToggle" class="flex items-center space-x-2 py-2 px-4 rounded-md bg-white/10 hover:bg-white/20">
+          <span>Contribute</span>
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.5 7l4.5 4.5L14.5 7z"/></svg>
+        </button>
+        <div id="addSiteMenu" class="dropdown-menu absolute left-0 mt-2 bg-white text-gray-900 rounded-md shadow-lg w-48 hidden z-50">
+          <a href="add-site.html" class="block px-4 py-2 hover:bg-gray-100">Add Site</a>
+          <a href="gallery.html" class="block px-4 py-2 hover:bg-gray-100">Gallery</a>
+        </div>
       </div>
     </div>
   </div>
 </nav>
 
-<script>
-  function toggleDropdown(menuId) {
-    const dropdowns = document.querySelectorAll('.dropdown-menu');
-    dropdowns.forEach(dropdown => {
-      if (dropdown.id === menuId) {
-        dropdown.classList.toggle('hidden'); // Toggle the clicked one
-      } else {
-        dropdown.classList.add('hidden'); // Close all others
-      }
-    });
-  }
+<!-- PAGE WRAPPER -->
+<div class="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
+  <h1 class="text-3xl font-bold text-gray-800 mb-4">Add a Site</h1>
+  <p class="text-gray-600 mb-8">Please fill out the form below. Required fields are marked with <span class="text-red-500">*</span>.</p>
 
-  // Optional: close all dropdowns when clicking outside
-  document.addEventListener('click', function(event) {
-    const isClickInside = event.target.closest('.dropdown-container');
-    if (!isClickInside) {
-      document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.add('hidden'));
-    }
-  });
-</script>
-
-
-  <!-- WELCOME SECTION-->
-  <main class="flex justify-center items-center my-12 px-4">
-    <div class="text-center bg-gradient-to-br from-red-600 to-orange-500 text-white p-10 rounded-3xl shadow-lg max-w-4xl w-full">
-      <h2 class="text-5xl font-extrabold mb-4 whitespace">Add Site</h2>
-      <p class="text-xl opacity-90"></p>
+  <form id="addSiteForm" class="space-y-6">
+    <!-- Basic Info -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label class="block font-medium text-sm text-gray-700" for="siteName">Site Name <span class="text-red-500">*</span></label>
+        <input id="siteName" name="siteName" required class="mt-1 block w-full border border-gray-300 rounded-md p-2"/>
+      </div>
+      <div>
+        <label class="block font-medium text-sm text-gray-700" for="country">Country <span class="text-red-500">*</span></label>
+        <input id="country" name="country" required class="mt-1 block w-full border border-gray-300 rounded-md p-2"/>
+      </div>
     </div>
-  </main>
 
-<!-- ADD SITE FORM SECTION -->
-<section class="max-w-5xl mx-auto p-8 bg-white rounded-3xl shadow-xl mb-12">
- <form id="addSiteForm" enctype="multipart/form-data">
-<label class="block text-sm font-medium text-red-500 mb-2">
-  <span class="text-red-500">*</span> Indicates required question
-</label>
-
-<!-- SITE ID -->
-<div class="mb-4">
-  <div class="flex items-center mb-1">
-    <label for="siteID" class="block text-base font-medium text-gray-700 mr-2">
-  Site ID <span class="text-red-500">*</span>
-</label>
-    <button type="button" class="text-blue-500 text-xs" onclick="toggleHelp(event, 'help-site-id')">[?]</button>
-  </div>
-  <p id="help-site-id" class="text-xs text-gray-600 mt-1 hidden">
-    Provide a short, unique name using only letters and numbers. No spaces, underscores, or special characters. Example: harvbarn for the Harvard Forest Barn Tower
-  </p>
-  <input type="text" name="siteID" id="siteID" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-</div>
-
-
-<!-- SITE NAME -->
-<div class="mb-4">
-  <div class="flex items-center mb-1">
-        <label for="siteID" class="block text-base font-medium text-gray-700 mr-2">
-  Descriptive Site Name <span class="text-red-500">*</span>
-</label>
-    <button type="button" class="text-blue-500 text-xs" onclick="toggleHelp(event, 'help-site-name')">[?]</button>
-  </div>
-  <p id="help-site-name" class="text-xs text-gray-600 mt-1 hidden">
-    Provide a descriptive name for your site, including location and specific context.
-    <span class="italic text-gray-500">Example: Harvard Forest Barn Tower (to distinguish from other towers at Harvard Forest).</span>
-  </p>
-  <input type="text" name="siteName" id="siteName" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-</div>
-
-<!-- EC Tower Dropdown -->
-<div class="mb-6">
-  <div class="flex items-center mb-1">
-    <label for="hasEC" class="block text-base font-medium text-gray-700 mr-2">
-      Is there co-located eddy covariance data? <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-ec')" class="text-blue-500 text-xs">[?]</button>
-  </div>
-  <p id="help-ec" class="text-sm text-gray-600 hidden">
-    Select "Yes" if this site is co-located with an eddy covariance (EC) tower.
-  </p>
-  <select name="hasEC" id="hasEC" required onchange="toggleECFields()" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-    <option value="">Select an option</option>
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
-  </select>
-</div>
-
-<!-- EC Details - Hidden by default -->
-<div id="ecDetails" class="hidden">
-  <!-- EC Tower ID -->
-  <div class="mb-6">
-    <div class="flex items-center mb-1">
-      <label for="ecID" class="block text-sm font-medium text-gray-700 mr-2">EC Tower ID</label>
-      <button type="button" onclick="toggleHelp(this, 'help-ecid')" class="text-blue-500 text-xs">[?]</button>
+    <!-- Coordinates -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label class="block font-medium text-sm text-gray-700" for="latitude">Latitude <span class="text-red-500">*</span></label>
+        <input id="latitude" name="latitude" type="number" step="any" required class="mt-1 block w-full border border-gray-300 rounded-md p-2"/>
+      </div>
+      <div>
+        <label class="block font-medium text-sm text-gray-700" for="longitude">Longitude <span class="text-red-500">*</span></label>
+        <input id="longitude" name="longitude" type="number" step="any" required class="mt-1 block w-full border border-gray-300 rounded-md p-2"/>
+      </div>
     </div>
-    <p id="help-ecid" class="text-sm text-gray-600 hidden">
-      This should match the EC site identifier from AmeriFlux or ICOS (e.g., <code>US-Ha1</code>).
-    </p>
-    <input type="text" name="ecID" id="ecID" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-  </div>
 
-  <!-- EC Data Link -->
-  <div class="mb-6">
-    <div class="flex items-center mb-1">
-      <label for="ecLink" class="block text-sm font-medium text-gray-700 mr-2">EC Data Link</label>
-      <button type="button" onclick="toggleHelp(this, 'help-eclink')" class="text-blue-500 text-xs">[?]</button>
+    <!-- Sampling Interval -->
+    <div class="mb-6">
+      <label class="block font-medium text-sm text-gray-700" for="samplingInterval">Sampling Interval (minutes) <span class="text-red-500">*</span></label>
+      <p class="text-xs text-gray-500">How often does your camera collect an image? (Used for scheduling).</p>
+      <input type="number" name="samplingInterval" id="samplingInterval" min="1" step="1" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
     </div>
-    <p id="help-eclink" class="text-sm text-gray-600 hidden">
-      Paste a link to where the EC data can be downloaded (e.g., ICOS or AmeriFlux data portal).
-    </p>
-    <input type="url" name="ecLink" id="ecLink" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-  </div>
-</div>
 
-
-<!-- Site Status -->
-<div class="mb-6">
-  <div class="flex items-center mb-1">
-    <label for="siteStatus" class="block text-sm font-medium text-gray-700 mr-2">
-      Site Status <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-site-status')" class="text-blue-500 text-xs">[?]</button>
-  </div>
-  <p id="help-site-status" class="text-sm text-gray-600 hidden">
-    Select whether the site is currently collecting data. If inactive, enter the date the site stopped being operational.
-  </p>
-  <select name="siteStatus" id="siteStatus" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" onchange="toggleDateFields()">
-    <option value="">-- Select Status --</option>
-    <option value="active">Active</option>
-    <option value="inactive">Inactive</option>
-  </select>
-</div>
-
-<!-- Date Inputs -->
-<div id="dateFields" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-  <div>
-    <label class="block text-sm font-medium text-gray-700">
-      Start Date <span class="text-red-500">*</span>
-    </label>
-    <input type="date" name="startDate" id="startDate" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-  </div>
-  <div id="endDateContainer" class="hidden">
-    <label class="block text-sm font-medium text-gray-700">
-      End Date <span class="text-red-500">*</span>
-    </label>
-    <input type="date" name="endDate" id="endDate" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-  </div>
-</div>
-
-<!-- Contacts Section -->
-<div class="mb-6">
-  <div class="flex items-center mb-1">
-    <label class="block text-sm font-medium text-gray-700 mr-2">
-      Contact(s) <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-contacts')" class="text-blue-500 text-xs">[?]</button>
-  </div>
-  <p id="help-contacts" class="text-sm text-gray-600 hidden">
-    Provide the name and email of the site contact. You may add multiple contacts if more than one person is responsible for site maintenance or data.
-  </p>
-
-<div class="space-y-4" id="contactList">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <input type="text" name="contactName[]" placeholder="First and Last Name" required class="border border-gray-300 rounded-md p-2" />
-    <input type="email" name="contactEmail[]" placeholder="Email Address" required class="border border-gray-300 rounded-md p-2" />
-  </div>
-</div>
-
-  <button type="button" onclick="addContact()" class="mt-2 text-blue-600 text-sm">+ Add Another Contact</button>
-</div>
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-  <!-- Latitude -->
-  <div>
-    <div class="flex items-center mb-1">
-      <label for="lat" class="block text-base font-medium text-gray-700 mr-2">
-        Latitude (°) <span class="text-red-500">*</span>
+    <!-- Optional ROIs (toggle) -->
+    <div class="mb-6">
+      <label class="inline-flex items-center space-x-2">
+        <input type="checkbox" id="hasROI" class="rounded border-gray-300">
+        <span class="text-sm">Add Regions of Interest (ROIs)</span>
       </label>
-      <button type="button" onclick="toggleHelp(this, 'help-lat')" class="text-blue-500 text-xs">[?]</button>
-    </div>
-    <p id="help-lat" class="text-sm text-gray-600 hidden">
-      Enter latitude in decimal degrees. Use negative values for the Southern Hemisphere.
-    </p>
-    <input type="number" step="any" name="lat" id="lat" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-  </div>
-
-  <!-- Longitude -->
-  <div>
-    <div class="flex items-center mb-1">
-      <label for="long" class="block text-base font-medium text-gray-700 mr-2">
-        Longitude (°) <span class="text-red-500">*</span>
-      </label>
-      <button type="button" onclick="toggleHelp(this, 'help-long')" class="text-blue-500 text-xs">[?]</button>
-    </div>
-    <p id="help-long" class="text-sm text-gray-600 hidden">
-      Enter longitude in decimal degrees. Use negative values for the Western Hemisphere.
-    </p>
-    <input type="number" step="any" name="long" id="long" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-  </div>
-
-  <!-- Elevation -->
-  <div>
-    <div class="flex items-center mb-1">
-      <label for="elev" class="block text-base font-medium text-gray-700 mr-2">
-        Elevation (m a.s.l.) <span class="text-red-500">*</span>
-      </label>
-      <button type="button" onclick="toggleHelp(this, 'help-elev')" class="text-blue-500 text-xs">[?]</button>
-    </div>
-    <p id="help-elev" class="text-sm text-gray-600 hidden">
-      Enter the site elevation in meters above sea level. This should be the elevation at the base of the tower, not the camera height.
-    </p>
-    <input type="number" step="any" name="elev" id="elev" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-  </div>
-</div>
-
-<div class="mb-6">
-  <div class="flex items-center mb-1">
-    <label for="timezone" class="block text-base font-medium text-gray-700 mr-2">
-      UTC Offset <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-timezone')" class="text-blue-500 text-xs">[?]</button>
-  </div>
-  <p id="help-timezone" class="text-sm text-gray-600 hidden">
-    Select the local UTC offset in standard time (not daylight savings). For example, US Mountain Standard Time is UTC−7.
-  </p>
-  <select name="timezone" id="timezone" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-    <option value="">Select an offset</option>
-    <option value="-12">UTC−12</option>
-    <option value="-11">UTC−11</option>
-    <option value="-10">UTC−10</option>
-    <option value="-9">UTC−9</option>
-    <option value="-8">UTC−8</option>
-    <option value="-7">UTC−7</option>
-    <option value="-6">UTC−6</option>
-    <option value="-5">UTC−5</option>
-    <option value="-4">UTC−4</option>
-    <option value="-3">UTC−3</option>
-    <option value="-2">UTC−2</option>
-    <option value="-1">UTC−1</option>
-    <option value="0">UTC±0</option>
-    <option value="1">UTC+1</option>
-    <option value="2">UTC+2</option>
-    <option value="3">UTC+3</option>
-    <option value="4">UTC+4</option>
-    <option value="5">UTC+5</option>
-    <option value="6">UTC+6</option>
-    <option value="7">UTC+7</option>
-    <option value="8">UTC+8</option>
-    <option value="9">UTC+9</option>
-    <option value="10">UTC+10</option>
-    <option value="11">UTC+11</option>
-    <option value="12">UTC+12</option>
-    <option value="13">UTC+13</option>
-    <option value="14">UTC+14</option>
-  </select>
-</div>
-
-
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-  <!-- Mean Annual Temperature -->
-  <div>
-    <div class="flex items-center mb-1">
-      <label for="MAT_site" class="block text-base font-medium text-gray-700 mr-2">
-        Mean Annual Temperature (°C) <span class="text-red-500">*</span>
-      </label>
-      <button type="button" onclick="toggleHelp(this, 'help-mat')" class="text-blue-500 text-xs">[?]</button>
-    </div>
-    <p id="help-mat" class="text-sm text-gray-600 hidden">
-      Enter the site’s mean annual temperature in degrees Celsius.
-    </p>
-    <input type="number" step="any" name="MAT_site" id="MAT_site" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-  </div>
-
-  <!-- Mean Annual Precipitation -->
-  <div>
-    <div class="flex items-center mb-1">
-      <label for="MAP_site" class="block text-base font-medium text-gray-700 mr-2">
-        Mean Annual Precipitation (cm) <span class="text-red-500">*</span>
-      </label>
-      <button type="button" onclick="toggleHelp(this, 'help-map')" class="text-blue-500 text-xs">[?]</button>
-    </div>
-    <p id="help-map" class="text-sm text-gray-600 hidden">
-      Enter the site’s mean annual precipitation in centimeters (not mm).
-    </p>
-    <input type="number" step="any" name="MAP_site" id="MAP_site" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-  </div>
-</div>
-
-<!-- Plant Functional Type -->
-<div class="mb-6">
-  <div class="flex items-center mb-1">
-    <label class="block text-base font-medium text-gray-700 mr-2">
-      Plant Functional Type (PFT) <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-pft')" class="text-blue-500 text-xs">[?]</button>
-  </div>
-  <p id="help-pft" class="text-sm text-gray-600 hidden">
-    Select the dominant CLM Plant Functional Type (PFT) for this site.
-    See <a href="https://escomp.github.io/CTSM/release-clm5.0/tech_note/Ecosystem/CLM50_Tech_Note_Ecosystem.html" target="_blank" class="underline text-blue-500">CLM Technical Note, Table 2.2.1</a> for more detail.
-  </p>
-  <select name="PFT" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-    <option value="">Select a PFT</option>
-    <option value="0">Bare Ground</option>
-    <option value="1">Needleleaf evergreen tree – temperate</option>
-    <option value="2">Needleleaf evergreen tree – boreal</option>
-    <option value="3">Needleleaf deciduous tree – boreal</option>
-    <option value="4">Broadleaf evergreen tree – tropical</option>
-    <option value="5">Broadleaf evergreen tree – temperate</option>
-    <option value="6">Broadleaf deciduous tree – tropical</option>
-    <option value="7">Broadleaf deciduous tree – temperate</option>
-    <option value="8">Broadleaf deciduous tree – boreal</option>
-    <option value="9">Broadleaf evergreen shrub – temperate</option>
-    <option value="10">Broadleaf deciduous shrub – temperate</option>
-    <option value="11">Broadleaf deciduous shrub – boreal</option>
-    <option value="12">C3 arctic grass</option>
-    <option value="13">C3 grass</option>
-    <option value="14">C4 grass</option>
-    <option value="15">C3 Unmanaged Rainfed Crop</option>
-    <option value="16">C3 Unmanaged Irrigated Crop</option>
-    <option value="17">Managed Rainfed Crop</option>
-    <option value="18">Managed Irrigated Crop</option>
-  </select>
-</div>
-
-<!-- Dominant Species -->
-<div class="mb-6">
-  <div class="flex items-center mb-1">
-    <label class="block text-base font-medium text-gray-700 mr-2">
-      Dominant Species <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-dominant-species')" class="text-blue-500 text-xs">[?]</button>
-  </div>
-  <p id="help-dominant-species" class="text-sm text-gray-600 hidden">
-    List the dominant species near the measurement area. Example: Common Name: White Pine, Scientific Name: <i>Pinus strobus</i>.
-  </p>
-
-  <div id="species-container">
-    <div class="species-entry grid grid-cols-1 md:grid-cols-2 gap-4 relative">
-      <label class="text-sm text-gray-700">
-        Common Name:
-        <input type="text" name="species_common[]" class="border border-gray-300 rounded-md p-2 w-full text-sm" required />
-      </label>
-      <label class="text-sm text-gray-700">
-        Scientific Name:
-        <input type="text" name="species_scientific[]" class="border border-gray-300 rounded-md p-2 w-full text-sm" required />
-      </label>
-    </div>
-  </div>
-
-  <button type="button" onclick="addSpecies()" class="mt-2 text-blue-600 text-sm">+ Add Another Species</button>
-</div>
-    
-<div class="mb-6">
-  <div class="flex items-center mb-1">
-    <label for="instrument_type" class="block text-base font-medium text-gray-700 mr-2">
-      Type of Instrument <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-instrument-type')" class="text-blue-500 text-xs">[?]</button>
-  </div>
-  <p id="help-instrument-type" class="text-sm text-gray-600 hidden">
-    Select the type of instrument used for thermal measurements at the site. 
-  </p>
-  <select name="instrument_type" id="instrument_type" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-    <option value="">Select an instrument type</option>
-    <option value="Thermal Camera">Thermal Camera</option>
-    <option value="Net Radiometer">Net Radiometer</option>
-    <option value="IRT">IRT (Infrared Thermometer)</option>
-  </select>
-</div>
-
-<div class="mb-6">
-  <div class="flex items-center mb-1">
-    <label for="brand_model" class="block text-base font-medium text-gray-700 mr-2">
-      Brand and Model <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-brand-model')" class="text-blue-500 text-xs">[?]</button>
-  </div>
-  <p id="help-brand-model" class="text-sm text-gray-600 hidden">
-    Provide the full brand and model of the thermal instrument used (e.g., FLIR A655sc, Apogee SI-111).
-  </p>
-  <input type="text" name="brand_model" id="brand_model" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-</div>
-
-<!-- Pixel Resolution -->
-<div class="mb-6">
-  <div class="flex items-start mb-1">
-    <label class="block text-base font-medium text-gray-700 mr-2">
-      Pixel Resolution <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-pixel-resolution')" class="text-blue-500 text-xs mt-1">[?]</button>
-  </div>
-  <p id="help-pixel-resolution" class="text-sm text-gray-600 hidden">
-    Enter the native pixel resolution of the instrument by specifying the width and height in pixels (e.g., 640 × 480).
-  </p>
-
-  <div class="grid grid-cols-2 gap-4">
-    <div>
-      <label for="pixelWidth" class="block text-sm text-gray-600 mb-1">Width (px)</label>
-      <input type="number" name="pixelWidth" id="pixelWidth" required class="border border-gray-300 rounded-md p-2 w-full" />
-    </div>
-    <div>
-      <label for="pixelHeight" class="block text-sm text-gray-600 mb-1">Height (px)</label>
-      <input type="number" name="pixelHeight" id="pixelHeight" required class="border border-gray-300 rounded-md p-2 w-full" />
-    </div>
-  </div>
-</div>
-
-
-<!-- Last Calibration Date -->
-<div class="mb-6">
-  <div class="flex items-start mb-1">
-    <label for="lastCalibrationDate" class="block text-base font-medium text-gray-700 mr-2">
-      Last Calibration Date <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-calibration-date')" class="text-blue-500 text-xs mt-1">[?]</button>
-  </div>
-  <p id="help-calibration-date" class="text-sm text-gray-600 hidden">
-    Enter the date of the most recent manufacturer calibration in YYYY-MM format.
-    If unknown, enter the month and year the instrument was purchased instead.
-  </p>
-
-  <div class="flex flex-col md:flex-row gap-4">
-    <input type="month" name="lastCalibrationDate" id="lastCalibrationDate" required class="block border border-gray-300 rounded-md p-2" />
-    <label class="flex items-center text-sm">
-      <input type="checkbox" id="usePurchaseDate" onchange="toggleCalibrationFields()" class="mr-2" />
-      Use instrument purchase date instead
-    </label>
-    <input type="month" name="purchaseDate" id="purchaseDate" class="block border border-gray-300 rounded-md p-2 hidden" />
-  </div>
-</div>
-
-<!-- Manufacturer-Reported Temperature Error -->
-<div class="mb-6">
-  <div class="flex items-start mb-1">
-    <label class="block text-base font-medium text-gray-700 mr-2">
-      Manufacturer-Reported Temperature Error (°C) <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-temp-error')" class="text-blue-500 text-xs mt-1">[?]</button>
-  </div>
-  <p id="help-temp-error" class="text-sm text-gray-600 hidden">
-    Enter the temperature error range reported by the manufacturer. Provide the lower and upper bounds in degrees Celsius (e.g., -2 to 2).
-  </p>
-
-  <div class="grid grid-cols-2 gap-4">
-    <div>
-      <label for="tempErrorMin" class="block text-sm text-gray-600 mb-1">Lower Bound (°C)</label>
-      <input type="number" name="tempErrorMin" id="tempErrorMin" step="0.1" required class="border border-gray-300 rounded-md p-2 w-full" />
-    </div>
-    <div>
-      <label for="tempErrorMax" class="block text-sm text-gray-600 mb-1">Upper Bound (°C)</label>
-      <input type="number" name="tempErrorMax" id="tempErrorMax" step="0.1" required class="border border-gray-300 rounded-md p-2 w-full"/>
-    </div>
-  </div>
-</div>
-
-    <!-- Enclosure Window Transmittance -->
-<div class="mb-6">
-  <div class="flex items-start mb-1">
-    <label for="hasEnclosure" class="block text-base font-medium text-gray-700 mr-2">
-      Enclosure Window Transmittance (if applicable) <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-enclosure')" class="text-blue-500 text-xs mt-1">[?]</button>
-  </div>
-  <p id="help-enclosure" class="text-sm text-gray-600 hidden">
-    If your instrument was not enclosed (i.e., had no protective window), select “No enclosure.”
-If the instrument was housed in an enclosure with a window (e.g., made of germanium or other material), enter the manufacturer-reported transmittance value for that window as a decimal between 0 and 1 (e.g., 0.95).
-  </p>
-
-  <select name="hasEnclosure" id="hasEnclosure" required onchange="toggleEnclosureField()"
-          class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-    <option value="">Select an option</option>
-    <option value="no">No enclosure</option>
-    <option value="yes">Yes, enclosure present</option>
-  </select>
-
-  <div id="enclosureValueWrapper" class="mt-4 hidden">
-    <label for="enclosureTransmittance" class="block text-sm font-medium text-gray-700 mb-1">Transmittance Value</label>
-    <input type="number" name="enclosureTransmittance" id="enclosureTransmittance" min="0" max="1" step="0.01"
-           class="block w-full border border-gray-300 rounded-md p-2" placeholder="e.g., 0.95">
-  </div>
-</div>
-
-<!-- FOV Angle -->
-<div class="mb-6">
-  <div class="flex items-center mb-1">
-    <label for="fovAngle" class="block text-base font-medium text-gray-700 mr-2">
-      FOV Angle of Camera (°) <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-fov-angle')" class="text-blue-500 text-xs">[?]</button>
-  </div>
-  <p id="help-fov-angle" class="text-sm text-gray-600 hidden">
-      Enter the field of view (FOV) angle, in degrees (°), as specified by the camera manufacturer (e.g., 45°). 
-  </p>
-  <input type="number" name="fovAngle" id="fovAngle" step="0.1" min="0" class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-</div>
-
-    <!-- Camera Mount Angle -->
-<div class="mb-6">
-  <div class="flex items-start mb-1">
-    <label for="cameraMountAngle" class="block text-base font-medium text-gray-700 mr-2">
-      Camera Tilt Angle (°) <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-camera-angle')" class="text-blue-500 text-xs mt-1">[?]</button>
-  </div>
-  <p id="help-camera-angle" class="text-sm text-gray-600 hidden">
-    Enter the angle at which the camera is mounted relative to the horizontal plane. Use 0° for a camera pointing straight out and 90° for one pointing straight down.
-  </p>
-
-  <input type="number" name="cameraMountAngle" id="cameraMountAngle" required min="0" max="90" step="1"
-     class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-</div>
-
-    <!-- Camera Orientation -->
-<div class="mb-6">
-  <div class="flex items-start mb-1">
-    <label for="cameraOrientation" class="block text-base font-medium text-gray-700 mr-2">
-      Camera Orientation (Cardinal Direction) <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-camera-orientation')" class="text-blue-500 text-xs mt-1">[?]</button>
-  </div>
-  <p id="help-camera-orientation" class="text-sm text-gray-600 hidden">
-    Select the cardinal direction the camera is facing. This helps contextualize the sun angle and canopy illumination.
-  </p>
-
-  <select name="cameraOrientation" id="cameraOrientation" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-    <option value="">Select a direction</option>
-    <option value="N">N</option>
-    <option value="NE">NE</option>
-    <option value="E">E</option>
-    <option value="SE">SE</option>
-    <option value="S">S</option>
-    <option value="SW">SW</option>
-    <option value="W">W</option>
-    <option value="NW">NW</option>
-  </select>
-</div>
-
-    <!-- Camera Height on Tower (m) -->
-<div class="mb-6">
-  <div class="flex items-start mb-1">
-    <label for="cameraHeight" class="block text-base font-medium text-gray-700 mr-2">
-      Camera Height on Tower (m) <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-camera-height')" class="text-blue-500 text-xs mt-1">[?]</button>
-  </div>
-  <p id="help-camera-height" class="text-sm text-gray-600 hidden">
-    Enter the vertical distance from the ground to the camera (in meters). This should reflect the installed height on the tower or stand.
-  </p>
-
-  <input type="number" name="cameraHeight" id="cameraHeight" step="0.01" min="0" required
-         class="mt-1 block w-full border border-gray-300 rounded-md p-2" >
-</div>
-
-    <!-- Sampling Interval (minutes) -->
-<div class="mb-6">
-  <div class="flex items-start mb-1">
-    <label for="samplingInterval" class="block text-base font-medium text-gray-700 mr-2">
-      Sampling Interval (minutes) <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-sampling-interval')" class="text-blue-500 text-xs mt-1">[?]</button>
-  </div>
-  <p id="help-sampling-interval" class="text-sm text-gray-600 hidden">
-    Enter the time interval between successive thermal measurements or images, in minutes (e.g., 30 for half-hourly sampling).
-  </p>
-
-  <input type="number" name="samplingInterval" id="samplingInterval" min="1" step="1" required
-         class="mt-1 block w-full border border-gray-300 rounded-md p-2" ">
-</div>
-
-    <!-- Software Override -->
-<div class="mb-6">
-  <div class="flex items-start mb-1">
-    <label for="softwareOverride" class="block text-base font-medium text-gray-700 mr-2">
-      Were you able to override the default camera software settings during data acquisition? <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-software-override')" class="text-blue-500 text-xs mt-1">[?]</button>
-  </div>
-  <p id="help-software-override" class="text-sm text-gray-600 hidden">
-    This info is important for understanding post-processing needs for the thermal data. If you were not able to override the default settings (e.g., emissivity, transmittance, or distance), please provide the values the software used.
-  </p>
-
-  <select name="softwareOverride" id="softwareOverride" required onchange="toggleSoftwareDefaults()"
-          class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-    <option value="">Select an option</option>
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
-  </select>
-
-  <div id="software-defaults" class="mt-4 hidden space-y-4">
-    <div>
-      <label for="software-emissivity" class="block text-sm font-medium text-gray-700">Software Emissivity (0–1):</label>
-      <input type="number" name="software_emissivity" id="software-emissivity" min="0" max="1" step="0.01"
-             class="block w-full border border-gray-300 rounded-md p-2">
+      <p class="text-xs text-gray-500">If enabled, you can predefine polygon coordinates per ROI (x, y pairs).</p>
     </div>
 
-    <div>
-      <label for="software-transmittance" class="block text-sm font-medium text-gray-700">Software Transmittance (0–1):</label>
-      <input type="number" name="software_transmittance" id="software-transmittance" min="0" max="1" step="0.01"
-             class="block w-full border border-gray-300 rounded-md p-2">
+    <!-- Step 2: ROI Input Section (Initially Hidden) -->
+    <div id="roiContainer" class="mt-4 hidden">
+      <label class="block font-semibold text-gray-800 mb-2">Region(s) of Interest (ROI):</label>
+      <div id="roiFields"></div>
+      <button type="button" onclick="addROI()" class="mt-2 text-blue-600 text-sm">+ Add Another ROI</button>
     </div>
 
-    <div>
-      <label for="software-distance" class="block text-sm font-medium text-gray-700">Software Distance (m):</label>
-      <input type="number" name="software_distance" id="software-distance" min="0" step="0.1"
-             class="block w-full border border-gray-300 rounded-md p-2">
+    <!-- RGB Image Upload -->
+    <div class="mt-6">
+      <label for="rgb-image" class="block font-medium text-sm text-gray-700">Upload RGB Image of Site <span class="text-red-500">*</span></label>
+      <input type="file" id="rgb-image" name="rgb_image" accept=".jpg,.jpeg,.png" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+      <p class="text-sm text-gray-600 mt-1">Accepted formats: .jpg, .jpeg, .png</p>
     </div>
-  </div>
-</div>
 
- <!-- Measurement Tiers Section -->
-<div class="mb-6">
-  <div class="flex items-center mb-1">
-    <label class="block text-base font-medium text-gray-700 mr-2">
-      Measurement Tier Levels <span class="text-red-500">*</span>
-    </label>
-    <button type="button" onclick="toggleHelp(this, 'help-tier-info')" class="text-blue-500 text-xs">[?]</button>
-  </div>
-  <p id="help-tier-info" class="text-sm text-gray-600 hidden">
-    Select the appropriate tier for each measurement component based on the guidance in
-    <a href="tier-tables.html" target="_blank" class="text-red-600 underline">Tier Tables</a>
-  </p>
+    <!-- TIR Image Upload -->
+    <div class="mt-6">
+      <label for="tir-image" class="block font-medium text-sm text-gray-700">Upload Thermal (TIR) Image of Site <span class="text-red-500">*</span></label>
+      <input type="file" id="tir-image" name="tir_image" accept=".jpg,.jpeg,.png,.tif,.tiff" required class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
+      <p class="text-sm text-gray-600 mt-1">Accepted formats: .jpg, .jpeg, .png, .tif, .tiff</p>
+    </div>
 
-  <label for="pd-tier" class="block mt-4 font-medium text-sm text-gray-700">Pre-deployment Testing (Table 1) <span class="text-red-500">*</span></label>
-  <select name="pd_tier" id="pd-tier" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-    <option value="">-- Select Tier --</option>
-    <option value="T1">T1</option>
-    <option value="T2">T2</option>
-    <option value="T3">T3</option>
-    <option value="T4">T4</option>
-    <option value="T5">T5</option>
-  </select>
-
-  <label for="corrM-tier" class="block mt-4 font-medium text-sm text-gray-700">Correction Measurements (Table 2)<span class="text-red-500">*</span></label>
-  <select name="corrM_tier" id="corrM-tier" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-    <option value="">-- Select Tier --</option>
-    <option value="T1">T1</option>
-    <option value="T2">T2</option>
-    <option value="T3">T3</option>
-    <option value="T4">T4</option>
-    <option value="T5">T5</option>
-  </select>
-
-  <label for="conM-tier" class="block mt-4 font-medium text-sm text-gray-700">Contact Measurements (Table 3)<span class="text-red-500">*</span></label>
-  <select name="conM_tier" id="conM-tier" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-    <option value="">-- Select Tier --</option>
-    <option value="T1">T1</option>
-    <option value="T2">T2</option>
-    <option value="T3">T3</option>
-    <option value="T4">T4</option>
-    <option value="T5">T5</option>
-  </select>
-
-<label for="rp-tier" class="block mt-4 font-medium text-sm text-gray-700">
-  Reference Panel (Table 4)<span class="text-red-500">*</span>
-</label>
-<select name="rp_tier" id="rp-tier" required onchange="toggleRefPanelDetails()" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-  <option value="">-- Select Tier --</option>
-  <option value="T1">T1</option>
-  <option value="T2">T2</option>
-  <option value="T3">T3</option>
-  <option value="T4">T4</option>
-  <option value="T5">T5</option>
-</select>
-
-<div id="ref-panel-fields" class="mt-4" style="display: none;">
-  <h3 class="text-sm font-semibold mb-2">Reference Panel Details</h3>
-  <div id="refPanelContainer" class="space-y-4"></div>
-  <button type="button" onclick="addRefPanel()" class="mt-2 text-blue-600 text-sm">+ Add Another Panel</button>
-</div>
-
-
-  <label for="nonconM-tier" class="block mt-4 font-medium text-sm text-gray-700">Non-Contact Measurements (Table 5)<span class="text-red-500">*</span></label>
-  <select name="nonconM_tier" id="nonconM-tier" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-    <option value="">-- Select Tier --</option>
-    <option value="T1">T1</option>
-    <option value="T2">T2</option>
-    <option value="T3">T3</option>
-    <option value="T4">T4</option>
-  </select>
-
-  <label for="interM-tier" class="block mt-4 font-medium text-sm text-gray-700">Interpretation Measurements (Table 6)<span class="text-red-500">*</span></label>
-  <select name="interM_tier" id="interM-tier" required class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-    <option value="">-- Select Tier --</option>
-    <option value="T1">T1</option>
-    <option value="T2">T2</option>
-    <option value="T3">T3</option>
-    <option value="T4">T4</option>
-    <option value="T5">T5</option>
-  </select>
-</div>
-
-    <!-- Step 1: Do you have ROIs defined? -->
-<div class="mt-6">
-  <label for="has-rois" class="block font-medium text-sm text-gray-700">Have you already defined Regions of Interest (ROIs)? <span class="text-red-500">*</span></label>
-  <select id="has-rois" name="has_rois" required onchange="toggleROIFields()" class="mt-1 block w-full border border-gray-300 rounded-md p-2">
-    <option value="">-- Select --</option>
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
-  </select>
-</div>
-
-<!-- Step 2: ROI Input Section (Initially Hidden) -->
-<div id="roiContainer" class="mt-4 hidden">
-  <label class="block font-semibold text-gray-800 mb-2">Region(s) of Interest (ROI):</label>
-  <div id="roiFields"></div>
-  <button type="button" onclick="addROI()" class="mt-2 text-blue-600 text-sm">+ Add Another ROI</button>
-</div>
-
-<!-- RGB Image Upload -->
-<div class="mt-6">
-  <label for="rgb-image" class="block font-medium text-sm text-gray-700">
-    Upload RGB Image of Site <span class="text-red-500">*</span>
-  </label>
-  <input type="file" id="rgb-image" name="rgb_image" accept=".jpg,.jpeg,.png" required
-         class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-  <p class="text-sm text-gray-600 mt-1">Accepted formats: .jpg, .jpeg, .png</p>
-</div>
-
-<!-- TIR Image Upload -->
-<div class="mt-4">
-  <label for="tir-image" class="block font-medium text-sm text-gray-700">
-    Upload Thermal Infrared (TIR) Image of Site <span class="text-red-500">*</span>
-  </label>
-  <input type="file" id="tir-image" name="tir_image" accept=".tif,.tiff" required
-         class="mt-1 block w-full border border-gray-300 rounded-md p-2" />
-  <p class="text-sm text-gray-600 mt-1">Accepted formats: .tif/.tiff (in °C)</p>
-</div>
-
-
-    
-    <!-- Submit -->
-    <div class="text-center">
-      <button type="submit" class="mt-4 px-6 py-3 bg-gradient-to-br from-red-600 to-orange-500 text-white font-semibold rounded-full shadow hover:shadow-lg transition">
+    <!-- Submit Button -->
+    <div class="pt-4">
+      <button type="submit" class="px-6 py-3 rounded-md bg-gradient-to-r from-rose-600 to-orange-500 text-white font-semibold hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
         Submit Site
       </button>
-      <p class="text-sm text-gray-600 mt-2 italic">
-      Please be patient once you press Submit — it may take a few seconds to register with our server. A popup will appear once your submission is complete.
-      </p>
+      <p class="text-xs text-gray-500 mt-2">Press Submit — it may take a few seconds to register with our server. A popup will appear once your submission is complete.</p>
     </div>
   </form>
-  
-<!-- Reusable Submission Modal -->
-<div id="submissionModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-  <div class="bg-white p-6 rounded-lg shadow-xl max-w-md text-center">
-    <h2 id="modalTitle" class="text-xl font-bold mb-4"></h2>
-    <p id="modalMessage" class="text-gray-700 mb-6"></p>
-    <button id="closeModal" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded">OK</button>
+
+  <!-- Reusable Submission Modal -->
+  <div id="submissionModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white p-6 rounded-lg shadow-xl max-w-md text-center">
+      <h2 id="modalTitle" class="text-lg font-bold mb-2"></h2>
+      <p id="modalMessage" class="text-sm text-gray-700"></p>
+      <div class="mt-4">
+        <button onclick="document.getElementById('submissionModal').classList.add('hidden')" class="px-4 py-2 rounded-md bg-gray-800 text-white">Close</button>
+      </div>
+    </div>
   </div>
+
 </div>
-</section>
-  
 
 <script>
-document.getElementById("addSiteForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
-
-  const form = e.target;
-  const formData = new FormData(form);
-
-  // Convert file to base64
-  function toBase64(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsArrayBuffer(file);
-      reader.onload = () => {
-        const base64 = btoa(
-          new Uint8Array(reader.result)
-            .reduce((data, byte) => data + String.fromCharCode(byte), '')
-        );
-        resolve(base64);
-      };
-      reader.onerror = reject;
-    });
-  }
-
-
-
-  // Convert remaining form data
-  const data = {};
-  for (let [key, value] of formData.entries()) {
-    if (key !== "rgbImage" && key !== "tirImage") {
-      if (data[key]) {
-        if (!Array.isArray(data[key])) data[key] = [data[key]];
-        data[key].push(value);
-      } else {
-        data[key] = value;
-      }
-    }
-  }
-  const siteID = data.siteID || "unknown-site";
-  // Get timestamp now, since it's reused
-  const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-  
-  // Get uploaded files from the form
-  const rgbFile2 = formData.get("rgb_image");
-  const tirFile2 = formData.get("tir_image");
-  
-  // Extract original file extensions
-  const rgbExt = rgbFile2.name.split('.').pop().toLowerCase();
-  const tirExt = tirFile2.name.split('.').pop().toLowerCase();
-  
-  // Build filenames using those extensions
-  const rgbFilename2 = `rgb-${siteID}-${timestamp}.${rgbExt}`;
-  const tirFilename2 = `tir-${siteID}-${timestamp}.${tirExt}`;
-  
-  // Add the paths to the data object
-  data.rgb_image_path = `site-images/${rgbFilename2}`;
-  data.tir_image_path = `site-images/${tirFilename2}`;
-
-  // Encode form JSON
-  const jsonContent = JSON.stringify(data, null, 2);
-  const base64Json = btoa(unescape(encodeURIComponent(jsonContent)));
-  const filename = `${siteID}-${timestamp}.json`;
-  
-  // Get files from input elements
-  const rgbFile = document.getElementById("rgb-image").files[0];
-  const tirFile = document.getElementById("tir-image").files[0];
-  
-  let rgbBase64 = "";
-  let tirBase64 = "";
-  let rgbFilename = "";
-  let tirFilename = "";
-  
-  if (rgbFile) {
-    rgbBase64 = await toBase64(rgbFile);
-    rgbFilename = `rgb-${siteID}-${timestamp}.${rgbFile.name.split('.').pop()}`;
-  }
-  
-  if (tirFile) {
-    tirBase64 = await toBase64(tirFile);
-    tirFilename = `tir-${siteID}-${timestamp}.${tirFile.name.split('.').pop()}`;
-  }
-
-  // Build payload for Netlify
-const payload = {
-  filename: filename,
-  json: base64Json,
-  image_base64: rgbBase64,
-  image_filename: rgbFilename,
-  tir_image_base64: tirBase64,
-  tir_image_filename: tirFilename
-};
-  try {
-    const controller = new AbortController();
-    const t = setTimeout(() => controller.abort(), 30000);
-  
-    const res = await fetch(FUNCTION_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" }, // if you're sending JSON
-      body: JSON.stringify(payload),
-      mode: "cors",
-      signal: controller.signal
-    });
-    clearTimeout(t);
-  
-    if (!res.ok) {
-      const ct = res.headers.get("content-type") || "";
-      const body = ct.includes("application/json") ? JSON.stringify(await res.json()) : await res.text();
-      console.error("Submit failed:", res.status, res.statusText, body);
-      showModal(`⚠️ Submit failed (${res.status})`, body?.slice(0, 400) || "Server error.");
-      return;
-    }
-  
-    showModal("✅ Submitted!", "Thanks! Your entry was received.", false);
-  
-  } catch (err) {
-    console.error("Submission error:", err?.message || err);
-    const msg = err?.name === "AbortError" ? "The request timed out. Please try again." : "A network/CORS error occurred.";
-    showModal("⚠️ Network Error", msg);
-  }
-
-  
-  // Close modal when user clicks X
-  document.getElementById("closeModal").addEventListener("click", () => {
-    document.getElementById("submissionModal").classList.add("hidden");
-  });
-
+// Dropdown behaviour
+const addSiteToggle = document.getElementById("addSiteToggle");
+const addSiteMenu = document.getElementById("addSiteMenu");
+addSiteToggle.addEventListener("click", () => addSiteMenu.classList.toggle("hidden"));
+document.addEventListener("click", (e) => {
+  if (!addSiteToggle.contains(e.target) && !addSiteMenu.contains(e.target)) addSiteMenu.classList.add("hidden");
 });
 
-
-
-
-function toggleROIFields() {
-  const hasRois = document.getElementById('has-rois').value;
+// ROI toggling
+const hasROI = document.getElementById('hasROI');
+hasROI.addEventListener('change', toggleROISection);
+function toggleROISection() {
   const roiContainer = document.getElementById('roiContainer');
   const roiFields = document.getElementById('roiFields');
-
-  if (hasRois === 'yes') {
+  if (hasROI.checked) {
     roiContainer.classList.remove('hidden');
     if (roiFields.children.length === 0) addROI();  // Add initial ROI
   } else {
@@ -966,40 +147,14 @@ function addROI() {
   const roi = document.createElement("div");
   roi.className = "border border-gray-300 p-3 rounded-md relative mb-4";
   roi.innerHTML = `
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-      <!-- ROI ID with help -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700">
-          ROI ID <span class="text-red-500">*</span>
-          <button type="button" onclick="toggleHelp(this, 'roi-help-${roiIndex}')" class="text-blue-500 text-xs">[?]</button>
-        </label>
-        <input type="text" name="roi_id[]" required pattern="[A-Za-z0-9_\\-]+" title="No special characters. Use letters, numbers, _ or - only." class="w-full border border-gray-300 p-1 rounded" />
-        <p id="roi-help-${roiIndex}" class="text-sm text-gray-600 hidden">
-          Provide a short, unique identifier for your site. Avoid special characters. Example: Fir_1
-        </p>
-      </div>
-
-      <label>Dominant Species (Common Name):<span class="text-red-500">*</span>
-        <input type="text" name="roi_species_common[]" required class="w-full border border-gray-300 p-1 rounded" />
-      </label>
-
-      <label>Dominant Species (Scientific Name):<span class="text-red-500">*</span>
-        <input type="text" name="roi_species_scientific[]" required class="w-full border border-gray-300 p-1 rounded" />
-      </label>
-
-      <label>Emissivity (0–1):<span class="text-red-500">*</span>
-        <input type="number" name="roi_emissivity[]" required min="0" max="1" step="0.01" class="w-full border border-gray-300 p-1 rounded" />
-      </label>
-
-      <label>Distance from Sensor (m):<span class="text-red-500">*</span>
-        <input type="number" name="roi_distance[]" required min="0" step="0.1" class="w-full border border-gray-300 p-1 rounded" />
-      </label>
+    <div class="flex items-center justify-between mb-2">
+      <h3 class="font-semibold">ROI #${roiIndex + 1}</h3>
+      <button type="button" class="text-xs text-red-600" onclick="this.closest('.border').remove()">Remove</button>
     </div>
-
-    <!-- ROI Pixel Coordinates -->
-    <div class="mt-4">
-      <label class="block text-sm font-medium text-gray-700">ROI Pixel Coordinates (x, y)</label>
+    <label class="block font-medium text-sm text-gray-700">ROI Name</label>
+    <input type="text" name="roi_name_${roiIndex}" class="mt-1 block w-full border border-gray-300 rounded-md p-2" placeholder="e.g., Tree canopy">
+    <div class="mt-2">
+      <label class="block font-medium text-sm text-gray-700">Polygon Coordinates (x,y pairs)</label>
       <div class="space-y-2" id="roi-coords-${roiIndex}">
         <div class="flex space-x-2">
           <input type="number" name="roi_x_${roiIndex}[]" placeholder="x" required class="w-1/2 border border-gray-300 p-1 rounded" />
@@ -1008,329 +163,173 @@ function addROI() {
       </div>
       <button type="button" onclick="addROICoord(${roiIndex})" class="text-blue-600 text-xs mt-1">+ Add Another Coordinate</button>
     </div>
-
-    ${roiIndex > 0 ? `<button type="button" onclick="this.parentElement.remove()" class="text-red-600 text-xs mt-2">Remove ROI</button>` : ''}
   `;
-
   container.appendChild(roi);
 }
 
 function addROICoord(index) {
-  const coordContainer = document.getElementById(`roi-coords-${index}`);
-  const div = document.createElement("div");
-  div.className = "flex space-x-2 mt-2";
-  div.innerHTML = `
+  const coordsContainer = document.getElementById(`roi-coords-${index}`);
+  const row = document.createElement('div');
+  row.className = 'flex space-x-2';
+  row.innerHTML = `
     <input type="number" name="roi_x_${index}[]" placeholder="x" required class="w-1/2 border border-gray-300 p-1 rounded" />
     <input type="number" name="roi_y_${index}[]" placeholder="y" required class="w-1/2 border border-gray-300 p-1 rounded" />
-    <button type="button" onclick="this.parentElement.remove()" class="text-red-500 text-xs">Remove</button>
   `;
-  coordContainer.appendChild(div);
+  coordsContainer.appendChild(row);
 }
 
-function toggleHelp(btn, id) {
-  const help = document.getElementById(id);
-  help.classList.toggle("hidden");
-}
-function toggleRefPanelDetails() {
-  const selected = document.getElementById("rp-tier").value;
-  const panelSection = document.getElementById("ref-panel-fields");
-  const container = document.getElementById("refPanelContainer");
+// === SUBMISSION HANDLER ===
+document.getElementById("addSiteForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-  if (["T1", "T2", "T3", "T4"].includes(selected)) {
-    panelSection.style.display = "block";
-    if (container.children.length === 0) addRefPanel();
-  } else {
-    panelSection.style.display = "none";
-    container.innerHTML = ""; // Clear all panels if T5 selected
+  const form = e.target;
+  const formData = new FormData(form);
+
+  // Convert file to base64 (for images we still send base64 to your function)
+  function toBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsArrayBuffer(file);
+      reader.onload = () => {
+        const base64 = btoa(
+          new Uint8Array(reader.result)
+            .reduce((data, byte) => data + String.fromCharCode(byte), '')
+        );
+        resolve(base64);
+      };
+      reader.onerror = reject;
+    });
   }
-}
 
-function toggleHelp(button, id) {
-  const helpText = document.getElementById(id);
-  helpText.classList.toggle("hidden");
-}
+  // Extract selected files
+  const rgbFile = document.getElementById('rgb-image').files[0];
+  const tirFile = document.getElementById('tir-image').files[0];
 
-function addRefPanel() {
-  const container = document.getElementById("refPanelContainer");
-  const panelIndex = container.children.length;
-
-  const panel = document.createElement("div");
-  panel.className = "border border-gray-300 p-3 rounded-md relative mt-4";
-  panel.innerHTML = `
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <!-- ID with help -->
-    <div>
-      <label class="block text-sm font-medium text-gray-700">
-        ID <span class="text-red-500">*</span>
-        <button type="button" onclick="toggleHelp(this, 'help-id-${panelIndex}')" class="text-blue-500 text-xs">[?]</button>
-      </label>
-      <input
-        type="text"
-        name="ref_panel_id[]"
-        required
-        pattern="[A-Za-z0-9_\-]+"
-        title="No special characters. Use letters, numbers, _ or - only."
-        class="w-full border border-gray-300 rounded-md p-2 mt-1"
-      />
-      <p id="help-id-${panelIndex}" class="text-sm text-gray-600 hidden">
-        Unique identifier for the panel. Useful for keeping track if you are using multiple reference panels.
-      </p>
-    </div>
-
-
-      <label>Width (cm): <span class="text-red-500">*</span><input type="number" name="ref_panel_width[]" step="0.1" min="0" required class="w-full border border-gray-300 p-1 rounded" /></label>
-      <label>Height (cm): <span class="text-red-500">*</span><input type="number" name="ref_panel_height[]" step="0.1" min="0" required class="w-full border border-gray-300 p-1 rounded" /></label>
-      <label>Thickness (cm): <span class="text-red-500">*</span><input type="number" name="ref_panel_thickness[]" step="0.1" min="0" required class="w-full border border-gray-300 p-1 rounded" /></label>
-
-      <!-- Material with help -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700">
-          Material <span class="text-red-500">*</span>
-          <button type="button" onclick="toggleHelp(this, 'help-material-${panelIndex}')" class="text-blue-500 text-xs">[?]</button>
-        </label>
-        <input type="text" name="ref_panel_material[]" required class="w-full border border-gray-300 p-1 rounded" />
-        <p id="help-material-${panelIndex}" class="text-sm text-gray-600 hidden">
-          Material of the reference panel (e.g., 6061 aluminum).
-        </p>
-      </div>
-
-      <label>Estimated emissivity (0–1):<span class="text-red-500">*</span> <input type="number" name="ref_panel_emissivity[]" min="0" max="1" step="0.01" required class="w-full border border-gray-300 p-1 rounded" /></label>
-      <label>Distance from Camera (m):<span class="text-red-500">*</span> <input type="number" name="ref_panel_distance[]" min="0" step="0.1" required class="w-full border border-gray-300 p-1 rounded" /></label>
-
-      <!-- Panel Angle with help -->
-      <div>
-        <label class="block text-sm font-medium text-gray-700">
-          Panel Angle (°) <span class="text-red-500">*</span>
-          <button type="button" onclick="toggleHelp(this, 'help-angle-${panelIndex}')" class="text-blue-500 text-xs">[?]</button>
-        </label>
-        <input type="number" name="ref_panel_angle[]" min="0" max="180" step="0.1" required class="w-full border border-gray-300 p-1 rounded" />
-        <p id="help-angle-${panelIndex}" class="text-sm text-gray-600 hidden">
-          Enter the angle at which the panel is mounted relative to the horizontal plane. Use 0° for a panel pointing straight out and 90° for one pointing straight down.
-        </p>
-      </div>
-
-      <!-- Independent contact selector -->
-      <label>Independent contact measurement? <span class="text-red-500">*</span>
-        <select name="ref_panel_independent_contact[]" required class="w-full border border-gray-300 p-1 rounded" onchange="toggleMeasurementInterval(this)">
-          <option value="">-- Select --</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
-        </select>
-      </label>
-
-      <!-- Measurement interval (conditionally shown) -->
-      <div class="measurement-interval-container hidden">
-        <label>Measurement Interval (min): 
-          <input type="number" name="ref_interval[]" min="1" step="1" class="w-full border border-gray-300 p-1 rounded" />
-        </label>
-      </div>
-    </div>
-
-    ${panelIndex > 0 ? `<button type="button" onclick="this.parentElement.remove()" class="text-red-600 text-xs mt-2">Remove Panel</button>` : ''}
-  `;
-
-  container.appendChild(panel);
-}
-
-// Show/hide measurement interval based on contact dropdown
-function toggleMeasurementInterval(select) {
-  const container = select.closest('.grid').querySelector('.measurement-interval-container');
-  if (select.value === 'yes') {
-    container.classList.remove('hidden');
-    container.querySelector('input').setAttribute('required', 'required');
-  } else {
-    container.classList.add('hidden');
-    container.querySelector('input').removeAttribute('required');
+  // Optional: client-side size checks (10 MB example)
+  const MAX_MB = 10;
+  if ((rgbFile && rgbFile.size > MAX_MB * 1024 * 1024) || (tirFile && tirFile.size > MAX_MB * 1024 * 1024)) {
+    const modal = document.getElementById("submissionModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalMessage = document.getElementById("modalMessage");
+    modalTitle.textContent = "⚠️ File too large";
+    modalTitle.classList.add("text-red-700");
+    modalTitle.classList.remove("text-green-700");
+    modalMessage.textContent = `Each file must be under ${MAX_MB} MB.`;
+    modal.classList.remove("hidden");
+    return;
   }
-}
-  function toggleSoftwareDefaults() {
-  const value = document.getElementById("softwareOverride").value;
-  const defaultsDiv = document.getElementById("software-defaults");
 
-  if (value === "no") {
-    defaultsDiv.classList.remove("hidden");
-    document.getElementById("software-emissivity").setAttribute("required", true);
-    document.getElementById("software-transmittance").setAttribute("required", true);
-    document.getElementById("software-distance").setAttribute("required", true);
-  } else {
-    defaultsDiv.classList.add("hidden");
-    document.getElementById("software-emissivity").removeAttribute("required");
-    document.getElementById("software-transmittance").removeAttribute("required");
-    document.getElementById("software-distance").removeAttribute("required");
+  // Create a plain object for non-file fields
+  const data = {};
+  for (let [key, value] of formData.entries()) {
+    if (!(value instanceof File)) {
+      if (data[key]) {
+        if (!Array.isArray(data[key])) data[key] = [data[key]];
+        data[key].push(value);
+      } else {
+        data[key] = value;
+      }
+    }
   }
-}
 
+  // ROI serialization (optional example): collect all ROI name/coords into an array
+  const roiBlocks = Array.from(document.querySelectorAll('#roiFields > div.border'));
+  if (roiBlocks.length) {
+    data.rois = roiBlocks.map((block, idx) => {
+      const name = block.querySelector('input[name^="roi_name_"]').value || `ROI ${idx+1}`;
+      const xs = Array.from(block.querySelectorAll(`input[name^="roi_x_${idx}"]`)).map(i => Number(i.value));
+      const ys = Array.from(block.querySelectorAll(`input[name^="roi_y_${idx}"]`)).map(i => Number(i.value));
+      const coords = xs.map((x, i) => [x, ys[i]]);
+      return { name, coords };
+    });
+  }
+
+  // Build filename base (you can tweak how filenames are constructed)
+  const safeSite = (data.siteName || 'site').replace(/[^A-Za-z0-9-_]/g, '_');
+  const ts = new Date().toISOString().replace(/[:.]/g, '-');
+  const rgbFilename = `${safeSite}_${ts}_rgb` + (rgbFile?.name ? `_${rgbFile.name}` : '.jpg');
+  const tirFilename = `${safeSite}_${ts}_tir` + (tirFile?.name ? `_${tirFile.name}` : '.tif');
+
+  // Convert images to base64
+  const [rgbBase64, tirBase64] = await Promise.all([
+    rgbFile ? toBase64(rgbFile) : Promise.resolve(null),
+    tirFile ? toBase64(tirFile) : Promise.resolve(null)
+  ]);
+
+  // Create the JSON payload for your Netlify function
+  const filename = `${safeSite}_${ts}.json`;
+  const jsonContent = JSON.stringify(data, null, 2);
+  const base64Json = btoa(unescape(encodeURIComponent(jsonContent)));
+
+  // Build payload for Netlify
+  const payload = {
+    filename: filename,
+    json: base64Json,
+    image_base64: rgbBase64,
+    image_filename: rgbFilename,
+    tir_image_base64: tirBase64,
+    tir_image_filename: tirFilename
+  };
+
+  try {
+    console.log("Payload being sent to Netlify function:", payload);
+
+    // Better diagnostics: timeout + CORS + status-aware handling
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
+    const response = await fetch("https://guileless-twilight-7d6d23.netlify.app/.netlify/functions/submitForm", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      mode: "cors",
+      signal: controller.signal
+    });
+    clearTimeout(timeout);
+
+    const modal = document.getElementById("submissionModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalMessage = document.getElementById("modalMessage");
   
-  function toggleEnclosureField() {
-  const hasEnclosure = document.getElementById("hasEnclosure").value;
-  const wrapper = document.getElementById("enclosureValueWrapper");
-
-  if (hasEnclosure === "yes") {
-    wrapper.classList.remove("hidden");
-    document.getElementById("enclosureTransmittance").setAttribute("required", true);
-  } else {
-    wrapper.classList.add("hidden");
-    document.getElementById("enclosureTransmittance").removeAttribute("required");
-  }
-}
-    function toggleCalibrationFields() {
-    const checkbox = document.getElementById("usePurchaseDate");
-    const calibrationInput = document.getElementById("lastCalibrationDate");
-    const purchaseInput = document.getElementById("purchaseDate");
-
-    if (checkbox.checked) {
-      calibrationInput.disabled = true;
-      calibrationInput.removeAttribute("required");
-      calibrationInput.value = "";
-      purchaseInput.classList.remove("hidden");
-      purchaseInput.required = true;
+    if (response.ok) {
+      modalTitle.textContent = "🎉 Site Submitted!";
+      modalTitle.classList.add("text-green-700");
+      modalTitle.classList.remove("text-red-700");
+      modalMessage.textContent = "Thanks for submitting your site to the TIR-ific Network! Check back in ~15 minutes to see it live.";
+      modal.classList.remove("hidden");
+  
+      // Reload after 60 seconds
+      setTimeout(() => {
+        location.reload();
+      }, 60000);
+  
     } else {
-      calibrationInput.disabled = false;
-      calibrationInput.required = true;
-      purchaseInput.classList.add("hidden");
-      purchaseInput.value = "";
-      purchaseInput.removeAttribute("required");
+      const ct = response.headers.get("content-type") || "";
+      let bodyText = "";
+      try { bodyText = ct.includes("application/json") ? JSON.stringify(await response.json()) : await response.text(); } catch(e) {}
+      modalTitle.textContent = `⚠️ Submit failed (${response.status})`;
+      modalTitle.classList.add("text-red-700");
+      modalTitle.classList.remove("text-green-700");
+      modalMessage.textContent = (bodyText && bodyText.slice(0, 500)) || "The server returned an error.";
+      modal.classList.remove("hidden");
+      console.error(bodyText);
     }
-  }
-    function toggleDateFields() {
-    const status = document.getElementById('siteStatus').value;
-    const endDateContainer = document.getElementById('endDateContainer');
-    const endDateInput = document.getElementById('endDate');
-    
-    if (status === "inactive") {
-      endDateContainer.classList.remove("hidden");
-      endDateInput.required = true;
-    } else {
-      endDateContainer.classList.add("hidden");
-      endDateInput.required = false;
-    }
-  }
-
-  function toggleHelp(button, id) {
-    document.querySelectorAll('p[id^="help-"]').forEach(p => {
-      if (p.id !== id) p.classList.add('hidden');
-    });
-    const current = document.getElementById(id);
-    current.classList.toggle('hidden');
-  }
-
-  document.addEventListener('click', function(event) {
-    const isHelpButton = event.target.matches('button[onclick^="toggleHelp"]');
-    const isHelpText = event.target.closest('p[id^="help-"]');
-    if (!isHelpButton && !isHelpText) {
-      document.querySelectorAll('p[id^="help-"]').forEach(p => p.classList.add('hidden'));
-    }
-  });
   
-  function addContact() {
-    const contactList = document.getElementById('contactList');
-    
-    const wrapper = document.createElement('div');
-    wrapper.className = "grid grid-cols-1 md:grid-cols-2 gap-4 mt-2 relative";
-
-    wrapper.innerHTML = `
-      <input type="text" name="contactName[]" placeholder="First and Last Name" required class="border border-gray-300 rounded-md p-2" />
-      <div class="flex items-center">
-        <input type="email" name="contactEmail[]" placeholder="Email Address" required class="border border-gray-300 rounded-md p-2 w-full" />
-        <button type="button" onclick="this.closest('.grid').remove()" class="text-red-600 text-xs ml-2">Remove</button>
-      </div>
-    `;
-
-    contactList.appendChild(wrapper);
-  }
+  } catch (err) {
+    console.error("Submission error:", err);
+    const modal = document.getElementById("submissionModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalMessage = document.getElementById("modalMessage");
   
-  function toggleHelp(button, id) {
-    document.querySelectorAll('p[id^="help-"]').forEach(p => {
-      if (p.id !== id) p.classList.add('hidden');
-    });
-    const current = document.getElementById(id);
-    current.classList.toggle('hidden');
+    let msg = "A network/CORS error occurred.";
+    if (err && err.name === "AbortError") msg = "The request timed out. Please try again.";
+    modalTitle.textContent = "⚠️ Network Error";
+    modalTitle.classList.add("text-red-700");
+    modalTitle.classList.remove("text-green-700");
+    modalMessage.textContent = msg;
+    modal.classList.remove("hidden");
   }
-
-  document.addEventListener('click', function(event) {
-    const isHelpButton = event.target.matches('button[onclick^="toggleHelp"]');
-    const isHelpText = event.target.closest('p[id^="help-"]');
-    if (!isHelpButton && !isHelpText) {
-      document.querySelectorAll('p[id^="help-"]').forEach(p => p.classList.add('hidden'));
-    }
-  });
-
-  function toggleHelp(event, id) {
-    event.stopPropagation(); // Prevents immediate closing on same click
-
-    // Close all other help text
-    document.querySelectorAll('p[id^="help-"]').forEach(p => {
-      if (p.id !== id) p.classList.add('hidden');
-    });
-
-    // Toggle selected help text
-    const current = document.getElementById(id);
-    current.classList.toggle('hidden');
-  }
-
-  // Close help text when clicking outside
-  document.addEventListener('click', function(event) {
-    const isHelpButton = event.target.closest('button[onclick^="toggleHelp"]');
-    const isHelpText = event.target.closest('p[id^="help-"]');
-
-    if (!isHelpButton && !isHelpText) {
-      document.querySelectorAll('p[id^="help-"]').forEach(p => p.classList.add('hidden'));
-    }
-  });
-  function toggleECFields() {
-    const dropdown = document.getElementById('hasEC');
-    const ecDetails = document.getElementById('ecDetails');
-    ecDetails.classList.toggle('hidden', dropdown.value !== 'yes');
-  }
-
-  function toggleHelp(button, id) {
-    document.querySelectorAll('p[id^="help-"]').forEach(p => {
-      if (p.id !== id) p.classList.add('hidden');
-    });
-    const current = document.getElementById(id);
-    current.classList.toggle('hidden');
-  }
-
-  document.addEventListener('click', function (event) {
-    const isHelpButton = event.target.matches('button[onclick^="toggleHelp"]');
-    const isHelpText = event.target.closest('p[id^="help-"]');
-    if (!isHelpButton && !isHelpText) {
-      document.querySelectorAll('p[id^="help-"]').forEach(p => p.classList.add('hidden'));
-    }
-  });
-  function addSpecies() {
-    const container = document.getElementById("species-container");
-
-    const div = document.createElement("div");
-    div.className = "species-entry grid grid-cols-1 md:grid-cols-2 gap-4 relative mt-2";
-    div.innerHTML = `
-      <label class="text-sm text-gray-700">
-        Common Name:
-        <input type="text" name="species_common[]" class="border border-gray-300 rounded-md p-2 w-full text-sm" required />
-      </label>
-      <label class="text-sm text-gray-700">
-        Scientific Name:
-        <input type="text" name="species_scientific[]" class="border border-gray-300 rounded-md p-2 w-full text-sm" required />
-      </label>
-      <button type="button" onclick="removeSpecies(this)" class="absolute top-0 right-0 text-xs text-red-500 hover:text-red-700 underline">
-        Remove
-      </button>
-
-    `;
-    container.appendChild(div);
-  }
-
-  function removeSpecies(button) {
-    const entry = button.closest('.species-entry');
-    if (entry) entry.remove();
-  }
+});
 </script>
-
-    <!-- FOOTER -->
-  <footer class="bg-gray-200 text-sm text-center p-4 mt-12">
-    © 2025 TIR-ific Network. All rights reserved.<br />
-    Connecting the world through thermal insights.
-  </footer>
 
 </body>
 </html>
