@@ -905,52 +905,35 @@ const payload = {
   tir_image_base64: tirBase64,
   tir_image_filename: tirFilename
 };
-  
   try {
-    console.log("Payload being sent to Netlify function:", payload);
-    const response = await fetch("https://guileless-twilight-7d6d23.netlify.app/.netlify/functions/submitForm", {
+    const controller = new AbortController();
+    const t = setTimeout(() => controller.abort(), 30000);
+  
+    const res = await fetch(FUNCTION_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+      headers: { "Content-Type": "application/json" }, // if you're sending JSON
+      body: JSON.stringify(payload),
+      mode: "cors",
+      signal: controller.signal
     });
+    clearTimeout(t);
   
-    const modal = document.getElementById("submissionModal");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalMessage = document.getElementById("modalMessage");
-  
-    if (response.ok) {
-      modalTitle.textContent = "🎉 Site Submitted!";
-      modalTitle.classList.add("text-green-700");
-      modalTitle.classList.remove("text-red-700");
-      modalMessage.textContent = "Thanks for submitting your site to the TIR-ific Network! Check back in ~15 minutes to see it live.";
-      modal.classList.remove("hidden");
-  
-      // Reload after 10 seconds
-      setTimeout(() => {
-        location.reload();
-      }, 60000);
-  
-    } else {
-      modalTitle.textContent = "⚠️ Submission Failed";
-      modalTitle.classList.add("text-red-700");
-      modalTitle.classList.remove("text-green-700");
-      modalMessage.textContent = "Something went wrong while submitting the form. Please try again or contact us on our webpage.";
-      modal.classList.remove("hidden");
-      console.error(await response.text());
+    if (!res.ok) {
+      const ct = res.headers.get("content-type") || "";
+      const body = ct.includes("application/json") ? JSON.stringify(await res.json()) : await res.text();
+      console.error("Submit failed:", res.status, res.statusText, body);
+      showModal(`⚠️ Submit failed (${res.status})`, body?.slice(0, 400) || "Server error.");
+      return;
     }
   
-  } catch (err) {
-    console.error("Submission error:", err);
-    const modal = document.getElementById("submissionModal");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalMessage = document.getElementById("modalMessage");
+    showModal("✅ Submitted!", "Thanks! Your entry was received.", false);
   
-    modalTitle.textContent = "⚠️ Network Error";
-    modalTitle.classList.add("text-red-700");
-    modalTitle.classList.remove("text-green-700");
-    modalMessage.textContent = "A network error occurred. Please try again later.";
-    modal.classList.remove("hidden");
+  } catch (err) {
+    console.error("Submission error:", err?.message || err);
+    const msg = err?.name === "AbortError" ? "The request timed out. Please try again." : "A network/CORS error occurred.";
+    showModal("⚠️ Network Error", msg);
   }
+
   
   // Close modal when user clicks X
   document.getElementById("closeModal").addEventListener("click", () => {
